@@ -1,6 +1,7 @@
 package org.apci.aplicaciones.util;
 
 import java.lang.reflect.Field;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -31,6 +32,14 @@ public class DaoUtil {
 	}
 	
 	public static PreparedStatement setStatementParameters(PreparedStatement pStatement,Object[] pParameters) throws Exception
+	{
+		for (int i = 0; i < pParameters.length; i++) {
+			pStatement.setObject(i+1, pParameters[i]);
+		}
+		return pStatement;
+	}
+	
+	public static CallableStatement setStatementParameters(CallableStatement pStatement,Object[] pParameters) throws Exception
 	{
 		for (int i = 0; i < pParameters.length; i++) {
 			pStatement.setObject(i+1, pParameters[i]);
@@ -72,6 +81,25 @@ public class DaoUtil {
 		{
 			if ( Query.getPrimaryKeyName(classType).toLowerCase().equals(property.getName().toLowerCase()) ){
 				pStatement.setObject(pParameterIndex , property.get(pDataObject));
+				break;
+			}
+		}	
+		return pStatement;
+	}
+	
+	public static PreparedStatement setStatementPrimaryKeyParameter(PreparedStatement pStatement, Object pDataObject) throws Exception
+	{
+		Class<?> classType = pDataObject.getClass();
+		
+		Field[] classProperties = getAsAccessibleProperties(classType);
+		
+		int primaryKeyIndex = classProperties.length;
+		
+
+		for (Field property : classProperties) 
+		{
+			if ( Query.getPrimaryKeyName(classType).toLowerCase().equals(property.getName().toLowerCase()) ){
+				pStatement.setObject(primaryKeyIndex , property.get(pDataObject));
 				break;
 			}
 		}	

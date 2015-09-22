@@ -1,24 +1,23 @@
 package org.apci.aplicaciones.util.sql;
 
-import java.lang.reflect.Field;
-
 import org.apci.aplicaciones.util.StringUtil;
 
-public class Call extends Query {
+public class Call {
 	
-	public <T> Call(String pStoredProcedure,Class<T> pClassType){
-		super("{call %s (%s)}");
+	private final String SQL = "{call %s (%s)}";
+	
+	private String storedProcedure;
+	private String values;
+	
+	public <T> Call(String pStoredProcedure,Object...pParameters){
 		this.storedProcedure = pStoredProcedure;
-		generate(pClassType);
+		generate(pParameters);
 	}
 	
-	@Override
-	protected <T> void generate(Class<T> pClassType) {
+	protected <T> void generate(Object[] pParameters) {
 		StringBuilder sValues =  new StringBuilder();
-		
-		Field[] classProperties = pClassType.getDeclaredFields();
-		
-		for (int i=0; i < classProperties.length ; i++)	{
+			
+		for (int i=0; i < pParameters.length ; i++)	{
 				sValues.append(StringUtil.COMMA);
 				sValues.append(StringUtil.STRING_PARAMETER);
 		}
@@ -29,7 +28,6 @@ public class Call extends Query {
 		this.values = sValues.toString();
 	}
 
-	@Override
 	public String getSql() 
 	{
 		return String.format(this.SQL, this.storedProcedure, this.values);

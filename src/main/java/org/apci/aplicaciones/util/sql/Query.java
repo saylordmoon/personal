@@ -4,13 +4,14 @@ import org.apci.aplicaciones.util.StringUtil;
 
 public abstract class Query {
 	
+	public static final String SELECT = "SELECT %s FROM %s %s;";
+	
 	protected final String SQL;
 	
 	protected String table;
 	protected String columns;
 	protected String values;
 	protected String where;
-	protected String storedProcedure;
 	protected String primaryKey;
 	
 	public Query(String pSQL)
@@ -19,7 +20,6 @@ public abstract class Query {
 		this.columns = "";
 		this.values = "";
 		this.where = "";
-		this.storedProcedure = "";
 		this.SQL = pSQL;
 	}
 	
@@ -70,6 +70,21 @@ public abstract class Query {
 		sWhere.append(StringUtil.SPACE);
 		sWhere.append(StringUtil.STRING_PARAMETER);
 		this.where =sWhere.toString();
+	}
+	
+	public void whereIn(String pColumn,Select pSelect)
+	{
+		StringBuilder sWhere = new StringBuilder();
+		sWhere.append(StringUtil.WHERE);
+		sWhere.append(StringUtil.SPACE);
+		sWhere.append(pColumn);
+		sWhere.append(StringUtil.SPACE);
+		sWhere.append(StringUtil.IN);
+		sWhere.append(StringUtil.SPACE);
+		sWhere.append(StringUtil.OPEN_PARENTHESIS);
+		sWhere.append(pSelect.getSql());
+		sWhere.append(StringUtil.CLOSE_PARENTHESIS);
+		this.where = sWhere.toString();
 	}
 	
 	public void and(String pColumn)

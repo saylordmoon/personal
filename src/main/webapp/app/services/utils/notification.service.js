@@ -6,6 +6,38 @@ angular.module('main').service("NotificationService",function(){
 	var botonCerrar = false;
 
 	return {
+				info: function(mensaje, titulo) { 
+					titulo = titulo || "Ok";
+					notify({
+						type: "success", //alert | success | error | warning | info
+						title: titulo,
+						theme: tema,
+						position: 	posicion,
+						icon: '<i class="fa fa-check fa-2x"></i>',
+						autoHide: true,
+						delay: duracion,
+						closeBtn: botonCerrar,
+						message: mensaje
+					});
+				},
+
+
+				mensaje: function(mensaje, titulo) { 
+					titulo = titulo || "Información";
+					notify({
+						type: "información", //alert | success | error | warning | info
+						title: titulo,
+						theme: tema,
+						position: 	posicion,
+						icon: '<i class="fa fa-info-circle fa-2x"></i>',
+						autoHide: true,
+						delay: duracion,
+						closeBtn: botonCerrar,
+						message: mensaje
+					});
+
+				},
+
 				alerta: function(mensaje, titulo) { 
 					titulo = titulo || "Alerta";
 					notify({

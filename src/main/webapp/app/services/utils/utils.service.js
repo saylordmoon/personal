@@ -1,5 +1,7 @@
-angular.module("main").service("Utils", function($filter,TabService, NotificationService , ValidationService, $http){
+angular.module("main").service("Utils", function($filter,TabService, NotificationService , ValidationService,MaskService, $http){
 
+	this.Mask = MaskService;
+	
 	this.Validation = ValidationService;
 
 	this.Notification = NotificationService;

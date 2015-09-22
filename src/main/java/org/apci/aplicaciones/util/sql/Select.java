@@ -8,7 +8,13 @@ public class Select extends Query{
 
 	public <T> Select(Class<T> pClassType) 
 	{
-		super(pClassType, "SELECT %s FROM %s %s;");
+		super(pClassType, Query.SELECT);
+	}
+	
+	public Select(String pTable,String...pColumns){
+		super(Query.SELECT);
+		this.table = pTable;
+		this.columns = String.join(",", pColumns);
 	}
 	
 	@Override

@@ -13,10 +13,13 @@ public class StringUtil {
 	public static final String SPACE = " ";
 	public static final String LIKE = "LIKE";
 	public static final String AND = "AND";
+	public static final String IN = "IN";
 	public static final String PORCENTAJE = "%";
 	public static final String STRING_PARAMETER = "?";
 	public static final String OPEN_BRACKETS = "[";
 	public static final String CLOSE_BRACKETS = "]";
+	public static final String OPEN_PARENTHESIS = "(";
+	public static final String CLOSE_PARENTHESIS = ")";
 	public static final String BACK_SLASH = "/";
 	public static final String QUOTE = "\"";
 	

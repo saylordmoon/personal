@@ -1,10 +1,5 @@
 angular.module('main').service("ValidationService",[ "NotificationService", function(Messagebox){
 
-	$(".fecha").inputmask("99/99/9999");
-	$(".moneda").inputmask("decimal" , { digits: 2, autoGroup: true, groupSize: 3, groupSeparator: ",",autoUnmask:true  });
-	$(".numero").inputmask("integer");
-
-
 	var Validation = {
 		
 				init		: 	function () 
@@ -20,7 +15,8 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 								{
 									var error = "El campo " + fieldName + " es obligatorio";
 									value = $(control).val();
-									var exp = (value !== '') && (value !== null) && (value !== undefined) && (value.toString().length > 0) && (value !== '? string:1 ?') && ( value !== '? ?' );
+									var angularRex = /\? \w+:\w+ \?/;
+									var exp = (value !== '') && (value !== null) && (value !== undefined) && (value.toString().length > 0) && (!angularRex.test(value));
 									Validation.evaluate(exp,error,control);
 									return exp;
 								}
@@ -156,8 +152,37 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 
 										Validation.evaluate(exp,error,control);
 										return exp;
-										
-									}			
+									}
+				
+				,dateOnOrLessThanVar:	function(value, maxvalue, control, fieldName)
+										{
+											var exp = false;
+											var error = "El campo " + fieldName + "<br /> Debe ser menor o igual a " + maxvalue;
+											
+											if ( S(value).isEmpty() || S(maxvalue).isEmpty() )  exp = true;
+											else  
+											{				
+												exp = moment(value,["DD/MM/YYYY","YYYY/MM/DD"]).diff(moment(maxvalue,["DD/MM/YYYY","YYYY/MM/DD"])) <= 0;
+											}
+						
+											Validation.evaluate(exp,error,control);
+											return exp;
+										} 
+				,dateOnOrGreaterThanVar: 	function(value, minvalue, control, fieldName)
+											{
+												var exp = false;
+												var error = "El campo " + fieldName + "<br /> Debe ser mayor o igual a " + minvalue;
+												
+												if ( S(value).isEmpty() || S(minvalue).isEmpty() )  exp = true;
+												else  
+												{
+													exp = moment(value,["DD/MM/YYYY","YYYY/MM/DD"]).diff(moment(minvalue,["DD/MM/YYYY","YYYY/MM/DD"])) >= 0;
+												};
+							
+												Validation.evaluate(exp,error,control);
+												return exp;
+					
+											}
 				,evaluate 	: 	function(exp,error,control,pclass) 
 								{
 									pclass = pclass || "has-error";
