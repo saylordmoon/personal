@@ -9,7 +9,7 @@
         <!-- RECURSOS HTTP  -->
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>org.apci.aplicaciones.appbase</param-value>
+            <param-value>org.apci.aplicaciones.resources</param-value>
         </init-param>
         
         <init-param>

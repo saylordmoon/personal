@@ -1,4 +1,4 @@
-package org.apci.aplicaciones.dao;
+package org.apci.aplicaciones.util.dao;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

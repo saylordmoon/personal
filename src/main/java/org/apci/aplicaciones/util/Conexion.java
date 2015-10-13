@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-	private final String connectionUrl = "jdbc:sqlserver://HP01;databaseName=REPLOP;integratedSecurity=true";
+	private final String connectionUrl = "jdbc:sqlserver://HP01;databaseName=Supervisores;integratedSecurity=true";
 	private final String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private Connection con;
 	
