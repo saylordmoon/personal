@@ -13,6 +13,12 @@ import org.apci.aplicaciones.dao.NivelDAO;
 import org.apci.aplicaciones.dao.RubroDAO;
 import org.apci.aplicaciones.dao.SectorDAO;
 import org.apci.aplicaciones.dao.TipoDocumentoDAO;
+import org.apci.aplicaciones.models.tipo.Area;
+import org.apci.aplicaciones.models.tipo.Idioma;
+import org.apci.aplicaciones.models.tipo.Nivel;
+import org.apci.aplicaciones.models.tipo.Rubro;
+import org.apci.aplicaciones.models.tipo.Sector;
+import org.apci.aplicaciones.models.tipo.TipoDocumento;
 import org.apci.aplicaciones.services.IAreaService;
 import org.apci.aplicaciones.services.IIdiomaService;
 import org.apci.aplicaciones.services.INivelService;
@@ -41,42 +47,42 @@ public class TipoResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("area")
-	public List<?> area(){
+	public List<Area> area(){
 		return area.get();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("idioma")
-	public List<?> idioma(){
+	public List<Idioma> idioma(){
 		return idioma.get();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("nivel")
-	public List<?> nivel(){
+	public List<Nivel> nivel(){
 		return nivel.get();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("rubro")
-	public List<?> rubro(){
+	public List<Rubro> rubro(){
 		return rubro.get();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("sector")
-	public List<?> sector(){
+	public List<Sector> sector(){
 		return sector.get();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("documento")
-	public List<?> tipoDocumento(){
+	public List<TipoDocumento> tipoDocumento(){
 		return tipoDocumento.get();
 	}
 	
