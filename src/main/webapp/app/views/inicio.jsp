@@ -20,6 +20,21 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-md-3 contrl-label" >Fecha de Nacimiento:</label>
+						<div class="col-md-6">
+							<input type="date" class="form-control" placeholder="Fecha de Nacimiento" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 contrl-label" >Sexo:</label>
+						<div class="col-md-6">
+							<select class="form-control">
+								<option value="M">Masculino</option>
+								<option value="F">Femenino</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-md-3 contrl-label" >Tipo de Documento:</label>
 						<div class="col-md-6">
 							<select class="form-control">
@@ -359,32 +374,34 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Grado Académico:</label>
-						<select class="form-control">
+						<select id="sel-fa-grado-academico" class="form-control">
 							<option></option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Profesión o especialidad:</label>
-						<input type="text" class="form-control" />
+						<label >Profesión o especialidad:</label>
+						<input id="txt-fa-profesion" type="text" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label>Fecha de Expedición:</label>
-						<input type="date" class="form-control" />
+						<label >Fecha de Expedición:</label>
+						<input id="txt-fa-fecha-expedicion" type="date" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label>Institución:</label>
-						<input type="text" class="form-control" />
+						<label >Institución:</label>
+						<input id="txt-fa-institucion" type="text" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Pais:</label>
-						<select class="form-control">
+						<select id="sel-fa-pais" class="form-control">
 							<option></option>
 						</select>
 					</div>
-
 				</div>
-
 				<div class="modal-footer">
+					<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="regCtrl.guardarFormacionAcademica()">
+						<i class="glyphicon glyphicon-save"></i>
+						Guardar
+					</button>
 				</div>
 			</div>
 		</div>
@@ -433,7 +450,10 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-
+					<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="regCtrl.">
+						<i class="glyphicon glyphicon-save"></i>
+						Guardar
+					</button>
 				</div>
 			</div>
 		</div>
@@ -481,6 +501,10 @@
 				</div>
 
 				<div class="modal-footer">
+					<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="regCtrl.">
+						<i class="glyphicon glyphicon-save"></i>
+						Guardar
+					</button>
 				</div>
 			</div>
 		</div>
@@ -550,7 +574,10 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					
+					<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="regCtrl.">
+						<i class="glyphicon glyphicon-save"></i>
+						Guardar
+					</button>
 				</div>
 			</div>
 		</div>
