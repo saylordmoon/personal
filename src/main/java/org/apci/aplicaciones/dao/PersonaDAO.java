@@ -15,3 +15,4 @@ public class PersonaDAO extends BaseDAO implements IPersonaService {
 		return pPersona;
 	}
 }
+
