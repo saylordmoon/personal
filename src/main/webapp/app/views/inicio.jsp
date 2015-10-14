@@ -136,7 +136,7 @@
 				</div>
 				<div class="col-md-3" align="right">
 					<div style="width: 150px">
-						<img src="img/foto.png" class="bmd-floating" />
+						<canvas id="canvas" style="width: 150px;height: 200px;background-color: gray;"></canvas>		
 						<input id="txt-dp-foto" type="file" class="form-control" data-ng-model="regCtrl.persona.foto" />
 						<a id="txt-dp-foto-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 					</div>

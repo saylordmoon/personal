@@ -314,4 +314,19 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			});
 		}
 	});
+	
+	
+	var input = document.getElementById('txt-dp-foto');
+	input.addEventListener('change', handleFiles);
+
+	function handleFiles(e) {
+	    var ctx = document.getElementById('canvas').getContext('2d');
+	    var img = new Image;
+	    img.src = URL.createObjectURL(e.target.files[0]);
+	    img.onload = function() {
+	        ctx.drawImage(img, 0,0 , 300 , 150);
+	    }
+	}
+	
+	
 });
