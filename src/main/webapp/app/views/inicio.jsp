@@ -61,7 +61,7 @@
 						<label class="col-md-3 control-label" ><i class="fa fa-paperclip"></i> Documento</label>
 						<div class="col-md-6">
 							<input id="txt-dp-documento" data-ng-model="regCtrl.persona.documento" class="form-control" type="file" />
-							<a id="txt-dp-documentol-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
+							<a id="txt-dp-documento-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 						</div>
 					</div>
 					<div class="form-group">
@@ -129,6 +129,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">Curriculum:</label>
 						<div class="col-md-6">
+							<a id="txt-dp-curriculum-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 							<input id="txt-dp-curriculum" data-ng-model="regCtrl.persona.cv" class="form-control" type="file" />
 						</div>
 					</div>	
@@ -203,7 +204,7 @@
 							<td>{{formacion.fechaExpedicion | date : "dd/MM/yyyy"}}</td>
 							<td>{{formacion.institucion}}</td>
 							<td>{{formacion.pais}}</td>
-							<td><a><i class="fa fa-paperclip"></i></a></td>
+							<td><a href="/appbase/api/v1/file/download{{formacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -240,7 +241,7 @@
 							<td>{{capacitacion.horasLectivas}}</td>
 							<td>{{capacitacion.institucion}}</td>
 							<td>{{capacitacion.pais}}</td>
-							<td><a><i class="fa fa-paperclip"></i></a></td>
+							<td><a href="/appbase/api/v1/file/download{{capacitacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -273,7 +274,7 @@
 							<td>{{idioma.escritura}}</td>
 							<td>{{idioma.hablado}}</td>
 							<td>{{idioma.lectura}}</td>
-							<td><a><i class="fa fa-paperclip"></i></a></td>
+							<td><a href="/appbase/api/v1/file/download{{idioma.documento}}"><i class="fa fa-paperclip"></i></a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -316,7 +317,7 @@
 							<td>{{experiencia.rubro}}</td>
 							<td>{{experiencia.sector}}</td>
 							<td>{{experiencia.pais}}</td>
-							<td><a><i class="fa fa-paperclip"></i></a></td>
+							<td><a href="/appbase/api/v1/file/download{{experiencia.documento}}"><i class="fa fa-paperclip"></i></a></td>
 						</tr>	
 					</tbody>
 				</table>
@@ -513,6 +514,7 @@
 					<div class="form-group">
 						<label class="control-label"><i class="fa fa-paperclip"></i> Documento Sustentatorio:</label>
 						<input id="txt-fa-documento-sustentatorio" type="file" class="form-control" />
+						<a id="txt-fa-documento-sustentatorio-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -565,6 +567,7 @@
 					<div class="form-group">
 						<label class="control-label"><i class="fa fa-paperclip"></i> Documento Sustentatorio:</label>
 						<input id="txt-c-documento-sustentatorio" type="file" class="form-control" />
+						<a id="txt-c-documento-sustentatorio-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -615,6 +618,7 @@
 					<div class="form-group">
 						<label><i class="fa fa-paperclip"></i> Documento Sustentatorio: (opcional)</label>
 						<input id="txt-i-documento-sustentatorio" class="form-control" type="file" />
+						<a id="txt-i-documento-sustentatorio-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 					</div>
 				</div>
 
@@ -687,6 +691,7 @@
 					<div class="form-group">
 						<label><i class="fa fa-paperclip"></i> Documento Sustentatorio:</label>
 						<input id="txt-el-documento-sustentatorio" class="form-control" data-ng-model="regCtrl.experiencia.documento" type="file" />
+						<a id="txt-el-documento-sustentatorio-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 					</div>
 				</div>
 				<div class="modal-footer">

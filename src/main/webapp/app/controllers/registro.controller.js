@@ -105,9 +105,12 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		
 		if (Utils.Validation.run()){
 			//convertir fechas
+			
+			
 			this.formacion.fechaExpedicion = moment(this.fechaExpedicion,"DD/MM/YYYY").toDate();
 			this.formacion.grado = Utils.UI.Select.getSelectedText("sel-fa-grado-academico");
 			this.formacion.pais = Utils.UI.Select.getSelectedText("sel-fa-pais");
+			this.formacion.documento = Utils.UI.Control.getAttr("txt-fa-documento-sustentatorio","data-filename");
 			
 			if (this.nuevaFormacion) this.formacionAcademica.push(this.formacion);
 			console.log("Formacion académica" , this.formacionAcademica);
@@ -133,10 +136,11 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#txt-c-documento-sustentatorio","Documento Sustentatorio");
 		
 		if (Utils.Validation.run()){
-			//convertir fechas
+
 			this.capacitacion.fechaInicio = moment(this.capacitacion.fechaInicio,"DD/MM/YYYY").toDate();
 			this.capacitacion.fechaFin = moment(this.capacitacion.fechaFin,"DD/MM/YYYY").toDate();
-			this.capacitacion.pais = Utils.UI.Select.getSelectedText("sel-c-pais"); 
+			this.capacitacion.pais = Utils.UI.Select.getSelectedText("sel-c-pais");
+			this.capacitacion.documento = Utils.UI.Control.getAttr("txt-c-documento-sustentatorio","data-filename");
 
 			if (this.nuevaCapacitacion) this.capacitaciones.push(this.capacitacion);
 			console.log("Capacitaciones" , this.capacitaciones);
@@ -161,6 +165,8 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			this.idioma.escritura = Utils.UI.Select.getSelectedText("sel-i-nivel-escritura");
 			this.idioma.hablado = Utils.UI.Select.getSelectedText("sel-i-nivel-hablado");
 			this.idioma.lectura = Utils.UI.Select.getSelectedText("sel-i-nivel-lectura");
+			this.idioma.documento = Utils.UI.Control.getAttr("txt-i-documento-sustentatorio","data-filename");
+			
 			console.log("Idiomas", this.personaIdiomas);			
 			if (this.nuevoIdioma) this.personaIdiomas.push(this.idioma);
 			this.idioma = {};
@@ -196,12 +202,14 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			this.experiencia.rubro = Utils.UI.Select.getSelectedText("sel-el-rubro");
 			this.experiencia.sector = Utils.UI.Select.getSelectedText("sel-el-sector");
 			this.experiencia.pais = Utils.UI.Select.getSelectedText("sel-el-pais");
+			this.experiencia.documento = Utils.UI.Control.getAttr("txt-el-documento-sustentatorio","data-filename");
 			
 			if (this.nuevaExperiencia) this.experienciaLaboral.push(this.experiencia);
 			console.log("Experiencia Laboral", this.experienciaLaboral);
 			
 			this.experiencia = {};
-			$(".modal-experiencia-laboral").modal("hide");			
+			
+			$(".modal-experiencia-laboral").modal("hide");
 		}
 	}
 	
@@ -223,7 +231,6 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	    	Utils.Validation.len("#txt-dp-numero-documento","D.N.I.", 8);
 		else
 			Utils.Validation.len("#txt-dp-numero-documento","Pasaporte", 12); 
-
 
 		Utils.Validation.required("#txt-dp-documento","Documento");
 		
@@ -252,7 +259,6 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		
 		Utils.Validation.required("#sel-nivel-computacion","Nivel Computacion");
 		
-
 		Utils.Validation.minLen("#panel-formacion-academica", this.formacionAcademica, 1, "Formación Académica" , "panel-danger");
 		Utils.Validation.minLen("#panel-capacitacion", this.capacitaciones, 1, "Capacitación" , "panel-danger");
 		Utils.Validation.minLen("#panel-idiomas", this.personaIdiomas, 1, "Idioma" , "panel-danger");
@@ -265,10 +271,15 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	}
 	
 	this.confirmarRegistro = function() {
+		
 		console.log("Registro" , this.persona);
 
-		//convertir fechas
-		this.persona.fechaNacimiento = moment(this.persona.fechaNacimiento,"DD/MM/YYYY").toDate();
+		this.persona.fechaNacimiento = Utils.Date.toDate(this.persona.fechaNacimiento);
+		
+		this.persona.foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
+		this.persona.documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
+		this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
+		
 		Utils.Rest.save(APP.URL_API + "persona" , this.persona).success(function(data){
 
 			Utils.List.set("personaId",self.formacionAcademica,data.personaId);
@@ -281,15 +292,13 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			Utils.Rest.save(APP.URL_API + "persona/idioma",self.personaIdiomas);
 			Utils.Rest.save(APP.URL_API + "persona/experiencia",self.experienciaLaboral);
 		
-			
+			$(".modal-confirmacion").modal("hide");
+			Utils.Notification.info("Se registro correctamente!","Registro Completo");
 		});
 	}
-	
 
-	$('input[type="file"]').change(function(){
-		
-		
-		//<a id="documento-adicional-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
+	$('input[type="file"]').change(function()
+	{
 		console.log("upload",this);
 		var control = this;
 		$("#" + control.id + "-ok" ).hide();
@@ -305,6 +314,4 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			});
 		}
 	});
-	
-
 });

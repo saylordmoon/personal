@@ -9,6 +9,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -25,16 +26,15 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 public class FileResource {
 	
     @GET
-    @Path("/download")
+    @Path("/download/{Folder}/{FileName}")
     @Produces("application/zip")
-    public Response downloadZippedFile() {
+    public Response downloadZippedFile(@PathParam("Folder") String pFolder,@PathParam("FileName") String pFileName) {
  
-    	String fileName = "prueba";
-    	
-        File file = new File(FileUtil.UPLOAD_FILE_SERVER + fileName);
- 
+    	String archivo = pFolder + "/" + pFileName;
+    	File file = new File(FileUtil.UPLOAD_FILE_SERVER + archivo);
+   
         ResponseBuilder responseBuilder = Response.ok((Object) file);
-        responseBuilder.header("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+        responseBuilder.header("Content-Disposition", "attachment; filename=\"" + pFileName + "\"");
         return responseBuilder.build();
     }
  

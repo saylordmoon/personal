@@ -18,6 +18,14 @@ public class Experiencia {
 	private int RubroId;
 	private int SectorId;
 	private int PaisId;
+	private String Documento;
+	
+	public String getDocumento() {
+		return Documento;
+	}
+	public void setDocumento(String documento) {
+		Documento = documento;
+	}
 	public int getExperienciaId() {
 		return ExperienciaId;
 	}

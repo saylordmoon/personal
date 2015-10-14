@@ -15,6 +15,14 @@ public class Capacitacion {
 	private int HorasLectivas;
 	private String Institucion;
 	private int PaisId;
+	private String Documento;
+	
+	public String getDocumento() {
+		return Documento;
+	}
+	public void setDocumento(String documento) {
+		Documento = documento;
+	}
 	public int getCapacitacionId() {
 		return CapacitacionId;
 	}

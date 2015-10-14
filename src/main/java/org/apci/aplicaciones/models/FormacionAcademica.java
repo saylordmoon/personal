@@ -14,6 +14,14 @@ public class FormacionAcademica {
 	private Date FechaExpedicion;
 	private String Institucion;
 	private int PaisId;
+	private String Documento;
+	
+	public String getDocumento() {
+		return Documento;
+	}
+	public void setDocumento(String documento) {
+		Documento = documento;
+	}
 	public int getFormacionAcademicaId() {
 		return FormacionAcademicaId;
 	}

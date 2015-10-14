@@ -32,7 +32,14 @@ public class Persona {
 	private String CCI;
 	private String Foto;
 	private String Documento;
+	private String CV;
 	
+	public String getCV() {
+		return CV;
+	}
+	public void setCV(String cV) {
+		CV = cV;
+	}
 	public String getFoto() {
 		return Foto;
 	}

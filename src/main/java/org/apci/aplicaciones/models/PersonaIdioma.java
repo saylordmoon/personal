@@ -11,6 +11,14 @@ public class PersonaIdioma {
 	private int NivelEscrituraId;
 	private int NivelHabladoId;
 	private int NivelLecturaId;
+	private String Documento;
+	
+	public String getDocumento() {
+		return Documento;
+	}
+	public void setDocumento(String documento) {
+		Documento = documento;
+	}
 	public int getPersonaIdiomaId() {
 		return PersonaIdiomaId;
 	}
