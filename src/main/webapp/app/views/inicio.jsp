@@ -168,6 +168,8 @@
 						<label class="col-md-3 control-label" >CCI:</label>
 						<div class="col-md-9">
 							<input id="txt-if-cci" data-ng-model="regCtrl.persona.CCI" type="text" class="form-control cci" placeholder="Código de Cuenta Interbancario" />
+							<p style="font-size: 11px;color: gray;">Ingresa los 20 dígitos de la cuenta de destino (CCI) sin considerar espacios en blanco o alguno de los símbolos: (-) (,) (/) (*).
+							<br /> Por ejemplo: Si el CCI que vas a ingresar es de la forma 002-100-012022434968-49 ingrésalo de esta manera: 00210001202243496849</p>
 						</div>
 					</div>
 				</div>
@@ -195,6 +197,7 @@
 							<td>Institución Académica</td>
 							<td>Pais</td>
 							<td><i class="fa fa-paperclip"></i></td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -205,6 +208,10 @@
 							<td>{{formacion.institucion}}</td>
 							<td>{{formacion.pais}}</td>
 							<td><a href="/appbase/api/v1/file/download{{formacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarFinanciamiento(fuente)"><i class="glyphicon glyphicon-trash"></i></button>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarFinanciamiento(fuente)"><i class="glyphicon glyphicon-pencil"></i></button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
