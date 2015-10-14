@@ -26,7 +26,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label" >Pais de nacimiento</label>
+						<label class="col-md-3 control-label" >País de nacimiento</label>
 						<div class="col-md-4">
 							<select id="sel-dp-pais-nacimiento" data-ng-model="regCtrl.persona.paisNacimientoId" class="form-control">
 								<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
@@ -159,7 +159,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label" >Numero de Cuenta:</label>
+						<label class="col-md-3 control-label" >Número de Cuenta:</label>
 						<div class="col-md-9">
 							<input id="txt-if-cuenta" data-ng-model="regCtrl.persona.cuenta" type="text" class="form-control cuenta" placeholder="Número de Cuenta" />
 						</div>
@@ -195,7 +195,7 @@
 							<td>Profesión o especialidad</td>
 							<td>Fecha de Expedición</td>
 							<td>Institución Académica</td>
-							<td>Pais</td>
+							<td>País</td>
 							<td><i class="fa fa-paperclip"></i></td>
 							<td></td>
 						</tr>
@@ -209,8 +209,8 @@
 							<td>{{formacion.pais}}</td>
 							<td><a href="/appbase/api/v1/file/download{{formacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
-								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarFinanciamiento(fuente)"><i class="glyphicon glyphicon-trash"></i></button>
-								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarFinanciamiento(fuente)"><i class="glyphicon glyphicon-pencil"></i></button>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarFormacionAcademica(formacion)"><i class="glyphicon glyphicon-trash"></i></button>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarFormacionAcademica(formacion)"><i class="glyphicon glyphicon-pencil"></i></button>
 							</td>
 						</tr>
 					</tbody>
@@ -236,8 +236,9 @@
 							<td>Fecha de Fin</td>
 							<td>Horas lectivas</td>
 							<td>Institución Académica</td>
-							<td>Pais</td>
+							<td>País</td>
 							<td><i class="fa fa-paperclip"></i></td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -249,6 +250,10 @@
 							<td>{{capacitacion.institucion}}</td>
 							<td>{{capacitacion.pais}}</td>
 							<td><a href="/appbase/api/v1/file/download{{capacitacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarCapacitacion(capacitacion)"><i class="glyphicon glyphicon-trash"></i></button>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarCapacitacion(capacitacion)"><i class="glyphicon glyphicon-pencil"></i></button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -273,6 +278,7 @@
 							<td>Nivel Hablado</td>
 							<td>Nivel Lectura</td>
 							<td><i class="fa fa-paperclip"></i></td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -282,6 +288,10 @@
 							<td>{{idioma.hablado}}</td>
 							<td>{{idioma.lectura}}</td>
 							<td><a href="/appbase/api/v1/file/download{{idioma.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarIdiomas(idioma)"><i class="glyphicon glyphicon-trash"></i></button>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarIdiomas(idioma)"><i class="glyphicon glyphicon-pencil"></i></button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -309,8 +319,9 @@
 							<td>Area</td>
 							<td>Rubro</td>
 							<td>Sector</td>
-							<td>Pais</td>
+							<td>País</td>
 							<td><i class="fa fa-paperclip"></i></td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -325,6 +336,10 @@
 							<td>{{experiencia.sector}}</td>
 							<td>{{experiencia.pais}}</td>
 							<td><a href="/appbase/api/v1/file/download{{experiencia.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarExperienciaLaboral(experiencia)"><i class="glyphicon glyphicon-trash"></i></button>
+								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarExperienciaLaboral(experiencia)"><i class="glyphicon glyphicon-pencil"></i></button>
+							</td>
 						</tr>	
 					</tbody>
 				</table>
@@ -513,7 +528,7 @@
 						<input id="txt-fa-institucion" type="text" data-ng-model="regCtrl.formacion.institucion" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label>Pais:</label>
+						<label>País:</label>
 						<select id="sel-fa-pais" data-ng-model="regCtrl.formacion.paisId" class="form-control">
 							<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>
@@ -562,7 +577,7 @@
 						<input id="txt-c-horas-lectivas" data-ng-model="regCtrl.capacitacion.horasLectivas" type="number" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label class="control-label">Institución Academica:</label>
+						<label class="control-label">Institución Académica:</label>
 						<input id="txt-c-institucion" data-ng-model="regCtrl.capacitacion.institucion" type="text" class="form-control" />
 					</div>
 					<div class="form-group">
@@ -671,7 +686,7 @@
 						<textarea id="txt-el-descripcion" data-ng-model="regCtrl.experiencia.descripcion" class="form-control"></textarea>
 					</div>
 					<div class="form-group">
-						<label>Area:</label>
+						<label>Área:</label>
 						<select id="sel-el-area" data-ng-model="regCtrl.experiencia.areaId" class="form-control">
 							<option data-ng-repeat="area in regCtrl.areas" value="{{area.areaId}}">{{area.nombre}}</option>
 						</select>
@@ -690,7 +705,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label>Pais:</label>
+						<label>País:</label>
 						<select id="sel-el-pais" data-ng-model="regCtrl.experiencia.paisId" class="form-control">
 							<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>

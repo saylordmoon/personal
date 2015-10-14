@@ -45,6 +45,11 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	this.distritos = [];
 	Utils.Rest.getList(this,APP.URL_API + "departamento","departamentos");
 	
+	
+	
+	
+	
+	
 	this.tipoDocumento = function(){
 		if (this.persona.tipoDocumentoId == "1") 
 			$("#txt-dp-numero-documento").inputmask("99999999",{autoUnmask:true});
@@ -64,33 +69,68 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		this.persona.distrito = "";
 	}
 	
+	//FORMACIÓN ACADÉMICA
 	this.agregarFormacionAcademica = function(){
-
 		this.nuevaFormacion = true;
 		$(".modal-formacion-academica").modal("show");
 		console.log("Formacion Academica");
 	}
+	this.borrarFormacionAcademica = function(pformacion) {
+		Utils.List.delete(pformacion,this.formacionAcademica);
+	}	
+	this.editarFormacionAcademica = function(pformacion){
+		this.nuevaFormacion = false;
+		this.formacion = pformacion;
+		$(".modal-formacion-academica").modal("show");
+	}
 	
+	//CAPACITACIÓN
 	this.agregarCapacitacion = function(){
-		
 		this.nuevaCapacitacion = true;
 		$(".modal-capacitacion").modal("show");
 		console.log("Capacitacion");
 	}
+	this.borrarCapacitacion = function(pcapacitacion) {
+		Utils.List.delete(pcapacitacion,this.Capacitaciones);
+	}	
+	this.editarCapacitacion = function(pcapacitacion){
+		this.nuevaCapacitacion = false;
+		this.capacitacion = pcapacitacion;
+		$(".modal-capacitacion").modal("show");
+	}
 	
+	//IDIOMAS
 	this.agregarIdiomas = function(){
-
 		this.nuevoIdioma = true;
 		$(".modal-idiomas").modal("show");
 		console.log("Idiomas");
 	}
+	this.borrarIdiomas = function(pidioma) {
+		Utils.List.delete(pidioma,this.idiomas);
+	}	
+	this.editarIdiomas = function(pidioma){
+		this.nuevoIdioma = false;
+		this.idioma = pidioma;
+		$(".modal-idiomas").modal("show");
+	}
 	
+	//EXPERIENCIA LABORAL
 	this.agregarExperienciaLaboral = function(){
-		
 		this.nuevaExperiencia = true;
 		$(".modal-experiencia-laboral").modal("show");
 		console.log("Experiencia Laboral");
 	}
+	this.borrarExperienciaLaboral = function(pexperiencia) {
+		Utils.List.delete(pexperiencia,this.experienciaLaboral);
+	}	
+	this.editarExperienciaLaboral = function(pexperiencia){
+		this.nuevaExperiencia = false;
+		this.experiencia = pexperiencia;
+		$(".modal-experiencia-laboral").modal("show");
+	}
+	
+	
+	
 
 	this.guardarFormacionAcademica = function() {
 		
