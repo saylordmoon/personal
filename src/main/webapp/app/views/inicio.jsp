@@ -10,13 +10,13 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" >Nombres:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-nombres" data-ng-model="regCtrl.persona.nombres" type="text" class="form-control" placeholder="Nombres" />
+							<input id="txt-dp-nombres" data-ng-model="regCtrl.persona.nombres" type="text" class="form-control mayuscula" placeholder="Nombres" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Apellidos:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-apellidos" data-ng-model="regCtrl.persona.apellidos" type="text" class="form-control" placeholder="Apellidos" />
+							<input id="txt-dp-apellidos" data-ng-model="regCtrl.persona.apellidos" type="text" class="form-control mayuscula" placeholder="Apellidos" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -61,6 +61,8 @@
 						<label class="col-md-3 control-label" ><i class="fa fa-paperclip"></i> Adjuntar Documento de Identidad</label>
 						<div class="col-md-6">
 							<input id="txt-dp-documento" data-ng-model="regCtrl.persona.documento" class="form-control" type="file" />
+						</div>
+						<div class="col-md-1">
 							<a id="txt-dp-documento-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 						</div>
 					</div>
@@ -89,9 +91,9 @@
 						</div>
 					</div>					
 					<div class="form-group">
-						<label class="col-md-3 control-label">Dirección de domicilio:</label>
+						<label class="col-md-3 control-label">Dirección domiciliaria:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-direccion" data-ng-model="regCtrl.persona.direccion" type="text" class="form-control" placeholder="Dirección de domicilio" />
+							<input id="txt-dp-direccion" data-ng-model="regCtrl.persona.direccion" type="text" class="form-control mayuscula" placeholder="Dirección de domicilio" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -128,9 +130,11 @@
 					
 					<div class="form-group">
 						<label class="col-md-3 control-label"><i class="fa fa-paperclip"></i> Adjuntar Curriculum:</label>
-						<div class="col-md-6">
-							<a id="txt-dp-curriculum-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
+						<div class="col-md-5">
 							<input id="txt-dp-curriculum" data-ng-model="regCtrl.persona.cv" class="form-control" type="file" />
+						</div>
+						<div class="col-md-1">
+							<a id="txt-dp-curriculum-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 						</div>
 					</div>	
 				</div>
@@ -155,7 +159,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" >Banco:</label>
 						<div class="col-md-9">
-							<input id="txt-if-banco" data-ng-model="regCtrl.persona.banco" type="text" class="form-control" placeholder="Nombre del banco" />
+							<input id="txt-if-banco" data-ng-model="regCtrl.persona.banco" type="text" class="form-control mayuscula" placeholder="Nombre del banco" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -181,10 +185,13 @@
 
 	<div class="panel panel-default">
 		<div id="panel-formacion-academica" class="panel-heading">
-			<a href="" data-ng-click="regCtrl.agregarFormacionAcademica()" class="btn btn-default bmd-text-blue-400 pull-right bmd-floating bmd-ripple bmd-fab bmd-fab-sm">
-				<i class="glyphicon glyphicon-plus"></i>
+			<a href="" class="btn btn-info bmd-ripple bmd-fab bmd-fab-sm bmd-floating pull-right" data-ng-click="regCtrl.agregarFormacionAcademica()" >
+			  <!-- For browsers that do not support ligatures, fall back to specifying the icons using numeric character -->
+			  <!-- <i class="bmd-icon material-icons">&#xe145;</i> -->
+			  <i class="bmd-icon material-icons">add</i>
 			</a>
 			<h4>Formación Académica</h4>
+			<p style="font-size: 11px;color: gray;">(Titulos, Posgrados, Maestrias, Diplomados ...)</p>
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
@@ -221,10 +228,13 @@
 
 	<div class="panel panel-default">
 		<div id="panel-capacitacion" class="panel-heading">
-			<a href="" data-ng-click="regCtrl.agregarCapacitacion()" class="btn btn-default bmd-text-blue-400 pull-right bmd-floating bmd-ripple bmd-fab bmd-fab-sm">
-				<i class="glyphicon glyphicon-plus"></i>
+			<a href="" class="btn btn-info bmd-ripple bmd-fab bmd-fab-sm bmd-floating pull-right" data-ng-click="regCtrl.agregarCapacitacion()" >
+			  <!-- For browsers that do not support ligatures, fall back to specifying the icons using numeric character -->
+			  <!-- <i class="bmd-icon material-icons">&#xe145;</i> -->
+			  <i class="bmd-icon material-icons">add</i>
 			</a>
 			<h4>Capacitación</h4>
+			<p style="font-size: 11px;color: gray;">(Cursos, Seminarios, Talleres ...)</p>
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
@@ -263,8 +273,10 @@
 
 	<div  class="panel panel-default">
 		<div id="panel-idiomas" class="panel-heading">
-			<a href="" data-ng-click="regCtrl.agregarIdiomas()" class="btn btn-default bmd-text-blue-400 pull-right bmd-floating bmd-ripple bmd-fab bmd-fab-sm">
-				<i class="glyphicon glyphicon-plus"></i>
+			<a href="" class="btn btn-info bmd-ripple bmd-fab bmd-fab-sm bmd-floating pull-right" data-ng-click="regCtrl.agregarIdiomas()" >
+			  <!-- For browsers that do not support ligatures, fall back to specifying the icons using numeric character -->
+			  <!-- <i class="bmd-icon material-icons">&#xe145;</i> -->
+			  <i class="bmd-icon material-icons">add</i>
 			</a>
 			<h4>Idiomas</h4>
 		</div>
@@ -300,8 +312,10 @@
 
 	<div  class="panel panel-default">
 		<div id="panel-experiencia-laboral" class="panel-heading">
-			<a href="" data-ng-click="regCtrl.agregarExperienciaLaboral()" class="btn btn-default bmd-text-blue-400 pull-right bmd-floating bmd-ripple bmd-fab bmd-fab-sm">
-				<i class="glyphicon glyphicon-plus"></i>
+			<a href="" class="btn btn-info bmd-ripple bmd-fab bmd-fab-sm bmd-floating pull-right" data-ng-click="regCtrl.agregarExperienciaLaboral()" >
+			  <!-- For browsers that do not support ligatures, fall back to specifying the icons using numeric character -->
+			  <!-- <i class="bmd-icon material-icons">&#xe145;</i> -->
+			  <i class="bmd-icon material-icons">add</i>
 			</a>
 			<h4>Experiencia Laboral</h4>
 		</div>
@@ -515,8 +529,9 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label >Profesión o Especialidad:</label>
-						<input id="txt-fa-profesion" data-ng-model="regCtrl.formacion.especialidad"  type="text" class="form-control" />
+						<label >Profesión o Especialidad: </label>
+						<input id="txt-fa-profesion" data-ng-model="regCtrl.formacion.especialidad"  type="text" class="form-control mayuscula" placeholder="Nombre completo de la especialidad" />
+						<p style="font-size: 11px;color: gray;">Ingrese el nombre conforme aparece en el documento sustentatorio.</p>
 					</div>
 					<div class="form-group">
 						<label ><i class="fa fa-calendar"></i> Fecha de Expedición:</label>
@@ -524,7 +539,8 @@
 					</div>
 					<div class="form-group">
 						<label >Institución Académica:</label>
-						<input id="txt-fa-institucion" type="text" data-ng-model="regCtrl.formacion.institucion" class="form-control" />
+						<input id="txt-fa-institucion" type="text" data-ng-model="regCtrl.formacion.institucion" class="form-control mayuscula" placeholder="Nombre completo de la Institución académica." />
+						<p style="font-size: 11px;color: gray;">Ingrese el nombre conforme aparece en el documento sustentatorio.</p>
 					</div>
 					<div class="form-group">
 						<label>País:</label>
@@ -561,7 +577,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label class="control-label">Curso de Capacitación:</label>
-						<input id="txt-c-curso-capacitacion" data-ng-model="regCtrl.capacitacion.capacitacion" type="text" class="form-control" placeholder="Nombre del curso de capacitación" />
+						<input id="txt-c-curso-capacitacion" data-ng-model="regCtrl.capacitacion.capacitacion" type="text" class="form-control mayuscula" placeholder="Nombre del curso de capacitación" />
 					</div>
 					<div class="form-group">
 						<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Inicio:</label>
@@ -577,7 +593,8 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">Institución Académica:</label>
-						<input id="txt-c-institucion" data-ng-model="regCtrl.capacitacion.institucion" type="text" class="form-control" />
+						<input id="txt-c-institucion" data-ng-model="regCtrl.capacitacion.institucion" type="text" class="form-control mayuscula" placeholder="Nombre completo de la Institución académica." />
+						<p style="font-size: 11px;color: gray;">Ingrese el nombre conforme aparece en el documento sustentatorio.</p>
 					</div>
 					<div class="form-group">
 						<label class="control-label">País:</label>
@@ -666,7 +683,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Empresa / Institución:</label>
-						<input id="txt-el-empresa" data-ng-model="regCtrl.experiencia.empresa" class="form-control" type="text" />
+						<input id="txt-el-empresa" data-ng-model="regCtrl.experiencia.empresa" class="form-control mayuscula" type="text" />
 					</div>
 					<div class="form-group">
 						<label>Cargo Desempeñado:</label>
@@ -682,14 +699,25 @@
 					</div>
 					<div class="form-group">
 						<label>Descripción de Funciones:</label>
-						<textarea id="txt-el-descripcion" data-ng-model="regCtrl.experiencia.descripcion" class="form-control"></textarea>
+						<textarea id="txt-el-descripcion" data-ng-model="regCtrl.experiencia.descripcion" class="form-control mayuscula"></textarea>
 					</div>
-					<div class="form-group">
-						<label>Área:</label>
-						<select id="sel-el-area" data-ng-model="regCtrl.experiencia.areaId" class="form-control select2">
-							<option data-ng-repeat="area in regCtrl.areas" value="{{area.areaId}}">{{area.nombre}}</option>
-						</select>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Área:</label>
+								<select id="sel-el-area" data-ng-model="regCtrl.experiencia.areaId" class="form-control select2">
+									<option data-ng-repeat="area in regCtrl.areas" value="{{area.areaId}}">{{area.nombre}}</option>								
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6" data-ng-show="regCtrl.experiencia.areaId=='20'">
+							<div class="form-group">
+								<label>Especifique: </label>
+								<input type="text" class="form-control" data-ng-model="regCtrl.experiencia.area" />
+							</div>
+						</div>
 					</div>
+							
 					<div class="form-group">
 						<label>Rubro:</label>
 						<select id="sel-el-rubro" data-ng-model="regCtrl.experiencia.rubroId" class="form-control select2">
@@ -736,7 +764,7 @@
 						<h4 class="modal-title ">Finalizar Registro</h4>
 					</div>
 					<div class="modal-body">
-						 <p> Por favor, verifique y valide la información que registra.</p>
+						 <p> Declaro bajo juramento  que la información que he proporcionado es veraz y asumo las responsabilidades y consecuencias legales que ello produzca. </p>
 					</div>
 					<div class="modal-footer">
 						<button class="btn btn-info bmd-ripple bmd-floating" data-ng-click="regCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>

@@ -125,9 +125,6 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		$(".modal-experiencia-laboral").modal("show");
 	}
 	
-	
-	
-
 	this.guardarFormacionAcademica = function() {
 		
 		console.log("Guardar");		
@@ -299,8 +296,8 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#sel-nivel-computacion","Nivel Computacion");
 		
 		Utils.Validation.minLen("#panel-formacion-academica", this.formacionAcademica, 1, "Formación Académica" , "panel-danger");
-		Utils.Validation.minLen("#panel-capacitacion", this.capacitaciones, 1, "Capacitación" , "panel-danger");
-		Utils.Validation.minLen("#panel-idiomas", this.personaIdiomas, 1, "Idioma" , "panel-danger");
+		//Utils.Validation.minLen("#panel-capacitacion", this.capacitaciones, 1, "Capacitación" , "panel-danger");
+		//Utils.Validation.minLen("#panel-idiomas", this.personaIdiomas, 1, "Idioma" , "panel-danger");
 		Utils.Validation.minLen("#panel-experiencia-laboral", this.experienciaLaboral, 1, "Experiencia Laboral" , "panel-danger");		
 		
 		if (Utils.Validation.run()){

@@ -15,6 +15,7 @@ public class Experiencia {
 	private Date FechaFin;
 	private String Descripcion;
 	private int AreaId;
+	private String Area;
 	private int RubroId;
 	private int SectorId;
 	private int PaisId;
@@ -92,5 +93,11 @@ public class Experiencia {
 	}
 	public void setPaisId(int paisId) {
 		PaisId = paisId;
+	}
+	public String getArea() {
+		return Area;
+	}
+	public void setArea(String area) {
+		Area = area;
 	}
 }
