@@ -26,8 +26,16 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-md-3 control-label" >Pais de nacimiento</label>
+						<div class="col-md-4">
+							<select id="sel-dp-pais-nacimiento" data-ng-model="regCtrl.persona.paisNacimientoId" class="form-control">
+								<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-md-3 control-label" >Sexo:</label>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<select id="sel-dp-sexo" data-ng-model="regCtrl.persona.sexo" class="form-control">
 								<option value="">-- Seleccione --</option>
 								<option value="M">Masculino</option>
@@ -37,7 +45,7 @@
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Tipo de Documento:</label>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<select id="sel-dp-tipo-documento" data-ng-model="regCtrl.persona.tipoDocumentoId" class="form-control" data-ng-change="regCtrl.tipoDocumento()">
 								<option data-ng-repeat="tipo in regCtrl.tipodocumento" value="{{tipo.tipoDocumentoId}}">{{tipo.descripcion}}</option>
 							</select>
@@ -63,30 +71,22 @@
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Teléfono Fijo:</label>
-						<div class="col-md-9">
-							<input id="txt-dp-telefono" data-ng-model="regCtrl.persona.telefono" type="text" class="form-control" placeholder="Teléfono Fijo" />
+						<div class="col-md-4">
+							<input id="txt-dp-telefono" data-ng-model="regCtrl.persona.telefono" type="text" class="form-control numero" placeholder="Teléfono Fijo" required/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Teléfono Celular:</label>
-						<div class="col-md-9">
-							<input id="txt-dp-celular" data-ng-model="regCtrl.persona.celular" type="text" class="form-control" placeholder="Teléfono Celular" />
+						<div class="col-md-4">
+							<input id="txt-dp-celular" data-ng-model="regCtrl.persona.celular" type="text" class="form-control numero" placeholder="Teléfono Celular" required/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Correo Electrónico:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-correo" data-ng-model="regCtrl.persona.email" type="text" class="form-control" placeholder="Correo Electrónico" />
+							<input id="txt-dp-correo" data-ng-model="regCtrl.persona.email" type="email" class="form-control" placeholder="Correo Electrónico" required/>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" >Pais de nacimiento</label>
-						<div class="col-md-4">
-							<select id="sel-dp-pais-nacimiento" data-ng-model="regCtrl.persona.paisNacimientoId" class="form-control">
-								<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
-							</select>
-						</div>
-					</div>
+					</div>					
 					<div class="form-group">
 						<label class="col-md-3 control-label">Dirección de domicilio:</label>
 						<div class="col-md-9">
@@ -158,13 +158,13 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" >Numero de Cuenta:</label>
 						<div class="col-md-9">
-							<input id="txt-if-cuenta" data-ng-model="regCtrl.persona.cuenta" type="text" class="form-control" placeholder="Número de Cuenta" />
+							<input id="txt-if-cuenta" data-ng-model="regCtrl.persona.cuenta" type="text" class="form-control cuenta" placeholder="Número de Cuenta" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label" >CCI:</label>
 						<div class="col-md-9">
-							<input id="txt-if-cci" data-ng-model="regCtrl.persona.CCI" type="text" class="form-control" placeholder="Código de Cuenta Interbancario" />
+							<input id="txt-if-cci" data-ng-model="regCtrl.persona.CCI" type="text" class="form-control cci" placeholder="Código de Cuenta Interbancario" />
 						</div>
 					</div>
 				</div>
@@ -696,4 +696,25 @@
 			</div>
 		</div>
 	</div><!--/ Modal Experiencia Laboral -->
+	
+	<!-- Modal  -->
+		<div class="modal fade modal-confirmacion" role="dialog" >
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header bmd-text-blue-50 bmd-bg-info">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title ">Finalizar Registro</h4>
+					</div>
+					<div class="modal-body">
+						 <h4> Por favor, verifique y valide la información que registra.</h4>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-info btn-lg bmd-ripple bmd-floating" data-ng-click="regCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
+						<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating btn-lg" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div><!--/ Modal  -->
 </div>

@@ -46,8 +46,10 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	Utils.Rest.getList(this,APP.URL_API + "departamento","departamentos");
 	
 	this.tipoDocumento = function(){
-		//if  this.persona.tipoDocumentoId   == 1    ---- $("#txt--duco").inputmask("99999999",{autoUnmask:true});
-		//$("#txt--duco").inputmask("999999999999",{autoUnmask:true});
+		if (this.persona.tipoDocumentoId == "1") 
+			$("#txt-dp-numero-documento").inputmask("99999999",{autoUnmask:true});
+		else
+			$("#txt-dp-numero-documento").inputmask("999999999999",{autoUnmask:true});
 	}
 	
 	this.departamentoSelected = function(){
@@ -216,18 +218,21 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		
 		
 		Utils.Validation.required("#txt-dp-numero-documento","Número de Documento");	
-		if (this.persona.tipoDocumentoId == "1") 
-			//Utils.Validation.minlen("#txt-dp-numero-documento","Número de Documento");	// 8 
-		else
-			//Utils.Validation.minlen("#txt-dp-numero-documento","Número de Documento");	// 12 
+		    if (this.persona.tipoDocumentoId == "1") 
+		    	Utils.Validation.len("#txt-dp-numero-documento","D.N.I.", 8);
+			else
+				Utils.Validation.len("#txt-dp-numero-documento","Pasaporte", 12); 
 
 		Utils.Validation.required("#txt-dp-documento","Documento");
 		
-		Utils.Validation.required("#txt-dp-ruc","R.U.C."); // validar minlen
+		Utils.Validation.required("#txt-dp-ruc","R.U.C."); 
+		Utils.Validation.len("#txt-dp-ruc","R.U.C.", 11);
 		
 		
-				
 		Utils.Validation.required("#txt-dp-correo","Correo Electrónico");
+		Utils.Validation.email("#txt-dp-correo","Correo Electrónico");
+		
+		
 		Utils.Validation.required("#sel-dp-pais-nacimiento","País de Nacimiento");
 		Utils.Validation.required("#txt-dp-direccion","Dirección de Residencia");
 		
@@ -241,6 +246,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#txt-if-banco","Banco");
 		Utils.Validation.required("#txt-if-cuenta","Número de Cuenta");
 		Utils.Validation.required("#txt-if-cci","CCI");
+		Utils.Validation.len("#txt-if-cci","CCI", 20);
 		
 		Utils.Validation.required("#sel-nivel-computacion","Nivel Computacion");
 		
@@ -252,22 +258,29 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		
 		if (Utils.Validation.run()){
 			
-			console.log("Registro" , this.persona);
-
-			//convertir fechas
-			this.persona.fechaNacimiento = moment(this.persona.fechaNacimiento,"DD/MM/YYYY").toDate();
-			Utils.Rest.save(APP.URL_API + "persona" , this.persona).success(function(data){
-
-				Utils.List.set("personaId",self.formacionAcademica,data.personaId);
-				Utils.List.set("personaId",self.capacitaciones,data.personaId);
-				Utils.List.set("personaId",self.personaIdiomas,data.personaId);
-				Utils.List.set("personaId",self.experienciaLaboral,data.personaId);
-				
-				Utils.Rest.save(APP.URL_API + "persona/formacionacademica",self.formacionAcademica);
-				Utils.Rest.save(APP.URL_API + "persona/capacitacion",self.capacitaciones);
-				Utils.Rest.save(APP.URL_API + "persona/idioma",self.personaIdiomas);
-				Utils.Rest.save(APP.URL_API + "persona/experiencia",self.experienciaLaboral);
-			});
+			$(".modal-confirmacion").modal("show");
 		}
 	}
+	
+	this.confirmarRegistro = function() {
+		console.log("Registro" , this.persona);
+
+		//convertir fechas
+		this.persona.fechaNacimiento = moment(this.persona.fechaNacimiento,"DD/MM/YYYY").toDate();
+		Utils.Rest.save(APP.URL_API + "persona" , this.persona).success(function(data){
+
+			Utils.List.set("personaId",self.formacionAcademica,data.personaId);
+			Utils.List.set("personaId",self.capacitaciones,data.personaId);
+			Utils.List.set("personaId",self.personaIdiomas,data.personaId);
+			Utils.List.set("personaId",self.experienciaLaboral,data.personaId);
+			
+			Utils.Rest.save(APP.URL_API + "persona/formacionacademica",self.formacionAcademica);
+			Utils.Rest.save(APP.URL_API + "persona/capacitacion",self.capacitaciones);
+			Utils.Rest.save(APP.URL_API + "persona/idioma",self.personaIdiomas);
+			Utils.Rest.save(APP.URL_API + "persona/experiencia",self.experienciaLaboral);
+		
+			
+		});
+	}
+	
 });
