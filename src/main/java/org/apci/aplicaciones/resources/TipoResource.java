@@ -8,18 +8,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.apci.aplicaciones.dao.AreaDAO;
+import org.apci.aplicaciones.dao.CargoDAO;
+import org.apci.aplicaciones.dao.GradoDAO;
 import org.apci.aplicaciones.dao.IdiomaDAO;
 import org.apci.aplicaciones.dao.NivelDAO;
 import org.apci.aplicaciones.dao.RubroDAO;
 import org.apci.aplicaciones.dao.SectorDAO;
 import org.apci.aplicaciones.dao.TipoDocumentoDAO;
 import org.apci.aplicaciones.models.tipo.Area;
+import org.apci.aplicaciones.models.tipo.Cargo;
+import org.apci.aplicaciones.models.tipo.Grado;
 import org.apci.aplicaciones.models.tipo.Idioma;
 import org.apci.aplicaciones.models.tipo.Nivel;
 import org.apci.aplicaciones.models.tipo.Rubro;
 import org.apci.aplicaciones.models.tipo.Sector;
 import org.apci.aplicaciones.models.tipo.TipoDocumento;
 import org.apci.aplicaciones.services.IAreaService;
+import org.apci.aplicaciones.services.ICargoService;
+import org.apci.aplicaciones.services.IGradoService;
 import org.apci.aplicaciones.services.IIdiomaService;
 import org.apci.aplicaciones.services.INivelService;
 import org.apci.aplicaciones.services.IRubroService;
@@ -34,6 +40,8 @@ public class TipoResource {
 	IRubroService rubro;
 	ISectorService sector;
 	ITipoDocumentoService tipoDocumento;
+	IGradoService grado;
+	ICargoService cargo;
 	
 	public TipoResource() {
 		area = new AreaDAO();
@@ -42,6 +50,8 @@ public class TipoResource {
 		rubro = new RubroDAO();
 		sector = new SectorDAO();
 		tipoDocumento = new TipoDocumentoDAO();
+		grado = new GradoDAO();
+		cargo = new CargoDAO();
 	}
 
 	@GET
@@ -86,4 +96,17 @@ public class TipoResource {
 		return tipoDocumento.get();
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("grado")
+	public List<Grado> grado(){
+		return grado.get();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("cargo")
+	public List<Cargo> cargo(){
+		return cargo.get();
+	}
 }

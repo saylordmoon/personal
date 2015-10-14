@@ -38,9 +38,9 @@ public class FileResource {
     }
  
     @POST
-    @Path("/upload/{ExperienciaId}")
+    @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadZippedFile(@Context HttpServletRequest pRequest,@PathParam("ExperienciaId") String pExperienciaId,
+    public Response uploadZippedFile(@Context HttpServletRequest pRequest,
             @FormDataParam("uploadFile") InputStream fileInputStream,
             @FormDataParam("uploadFile") FormDataContentDisposition fileFormDataContentDisposition)
     {
@@ -51,7 +51,7 @@ public class FileResource {
  
         try {
             
-        	directory = "/" + pExperienciaId + "/";
+        	directory = "/test/";
         	fileName = directory + fileFormDataContentDisposition.getFileName();
             
         	if (FileUtil.createDirectory(directory)) {

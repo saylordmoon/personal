@@ -25,7 +25,42 @@ public class Persona {
 	private int NivelComputacionId;
 	private boolean TrabajoEnAPCI;
 	private boolean FamiliaresEnAPCI;
-	private boolean TrabajaONGD_ENIEX;
+	private boolean FueDirectivoONGD_ENIEX;
+	private boolean DirectivoONGD_ENIEX;
+	private String Banco;
+	private String Cuenta;
+	private String CCI; 
+	
+	public String getBanco() {
+		return Banco;
+	}
+	public void setBanco(String banco) {
+		Banco = banco;
+	}
+	public String getCuenta() {
+		return Cuenta;
+	}
+	public void setCuenta(String cuenta) {
+		Cuenta = cuenta;
+	}
+	public String getCCI() {
+		return CCI;
+	}
+	public void setCCI(String cCI) {
+		CCI = cCI;
+	}
+	public boolean isFueDirectivoONGD_ENIEX() {
+		return FueDirectivoONGD_ENIEX;
+	}
+	public void setFueDirectivoONGD_ENIEX(boolean fueDirectivoONGD_ENIEX) {
+		FueDirectivoONGD_ENIEX = fueDirectivoONGD_ENIEX;
+	}
+	public boolean isDirectivoONGD_ENIEX() {
+		return DirectivoONGD_ENIEX;
+	}
+	public void setDirectivoONGD_ENIEX(boolean directivoONGD_ENIEX) {
+		DirectivoONGD_ENIEX = directivoONGD_ENIEX;
+	}
 	public int getPersonaId() {
 		return PersonaId;
 	}
@@ -133,11 +168,5 @@ public class Persona {
 	}
 	public void setFamiliaresEnAPCI(boolean familiaresEnAPCI) {
 		FamiliaresEnAPCI = familiaresEnAPCI;
-	}
-	public boolean isTrabajaONGD_ENIEX() {
-		return TrabajaONGD_ENIEX;
-	}
-	public void setTrabajaONGD_ENIEX(boolean trabajaONGD_ENIEX) {
-		TrabajaONGD_ENIEX = trabajaONGD_ENIEX;
 	}
 }

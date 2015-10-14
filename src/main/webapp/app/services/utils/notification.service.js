@@ -1,13 +1,13 @@
 angular.module('main').service("NotificationService",function(){
 
 	var tema = "default"; // default dark-theme
-	var posicion =  { x:"right", y:"top" }; //right | left | center //top | bottom | center
+	var posicion =  { x:"right", y:"bottom" }; //right | left | center //top | bottom | center
 	var duracion = 5000;
 	var botonCerrar = false;
 
 	return {
 				info: function(mensaje, titulo) { 
-					titulo = titulo || "Ok";
+					titulo = titulo || "Información";
 					notify({
 						type: "success", //alert | success | error | warning | info
 						title: titulo,
@@ -25,7 +25,7 @@ angular.module('main').service("NotificationService",function(){
 				mensaje: function(mensaje, titulo) { 
 					titulo = titulo || "Información";
 					notify({
-						type: "información", //alert | success | error | warning | info
+						type: "info", //alert | success | error | warning | info
 						title: titulo,
 						theme: tema,
 						position: 	posicion,

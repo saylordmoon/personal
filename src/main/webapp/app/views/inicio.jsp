@@ -8,109 +8,116 @@
 			<div class="row">
 				<div class="col-md-9 form-horizontal">
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" >Nombres:</label>
+						<label class="col-md-3 control-label" >Nombres:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-nombres" type="text" class="form-control" placeholder="Nombres" />
+							<input id="txt-dp-nombres" data-ng-model="regCtrl.persona.nombres" type="text" class="form-control" placeholder="Nombres" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label">Apellidos:</label>
+						<label class="col-md-3 control-label">Apellidos:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-apellidos" type="text" class="form-control" placeholder="Apellidos" />
+							<input id="txt-dp-apellidos" data-ng-model="regCtrl.persona.apellidos" type="text" class="form-control" placeholder="Apellidos" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" >Fecha de Nacimiento:</label>
-						<div class="col-md-6">
-							<input id="txt-dp-fecha-nacimiento" type="date" class="form-control" placeholder="Fecha de Nacimiento" />
+						<label class="col-md-3 control-label" >Fecha de Nacimiento:</label>
+						<div class="col-md-4">
+							<input id="txt-dp-fecha-nacimiento" data-ng-model="regCtrl.persona.fechaNacimiento" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" >Sexo:</label>
+						<label class="col-md-3 control-label" >Sexo:</label>
 						<div class="col-md-6">
-							<select id="sel-dp-sexo" class="form-control">
+							<select id="sel-dp-sexo" data-ng-model="regCtrl.persona.sexo" class="form-control">
+								<option value="">-- Seleccione --</option>
 								<option value="M">Masculino</option>
 								<option value="F">Femenino</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" >Tipo de Documento:</label>
+						<label class="col-md-3 control-label">Tipo de Documento:</label>
 						<div class="col-md-6">
-							<select id="sel-dp-tipo-documento" class="form-control">
-								<option></option>
+							<select id="sel-dp-tipo-documento" data-ng-model="regCtrl.persona.tipoDocumentoId" class="form-control" data-ng-change="regCtrl.tipoDocumento()">
+								<option data-ng-repeat="tipo in regCtrl.tipodocumento" value="{{tipo.tipoDocumentoId}}">{{tipo.descripcion}}</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" >Número Documento</label>
+						<label class="col-md-3 control-label">Número Documento</label>
 						<div class="col-md-6">
-							<input id="txt-dp-numero-documento" type="text" class="form-control" placeholder="Número de Documento" />
+							<input id="txt-dp-numero-documento" data-ng-model="regCtrl.persona.numeroDocumento" type="text" class="form-control" placeholder="Número de Documento" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" ><i class="fa fa-paperclip"></i> Documento</label>
+						<label class="col-md-3 control-label" ><i class="fa fa-paperclip"></i> Documento</label>
 						<div class="col-md-6">
-							<input id="txt-dp-documento" type="file" />
+							<input id="txt-dp-documento" data-ng-model="regCtrl.persona.documento" class="form-control" type="file" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" >R.U.C.</label>
-						<div class="col-md-9">
-							<input id="txt-dp-ruc" type="text" class="form-control" placeholder="R.U.C." />
+						<label class="col-md-3 control-label" >R.U.C.</label>
+						<div class="col-md-4">
+							<input id="txt-dp-ruc" data-ng-model="regCtrl.persona.RUC" type="text" class="form-control ruc" placeholder="R.U.C." />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label">Teléfono:</label>
+						<label class="col-md-3 control-label">Teléfono Fijo:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-telefono" type="text" class="form-control" placeholder="Teléfono" />
+							<input id="txt-dp-telefono" data-ng-model="regCtrl.persona.telefono" type="text" class="form-control" placeholder="Teléfono Fijo" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label">Correo Electrónico:</label>
+						<label class="col-md-3 control-label">Teléfono Celular:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-correo" type="text" class="form-control" placeholder="Correo Electrónico" />
+							<input id="txt-dp-celular" data-ng-model="regCtrl.persona.celular" type="text" class="form-control" placeholder="Teléfono Celular" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label" >Pais de nacimiento</label>
+						<label class="col-md-3 control-label">Correo Electrónico:</label>
 						<div class="col-md-9">
-							<select id="sel-dp-pais-nacimiento" class="form-control">
-								<option></option>
+							<input id="txt-dp-correo" data-ng-model="regCtrl.persona.email" type="text" class="form-control" placeholder="Correo Electrónico" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" >Pais de nacimiento</label>
+						<div class="col-md-4">
+							<select id="sel-dp-pais-nacimiento" data-ng-model="regCtrl.persona.paisNacimientoId" class="form-control">
+								<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label">Dirección de Residencia:</label>
+						<label class="col-md-3 control-label">Dirección de domicilio:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-direccion" type="text" class="form-control" placeholder="Dirección de Residencia" />
+							<input id="txt-dp-direccion" data-ng-model="regCtrl.persona.direccion" type="text" class="form-control" placeholder="Dirección de domicilio" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 contrl-label"></label>
+						<label class="col-md-3 control-label"></label>
 						<div class="col-md-9">
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group" style="padding-right: 20px; padding-left: 15px;">
-										<label  class="contrl-label">Departamento:</label>
-										<select id="sel-dp-departamento" class="form-control">
-											<option></option>
+										<label  class="control-label">Departamento:</label>
+										<select id="sel-dp-departamento" class="form-control" data-ng-model="regCtrl.persona.departamentoId" data-ng-change="regCtrl.departamentoSelected()" >
+											<option data-ng-repeat="departamento in regCtrl.departamentos" value="{{departamento.departamentoId}}">{{departamento.nombre}}</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group" style="padding-right: 20px; padding-left: 15px;">
-										<label  class="contrl-label">Provincia:</label>
-										<select id="sel-dp-provincia" class="form-control">
-											<option></option>
+										<label  class="control-label">Provincia:</label>
+										<select id="sel-dp-provincia" class="form-control" data-ng-model="regCtrl.persona.provinciaId" data-ng-change="regCtrl.provinciaSelected()" >
+											<option data-ng-repeat="provincia in regCtrl.provincias" value="{{provincia.provinciaId}}">{{provincia.nombre}}</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group" style="padding-right: 15px; padding-left: 15px;">
-										<label  class="contrl-label">Distrito:</label>
-										<select id="sel-dp-distrito" class="form-control">
-											<option></option>
+										<label  class="control-label">Distrito:</label>
+										<select id="sel-dp-distrito" data-ng-model="regCtrl.persona.distritoId" class="form-control">
+											<option data-ng-repeat="distrito in regCtrl.distritos" value="{{distrito.distritoId}}">{{distrito.nombre}}</option>
 										</select>
 									</div>
 								</div>
@@ -119,9 +126,9 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="col-md-3 contrl-label">Curriculum:</label>
-						<div class="col-md-9">
-							<input id="txt-dp-curriculum" type="file" />
+						<label class="col-md-3 control-label">Curriculum:</label>
+						<div class="col-md-6">
+							<input id="txt-dp-curriculum" data-ng-model="regCtrl.persona.cv" class="form-control" type="file" />
 						</div>
 					</div>	
 				</div>
@@ -132,6 +139,38 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Información Financiera</h4>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-9 form-horizontal">
+					<div class="form-group">
+						<label class="col-md-3 control-label" >Banco:</label>
+						<div class="col-md-9">
+							<input id="txt-if-banco" data-ng-model="regCtrl.persona.banco" type="text" class="form-control" placeholder="Nombre del banco" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" >Numero de Cuenta:</label>
+						<div class="col-md-9">
+							<input id="txt-if-cuenta" data-ng-model="regCtrl.persona.cuenta" type="text" class="form-control" placeholder="Número de Cuenta" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" >CCI:</label>
+						<div class="col-md-9">
+							<input id="txt-if-cci" data-ng-model="regCtrl.persona.CCI" type="text" class="form-control" placeholder="Código de Cuenta Interbancario" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer">
 		</div>
 	</div>
 
@@ -147,7 +186,7 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<td>Grado Académico</td>
+							<td>Formación Académica</td>
 							<td>Profesión o especialidad</td>
 							<td>Fecha de Expedición</td>
 							<td>Institución</td>
@@ -155,6 +194,16 @@
 							<td><i class="fa fa-paperclip"></i></td>
 						</tr>
 					</thead>
+					<tbody>
+						<tr data-ng-repeat="formacion in regCtrl.formacionAcademica">
+							<td>{{formacion.grado}}</td>
+							<td>{{formacion.especialidad}}</td>
+							<td>{{formacion.fechaExpedicion | date : "dd/MM/yyyy"}}</td>
+							<td>{{formacion.institucion}}</td>
+							<td>{{formacion.pais}}</td>
+							<td><a><i class="fa fa-paperclip"></i></a></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -181,6 +230,17 @@
 							<td><i class="fa fa-paperclip"></i></td>
 						</tr>
 					</thead>
+					<tbody>
+						<tr data-ng-repeat="capacitacion in regCtrl.capacitaciones">
+							<td>{{capacitacion.capacitacion}}</td>
+							<td>{{capacitacion.fechaInicio | date : "dd/MM/yyyy"}}</td>
+							<td>{{capacitacion.fechaFin | date : "dd/MM/yyyy"}}</td>
+							<td>{{capacitacion.horasLectivas}}</td>
+							<td>{{capacitacion.institucion}}</td>
+							<td>{{capacitacion.pais}}</td>
+							<td><a><i class="fa fa-paperclip"></i></a></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -205,6 +265,15 @@
 							<td><i class="fa fa-paperclip"></i></td>
 						</tr>
 					</thead>
+					<tbody>
+						<tr data-ng-repeat="idioma in regCtrl.personaIdiomas">
+							<td>{{idioma.idioma}}</td>
+							<td>{{idioma.escritura}}</td>
+							<td>{{idioma.hablado}}</td>
+							<td>{{idioma.lectura}}</td>
+							<td><a><i class="fa fa-paperclip"></i></a></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -225,7 +294,7 @@
 							<td>Empresa / Institucion</td>
 							<td>Cargo</td>
 							<td>Fecha de Inicio</td>
-							<td>Fecha de Fin</td>
+							<td>Fecha de Cese</td>
 							<td>Descripción</td>
 							<td>Area</td>
 							<td>Rubro</td>
@@ -234,6 +303,20 @@
 							<td><i class="fa fa-paperclip"></i></td>
 						</tr>
 					</thead>
+					<tbody>
+						<tr data-ng-repeat="experiencia in regCtrl.experienciaLaboral">
+							<td>{{experiencia.empresa}}</td>
+							<td>{{experiencia.cargo}}</td>
+							<td>{{experiencia.fechaInicio | date : "dd/MM/yyyy" }}</td>
+							<td>{{experiencia.fechaFin | date : "dd/MM/yyyy" }}</td>
+							<td>{{experiencia.descripcion}}</td>
+							<td>{{experiencia.area}}</td>
+							<td>{{experiencia.rubro}}</td>
+							<td>{{experiencia.sector}}</td>
+							<td>{{experiencia.pais}}</td>
+							<td><a><i class="fa fa-paperclip"></i></a></td>
+						</tr>	
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -241,7 +324,7 @@
 
 	<div  class="panel panel-default">
 		<div id="panel-computacion" class="panel-heading">
-			<h4>Computación</h4>
+			<h4>Conocimientos en Computación</h4>
 		</div>
 		<div class="panel-body">
 			<div class="row">
@@ -250,7 +333,7 @@
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-computacion" name="rb-computacion">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" data-ng-model="regCtrl.persona.computacion" type="radio" id="rb-computacion" name="rb-computacion" value="true">
 								Si
 								<span class="bmd-radio-check"></span>
 							</label>
@@ -259,18 +342,18 @@
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-computacion" name="rb-computacion">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" data-ng-model="regCtrl.persona.computacion" type="radio" id="rb-computacion" name="rb-computacion" value="false" data-ng-init="regCtrl.persona.computacion ='false'">
 								No
 								<span class="bmd-radio-check"></span>
 							</label>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4" data-ng-show="regCtrl.persona.computacion=='true'">
 						<div class="form-group">
 							<label class="col-md-2">Nivel</label>
 							<div class="col-md-6">
-								<select class="form-control">
-									<option></option>
+								<select id="sel-nivel-computacion" class="form-control" data-ng-model="regCtrl.persona.nivelComputacionId">
+									<option data-ng-repeat="nivel in regCtrl.niveles" value="{{nivel.nivelId}}">{{nivel.descripcion}}</option>
 								</select>
 							</div>
 						</div>
@@ -289,11 +372,11 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="form-group">
-					<label  class="col-md-3 contrl-label">¿Ha trabajado en la APCI?</label>
+					<label  class="col-md-3 control-label">¿Ha trabajado en la APCI?</label>
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-trabaja-apci" name="rb-trabaja-apci">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-trabaja-apci" data-ng-model="regCtrl.persona.trabajoEnAPCI" name="rb-trabaja-apci" value="true">
 								Si
 								<span class="bmd-radio-check"></span>
 							</label>
@@ -302,7 +385,7 @@
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-trabaja-apci" name="rb-trabaja-apci">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-trabaja-apci" data-ng-model="regCtrl.persona.trabajoEnAPCI" name="rb-trabaja-apci" value="false" data-ng-init="regCtrl.persona.trabajoEnAPCI ='false'">
 								No
 								<span class="bmd-radio-check"></span>
 							</label>
@@ -312,11 +395,11 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
-					<label  class="col-md-3 contrl-label">¿Tiene familizares trabajando en la APCI?</label>
+					<label  class="col-md-3 control-label">¿Tiene familiares trabajando en la APCI?</label>
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-familiares-apci" name="rb-familiares-apci">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-familiares-apci" data-ng-model="regCtrl.persona.familiaresEnAPCI" name="rb-familiares-apci" value="true">
 								Si
 								<span class="bmd-radio-check"></span>
 							</label>
@@ -325,7 +408,7 @@
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-familiares-apci" name="rb-familiares-apci">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-familiares-apci" data-ng-model="regCtrl.persona.familiaresEnAPCI" name="rb-familiares-apci" value="false" data-ng-init="regCtrl.persona.familiaresEnAPCI ='false'">
 								No
 								<span class="bmd-radio-check"></span>
 							</label>
@@ -335,11 +418,11 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
-					<label  class="col-md-3 contrl-label">¿Actualmente trabaja en una ONGD / ENIEX?</label>
+					<label  class="col-md-3 control-label">¿Ocupa un cargo directivo en una ONGD / ENIEX?</label>
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-ong" name="rb-ong">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" data-ng-model="regCtrl.persona.directivoONGD_ENIEX" type="radio" id="rb-ong" name="rb-ong" value="true">
 								Si
 								<span class="bmd-radio-check"></span>
 							</label>
@@ -348,14 +431,37 @@
 					<div class="col-md-1">
 						<div class="radio bmd-radio">
 							<label>
-								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" type="radio" id="rb-ong" name="rb-ong">
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" data-ng-model="regCtrl.persona.directivoONGD_ENIEX" type="radio" id="rb-ong" name="rb-ong" value="false" data-ng-init="regCtrl.persona.directivoONGD_ENIEX ='false'">
 								No
 								<span class="bmd-radio-check"></span>
 							</label>
 						</div>
 					</div>
 				</div>	
-			</div>	
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label  class="col-md-3 control-label">¿Anteriormente ha ocupado un cargo directivo en una ONGD / ENIEX?</label>
+					<div class="col-md-1">
+						<div class="radio bmd-radio">
+							<label>
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" data-ng-model="regCtrl.persona.fueDirectivoONGD_ENIEX" type="radio" id="rb-fue-ong" name="rb-fue-ong" value="true">
+								Si
+								<span class="bmd-radio-check"></span>
+							</label>
+						</div>
+					</div>
+					<div class="col-md-1">
+						<div class="radio bmd-radio">
+							<label>
+								<input class="bmd-radio-input bmd-ripple bmd-ink-gray" data-ng-model="regCtrl.persona.fueDirectivoONGD_ENIEX" type="radio" id="rb-fue-ong" name="rb-fue-ong" value="false" data-ng-init="regCtrl.persona.fueDirectivoONGD_ENIEX ='false'">
+								No
+								<span class="bmd-radio-check"></span>
+							</label>
+						</div>
+					</div>
+				</div>	
+			</div>		
 		</div>
 		<div class="panel-footer">
 		</div>
@@ -379,28 +485,32 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label>Grado Académico:</label>
-						<select id="sel-fa-grado-academico" class="form-control">
-							<option></option>
+						<label>Fomación Académica:</label>
+						<select id="sel-fa-grado-academico" data-ng-model="regCtrl.formacion.gradoId" class="form-control">
+							<option data-ng-repeat="grado in regCtrl.grados" value="{{grado.gradoId}}">{{grado.descripcion}}</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label >Profesión o especialidad:</label>
-						<input id="txt-fa-profesion" type="text" class="form-control" />
+						<label >Profesión o Especialidad:</label>
+						<input id="txt-fa-profesion" data-ng-model="regCtrl.formacion.especialidad"  type="text" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label >Fecha de Expedición:</label>
-						<input id="txt-fa-fecha-expedicion" type="date" class="form-control" />
+						<label ><i class="fa fa-calendar"></i> Fecha de Expedición:</label>
+						<input id="txt-fa-fecha-expedicion" data-ng-model="regCtrl.formacion.fechaExpedicion" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
-						<label >Institución:</label>
-						<input id="txt-fa-institucion" type="text" class="form-control" />
+						<label >Institución Académica:</label>
+						<input id="txt-fa-institucion" type="text" data-ng-model="regCtrl.formacion.institucion" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Pais:</label>
-						<select id="sel-fa-pais" class="form-control">
-							<option></option>
+						<select id="sel-fa-pais" data-ng-model="regCtrl.formacion.paisId" class="form-control">
+							<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label"><i class="fa fa-paperclip"></i> Documento Sustentatorio:</label>
+						<input id="txt-fa-documento-sustentatorio" type="file" class="form-control" />
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -426,32 +536,32 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label class="control-label">Curso de Capacitación:</label>
-						<input id="txt-c-curso-capacitacion" type="text" class="form-control" placeholder="Curso de capacitación" />
+						<input id="txt-c-curso-capacitacion" data-ng-model="regCtrl.capacitacion.capacitacion" type="text" class="form-control" placeholder="Nombre del curso de capacitación" />
 					</div>
 					<div class="form-group">
-						<label class="control-label">Fecha de Inicio:</label>
-						<input id="dat-c-fecha-inicio" type="date" class="form-control" />
+						<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Inicio:</label>
+						<input id="dat-c-fecha-inicio" data-ng-model="regCtrl.capacitacion.fechaInicio" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
-						<label class="control-label">Fecha de Fin:</label>
-						<input id="dat-c-fecha-fin" type="date" class="form-control" />
+						<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Fin:</label>
+						<input id="dat-c-fecha-fin" data-ng-model="regCtrl.capacitacion.fechaFin" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
-						<label class="control-label">Horas lectivas:</label>
-						<input id="txt-c-horas-lectivas" type="number" class="form-control" />
+						<label class="control-label">Horas Lectivas:</label>
+						<input id="txt-c-horas-lectivas" data-ng-model="regCtrl.capacitacion.horasLectivas" type="number" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label class="control-label">Institución:</label>
-						<input id="txt-c-institucion" type="text" class="form-control" />
+						<label class="control-label">Institución Academica:</label>
+						<input id="txt-c-institucion" data-ng-model="regCtrl.capacitacion.institucion" type="text" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label class="control-label">País:</label>
-						<select id="sel-c-pais" class="form-control">
-							<option></option>
+						<select id="sel-c-pais" class="form-control" data-ng-model="regCtrl.capacitacion.paisId">
+							<option data-ng-repeat="pais in regCtrl.paises"  value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label class="control-label"><i class="fa fa-paperclip"></i> Documento sustentatorio:</label>
+						<label class="control-label"><i class="fa fa-paperclip"></i> Documento Sustentatorio:</label>
 						<input id="txt-c-documento-sustentatorio" type="file" class="form-control" />
 					</div>
 				</div>
@@ -478,30 +588,30 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Idioma:</label>
-						<select id="sel-i-idioma" class="form-control">
-							<option></option>
+						<select id="sel-i-idioma" data-ng-model="regCtrl.idioma.idiomaId" class="form-control">
+							<option data-ng-repeat="idioma in regCtrl.idiomas" value="{{idioma.idiomaId}}">{{idioma.nombre}}</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Nivel de Escritura:</label>
-						<select id="sel-i-nivel-escritura" class="form-control">
-							<option></option>
+						<select id="sel-i-nivel-escritura" data-ng-model="regCtrl.idioma.nivelEscrituraId" class="form-control">
+							<option data-ng-repeat="nivel in regCtrl.niveles" value="{{nivel.nivelId}}">{{nivel.descripcion}}</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Nivel Hablado:</label>
-						<select id="sel-i-nivel-hablado" class="form-control">
-							<option></option>
+						<select id="sel-i-nivel-hablado" data-ng-model="regCtrl.idioma.nivelHabladoId" class="form-control">
+							<option data-ng-repeat="nivel in regCtrl.niveles" value="{{nivel.nivelId}}">{{nivel.descripcion}}</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Nivel Lectura:</label>
-						<select id="sel-i-nivel-lectura" class="form-control">
-							<option></option>
+						<select id="sel-i-nivel-lectura" data-ng-model="regCtrl.idioma.nivelLecturaId" class="form-control">
+							<option data-ng-repeat="nivel in regCtrl.niveles" value="{{nivel.nivelId}}">{{nivel.descripcion}}</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label><i class="fa fa-paperclip"></i> Documento sustentatorio:</label>
+						<label><i class="fa fa-paperclip"></i> Documento Sustentatorio: (opcional)</label>
 						<input id="txt-i-documento-sustentatorio" class="form-control" type="file" />
 					</div>
 				</div>
@@ -528,55 +638,53 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label>Empresa:</label>
-						<input id="txt-el-empresa" class="form-control" type="text" />
+						<label>Empresa / Institución:</label>
+						<input id="txt-el-empresa" data-ng-model="regCtrl.experiencia.empresa" class="form-control" type="text" />
 					</div>
 					<div class="form-group">
-						<label>Cargo:</label>
-						<select id="sel-el-cargo" class="form-control">
-							<option></option>
-						</select>
+						<label>Cargo Desempeñado:</label>
+						<input id="txt-el-cargo" data-ng-model="regCtrl.experiencia.cargo" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Fecha de Inicio:</label>
-						<input id="dat-el-fecha-inicio" class="form-control" type="date" />
+						<input id="dat-el-fecha-inicio" data-ng-model="regCtrl.experiencia.fechaInicio" class="form-control fecha" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
-						<label>Fecha de Fin:</label>
-						<input id="dat-el-fecha-fin" class="form-control" type="date" />
+						<label>Fecha de Cese:</label>
+						<input id="dat-el-fecha-fin" data-ng-model="regCtrl.experiencia.fechaFin" class="form-control fecha" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
-						<label>Descripción:</label>
-						<textarea id="txt-el-descripcion" class="form-control"></textarea>
+						<label>Descripción de Funciones:</label>
+						<textarea id="txt-el-descripcion" data-ng-model="regCtrl.experiencia.descripcion" class="form-control"></textarea>
 					</div>
 					<div class="form-group">
 						<label>Area:</label>
-						<select id="sel-el-area" class="form-control">
-							<option></option>
+						<select id="sel-el-area" data-ng-model="regCtrl.experiencia.areaId" class="form-control">
+							<option data-ng-repeat="area in regCtrl.areas" value="{{area.areaId}}">{{area.nombre}}</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Rubro:</label>
-						<select id="sel-el-rubro" class="form-control">
-							<option></option>
+						<select id="sel-el-rubro" data-ng-model="regCtrl.experiencia.rubroId" class="form-control">
+							<option data-ng-repeat="rubro in regCtrl.rubros" value="{{rubro.rubroId}}">{{rubro.descripcion}}</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Sector:</label>
-						<select id="sel-el-sector" class="form-control">
-							<option></option>
+						<select id="sel-el-sector" data-ng-model="regCtrl.experiencia.sectorId" class="form-control">
+							<option data-ng-repeat="sector in regCtrl.sectores" value="{{sector.sectorId}}">{{sector.nombre}}</option>
 						</select>
 					</div>
 					
 					<div class="form-group">
 						<label>Pais:</label>
-						<select id="sel-el-pais" class="form-control">
-							<option></option>
+						<select id="sel-el-pais" data-ng-model="regCtrl.experiencia.paisId" class="form-control">
+							<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label><i class="fa fa-paperclip"></i> Documento sustentatorio:</label>
-						<input id="txt-el-documento-sustentatorio" type="file" />
+						<label><i class="fa fa-paperclip"></i> Documento Sustentatorio:</label>
+						<input id="txt-el-documento-sustentatorio" class="form-control" data-ng-model="regCtrl.experiencia.documento" type="file" />
 					</div>
 				</div>
 				<div class="modal-footer">

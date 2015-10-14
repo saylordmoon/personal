@@ -75,8 +75,8 @@ public class PersonaResource {
 	@Path("idioma")
 	public Response addIdioma(List<PersonaIdioma> pPersonaIdioma){
 		
-		for (PersonaIdioma formacionAcademica : pPersonaIdioma){
-			idioma.add(formacionAcademica);
+		for (PersonaIdioma personaIdioma : pPersonaIdioma){
+			idioma.add(personaIdioma);
 		}
 		return Response.status(Response.Status.OK).build();
 	}

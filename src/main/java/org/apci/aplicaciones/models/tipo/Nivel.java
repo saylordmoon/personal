@@ -5,17 +5,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Nivel {
 	private int NivelId;
-	private int Descripcion;
+	private String Descripcion;
 	public int getNivelId() {
 		return NivelId;
 	}
 	public void setNivelId(int nivelId) {
 		NivelId = nivelId;
 	}
-	public int getDescripcion() {
+	public String getDescripcion() {
 		return Descripcion;
 	}
-	public void setDescripcion(int descripcion) {
+	public void setDescripcion(String descripcion) {
 		Descripcion = descripcion;
 	}
+	
 }

@@ -3,71 +3,120 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	var self = this;
 	
 	this.persona={};
-	this.formacionacademica={};
-	this.formacionesacademicas = [];
 	
-	this.capacitacion={};
+	this.tipodocumento = [];
+	this.niveles = [];
+	this.rubros = [];
+	this.sectores = [];
+	this.areas = [];
+	this.idiomas = [];
+	this.grados = [];
+	
+	this.paises = [];
+	
+	Utils.Rest.getList(this,APP.URL_API + "pais","paises");
+	
+	Utils.Rest.getList(this,APP.URL_API + "tipo/documento","tipodocumento");
+	Utils.Rest.getList(this,APP.URL_API + "tipo/nivel","niveles");
+	Utils.Rest.getList(this,APP.URL_API + "tipo/rubro","rubros");
+	Utils.Rest.getList(this,APP.URL_API + "tipo/sector","sectores");
+	Utils.Rest.getList(this,APP.URL_API + "tipo/area","areas");
+	Utils.Rest.getList(this,APP.URL_API + "tipo/idioma","idiomas");
+	Utils.Rest.getList(this,APP.URL_API + "tipo/grado","grados");
+	
+	this.formacionAcademica = [];
+	this.formacion = {};
+	this.nuevaFormacion = false;
+	
 	this.capacitaciones=[];
+	this.capacitacion={};
+	this.nuevaCapacitacion = false;
 	
 	this.idioma={};
-	this.idiomas=[];
+	this.personaIdiomas=[];
+	this.nuevoIdioma = false;
+
+	this.experiencia={};
+	this.experienciaLaboral=[];
+	this.nuevaExperiencia=false;
 	
-	this.experiencialaboral={};
-	this.experienciaslaborales=[];
+	this.departamentos = [];
+	this.provincias= [];
+	this.distritos = [];
+	Utils.Rest.getList(this,APP.URL_API + "departamento","departamentos");
 	
+	this.tipoDocumento = function(){
+		//if  this.persona.tipoDocumentoId   == 1    ---- $("#txt--duco").inputmask("99999999",{autoUnmask:true});
+		//$("#txt--duco").inputmask("999999999999",{autoUnmask:true});
+	}
+	
+	this.departamentoSelected = function(){
+		
+		Utils.Rest.getList(this,APP.URL_API + "departamento/" + this.persona.departamentoId + "/provincia" ,"provincias");
+		this.persona.provincia = "";
+	}
+	
+	this.provinciaSelected = function() {
+		
+		Utils.Rest.getList(this,APP.URL_API + "provincia/" + this.persona.provinciaId + "/distrito" ,"distritos");
+		this.persona.distrito = "";
+	}
 	
 	this.agregarFormacionAcademica = function(){
 
+		this.nuevaFormacion = true;
 		$(".modal-formacion-academica").modal("show");
 		console.log("Formacion Academica");
 	}
 	
 	this.agregarCapacitacion = function(){
 		
+		this.nuevaCapacitacion = true;
 		$(".modal-capacitacion").modal("show");
 		console.log("Capacitacion");
 	}
 	
 	this.agregarIdiomas = function(){
 
-
+		this.nuevoIdioma = true;
 		$(".modal-idiomas").modal("show");
 		console.log("Idiomas");
 	}
 	
 	this.agregarExperienciaLaboral = function(){
 		
+		this.nuevaExperiencia = true;
 		$(".modal-experiencia-laboral").modal("show");
 		console.log("Experiencia Laboral");
 	}
-	
-	
-	
+
 	this.guardarFormacionAcademica = function() {
 		
 		console.log("Guardar");		
 		Utils.Validation.init();
-		Utils.Validation.required("#sel-fa-grado-academico","Grado Académico");
+		Utils.Validation.required("#sel-fa-grado-academico","Formación Académica");
 		Utils.Validation.required("#txt-fa-profesion","Profesión");
 		Utils.Validation.required("#txt-fa-fecha-expedicion","Fecha de Expedición");
 		Utils.Validation.required("#txt-fa-institucion","Institución");
 		Utils.Validation.required("#sel-fa-pais","País");
+		Utils.Validation.required("#txt-fa-documento-sustentatorio","Documento Sustentatorio");
 		
 		if (Utils.Validation.run()){
+			//convertir fechas
+			this.formacion.fechaExpedicion = moment(this.fechaExpedicion,"DD/MM/YYYY").toDate();
+			this.formacion.grado = Utils.UI.Select.getSelectedText("sel-fa-grado-academico");
+			this.formacion.pais = Utils.UI.Select.getSelectedText("sel-fa-pais");
 			
-			this.formacionacademica.gradoacademico = Utils.UI.Select.getSelectedText("sel-fa-grado-academico");
-			this.formacionacademica.pais = Utils.UI.Select.getSelectedText("sel-fa-pais");
-			if (this.nueva) this.formacionacademica.push(this.formacionacademica);
-			console.log("Formaciones académicas" , this.formacionesacademicas);
-			this.formacionacademica = {};
-			$(".modal-formacion-academica").modal("hide");			
+			if (this.nuevaFormacion) this.formacionAcademica.push(this.formacion);
+			console.log("Formacion académica" , this.formacionAcademica);
+			this.formacion = {};
+			$(".modal-formacion-academica").modal("hide");
 		}
 	}
 	
-	
 	this.guardarCapacitacion = function() {
 		
-		console.log("Guardar");		
+		console.log("Guardar Capacitacion");		
 		Utils.Validation.init();
 		Utils.Validation.required("#txt-c-curso-capacitacion","Curso de Capacitación");
 		Utils.Validation.required("#dat-c-fecha-inicio","Fecha de Inicio");
@@ -76,20 +125,23 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.dateLessThan("#dat-c-fecha-inicio",this.capacitacion.fechaFin,"Fecha de Inicio");
 		Utils.Validation.dateGreaterThan("#dat-c-fecha-fin",this.capacitacion.fechaInicio,"Fecha de Fin");
 				
-		Utils.Validation.required("#txt-c-horas-lectivas","Horas Lectivas");
+		//Utils.Validation.required("#txt-c-horas-lectivas","Horas Lectivas");
 		Utils.Validation.required("#txt-c-institucion","Institución");
 		Utils.Validation.required("#sel-c-pais","País");
-		Utils.Validation.required("#txt-c-documento-sustentatorio","Documento sustentatorio");
+		Utils.Validation.required("#txt-c-documento-sustentatorio","Documento Sustentatorio");
 		
 		if (Utils.Validation.run()){
-			
-			if (this.nueva) this.capacitacion.push(this.capacitacion);
+			//convertir fechas
+			this.capacitacion.fechaInicio = moment(this.capacitacion.fechaInicio,"DD/MM/YYYY").toDate();
+			this.capacitacion.fechaFin = moment(this.capacitacion.fechaFin,"DD/MM/YYYY").toDate();
+			this.capacitacion.pais = Utils.UI.Select.getSelectedText("sel-c-pais"); 
+
+			if (this.nuevaCapacitacion) this.capacitaciones.push(this.capacitacion);
 			console.log("Capacitaciones" , this.capacitaciones);
 			this.capacitacion = {};
 			$(".modal-capacitacion").modal("hide");			
 		}
 	}
-	
 	
 	this.guardarIdioma = function() {
 		
@@ -99,34 +151,32 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#sel-i-nivel-escritura","Nivel de Escritura");
 		Utils.Validation.required("#sel-i-nivel-hablado","Nivel de Hablado");		
 		Utils.Validation.required("#sel-i-nivel-lectura","Nivel de Lectura");
-		Utils.Validation.required("#txt-i-documento-sustentatorio","Documento sustentatorio");
+		//Utils.Validation.required("#txt-i-documento-sustentatorio","Documento Sustentatorio");
 		
 		if (Utils.Validation.run()){
 			
 			this.idioma.idioma = Utils.UI.Select.getSelectedText("sel-i-idioma");
-			this.idioma.nivelescritura = Utils.UI.Select.getSelectedText("sel-i-nivel-escritura");
-			this.idioma.nivelhablado = Utils.UI.Select.getSelectedText("sel-i-nivel-hablado");
-			this.idioma.nivellectura = Utils.UI.Select.getSelectedText("sel-i-nivel-lectura");
-			
-			if (this.nueva) this.idioma.push(this.idioma);
-			console.log("Idiomas", this.idiomas);
+			this.idioma.escritura = Utils.UI.Select.getSelectedText("sel-i-nivel-escritura");
+			this.idioma.hablado = Utils.UI.Select.getSelectedText("sel-i-nivel-hablado");
+			this.idioma.lectura = Utils.UI.Select.getSelectedText("sel-i-nivel-lectura");
+			console.log("Idiomas", this.personaIdiomas);			
+			if (this.nuevoIdioma) this.personaIdiomas.push(this.idioma);
 			this.idioma = {};
-			$(".modal-idiomas").modal("hide");			
+			$(".modal-idiomas").modal("hide");
 		}
 	}
 	
-	
 	this.guardarExperienciaLaboral = function() {
 		
-		console.log("Guardar");		
+		console.log("Guardar Experiencia");		
 		Utils.Validation.init();
 		Utils.Validation.required("#txt-el-empresa","Empresa");		
-		Utils.Validation.required("#sel-el-cargo","Cargo");		
+		Utils.Validation.required("#txt-el-cargo","Cargo");		
 		Utils.Validation.required("#dat-el-fecha-inicio","Fecha de Inicio");		
 		Utils.Validation.required("#dat-el-fecha-fin","Fecha de Fin");
 		
-		Utils.Validation.dateLessThan("#dat-el-fecha-inicio",this.experiencialaboral.fechaFin,"Fecha de Inicio");
-		Utils.Validation.dateGreaterThan("#dat-el-fecha-fin",this.experiencialaboral.fechaInicio,"Fecha de Fin");
+		Utils.Validation.dateLessThan("#dat-el-fecha-inicio",this.experiencia.fechaFin,"Fecha de Inicio");
+		Utils.Validation.dateGreaterThan("#dat-el-fecha-fin",this.experiencia.fechaInicio,"Fecha de Cese");
 		
 		Utils.Validation.required("#txt-el-descripcion","Descripción");		
 		Utils.Validation.required("#txt-el-descripcion","Descripción");
@@ -137,24 +187,25 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#txt-el-documento-sustentatorio","Documento Sustentatorio");
 		
 		if (Utils.Validation.run()){
+			//convertir fechas
+			this.experiencia.fechaInicio = moment(this.experiencia.fechaInicio,"DD/MM/YYYY").toDate();
+			this.experiencia.fechaFin = moment(this.experiencia.fechaFin,"DD/MM/YYYY").toDate();
+			this.experiencia.area = Utils.UI.Select.getSelectedText("sel-el-area");
+			this.experiencia.rubro = Utils.UI.Select.getSelectedText("sel-el-rubro");
+			this.experiencia.sector = Utils.UI.Select.getSelectedText("sel-el-sector");
+			this.experiencia.pais = Utils.UI.Select.getSelectedText("sel-el-pais");
 			
-			this.experiencialaboral.cargo = Utils.UI.Select.getSelectedText("sel-el-cargo");
-			this.experiencialaboral.area = Utils.UI.Select.getSelectedText("sel-el-area");
-			this.experiencialaboral.rubro = Utils.UI.Select.getSelectedText("sel-el-rubro");
-			this.experiencialaboral.sector = Utils.UI.Select.getSelectedText("sel-el-sector");
-			this.experiencialaboral.pais = Utils.UI.Select.getSelectedText("sel-el-pais");
+			if (this.nuevaExperiencia) this.experienciaLaboral.push(this.experiencia);
+			console.log("Experiencia Laboral", this.experienciaLaboral);
 			
-			if (this.nueva) this.experiencialaboral.push(this.experiencialaboral);
-			console.log("Experiencia Laborales", this.experienciaslaborales);
-			this.experiencialaboral = {};
+			this.experiencia = {};
 			$(".modal-experiencia-laboral").modal("hide");			
 		}
 	}
-
 	
 	this.registrarse = function() {
 		
-		console.log("Guardar");		
+		console.log("Guardar registro", this.persona);		
 		Utils.Validation.init();
 		Utils.Validation.required("#txt-dp-nombres","Nombres");		
 		Utils.Validation.required("#txt-dp-apellidos","Apellidos");
@@ -162,32 +213,61 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#txt-dp-fecha-nacimiento","Fecha de Nacimiento");		
 		Utils.Validation.required("#sel-dp-sexo","Sexo");	
 		Utils.Validation.required("#sel-dp-tipo-documento","Tipo de Documento");		
-		Utils.Validation.required("#txt-dp-numero-documento","Número de Documento");	
-		Utils.Validation.required("#txt-dp-documento","Documento");		
-		Utils.Validation.required("#txt-dp-ruc","R.U.C.");	
-		Utils.Validation.required("#txt-dp-telefono","Teléfono");		
-		Utils.Validation.required("#txt-dp-correo","Correo Electrónico");	
-		Utils.Validation.required("#sel-dp-pais-nacimiento","País de Nacimiento");		
-		Utils.Validation.required("#txt-dp-direccion","Dirección de Residencia");	
 		
-		Utils.Validation.required("#sel-dp-departamento","Departamento");	
-		Utils.Validation.required("#sel-dp-provincia","Provincia");		
-		Utils.Validation.required("#sel-dp-distrito","Distrito");	
-		Utils.Validation.required("#txt-dp-curriculum","Curriculum");		
-		Utils.Validation.required("#txt-dp-foto","Foto");	
+		
+		Utils.Validation.required("#txt-dp-numero-documento","Número de Documento");	
+		if (this.persona.tipoDocumentoId == "1") 
+			//Utils.Validation.minlen("#txt-dp-numero-documento","Número de Documento");	// 8 
+		else
+			//Utils.Validation.minlen("#txt-dp-numero-documento","Número de Documento");	// 12 
+
+		Utils.Validation.required("#txt-dp-documento","Documento");
+		
+		Utils.Validation.required("#txt-dp-ruc","R.U.C."); // validar minlen
+		
 		
 				
-		Utils.Validation.minLen("#panel-formacion-academica", this.persona, 1, "Formación Académica" , "panel-danger");
-		Utils.Validation.minLen("#panel-capacitacion", this.persona, 1, "Capacitación" , "panel-danger");
-		Utils.Validation.minLen("#panel-idiomas", this.persona, 1, "Idioma" , "panel-danger");
-		Utils.Validation.minLen("#panel-experiencia-laboral", this.persona, 1, "Experiencia Laboral" , "panel-danger");		
-		Utils.Validation.minLen("#panel-computacion", this.persona, 1, "Computación" , "panel-danger");
-		Utils.Validation.minLen("#panel-informacion-adicional", this.persona, 1, "Información Adicional" , "panel-danger");
+		Utils.Validation.required("#txt-dp-correo","Correo Electrónico");
+		Utils.Validation.required("#sel-dp-pais-nacimiento","País de Nacimiento");
+		Utils.Validation.required("#txt-dp-direccion","Dirección de Residencia");
+		
+		Utils.Validation.required("#sel-dp-departamento","Departamento");
+		Utils.Validation.required("#sel-dp-provincia","Provincia");
+		Utils.Validation.required("#sel-dp-distrito","Distrito");
+
+		Utils.Validation.required("#txt-dp-curriculum","Curriculum");
+		Utils.Validation.required("#txt-dp-foto","Foto");
+		
+		Utils.Validation.required("#txt-if-banco","Banco");
+		Utils.Validation.required("#txt-if-cuenta","Número de Cuenta");
+		Utils.Validation.required("#txt-if-cci","CCI");
+		
+		Utils.Validation.required("#sel-nivel-computacion","Nivel Computacion");
+		
+
+		Utils.Validation.minLen("#panel-formacion-academica", this.formacionAcademica, 1, "Formación Académica" , "panel-danger");
+		Utils.Validation.minLen("#panel-capacitacion", this.capacitaciones, 1, "Capacitación" , "panel-danger");
+		Utils.Validation.minLen("#panel-idiomas", this.personaIdiomas, 1, "Idioma" , "panel-danger");
+		Utils.Validation.minLen("#panel-experiencia-laboral", this.experienciaLaboral, 1, "Experiencia Laboral" , "panel-danger");		
 		
 		if (Utils.Validation.run()){
 			
+			console.log("Registro" , this.persona);
+
+			//convertir fechas
+			this.persona.fechaNacimiento = moment(this.persona.fechaNacimiento,"DD/MM/YYYY").toDate();
+			Utils.Rest.save(APP.URL_API + "persona" , this.persona).success(function(data){
+
+				Utils.List.set("personaId",self.formacionAcademica,data.personaId);
+				Utils.List.set("personaId",self.capacitaciones,data.personaId);
+				Utils.List.set("personaId",self.personaIdiomas,data.personaId);
+				Utils.List.set("personaId",self.experienciaLaboral,data.personaId);
 				
+				Utils.Rest.save(APP.URL_API + "persona/formacionacademica",self.formacionAcademica);
+				Utils.Rest.save(APP.URL_API + "persona/capacitacion",self.capacitaciones);
+				Utils.Rest.save(APP.URL_API + "persona/idioma",self.personaIdiomas);
+				Utils.Rest.save(APP.URL_API + "persona/experiencia",self.experienciaLaboral);
+			});
 		}
 	}
-	
 });

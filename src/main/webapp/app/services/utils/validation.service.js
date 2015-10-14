@@ -1,8 +1,12 @@
 angular.module('main').service("ValidationService",[ "NotificationService", function(Messagebox){
-
+	$(".numero").inputmask("integer",{autoUnmask:true});
+	$(".ruc").inputmask("99999999999",{autoUnmask:true});
+	$(".dni").inputmask("99999999",{autoUnmask:true});
+	$(".fecha").inputmask("99/99/9999");
+	
 	var Validation = {
 		
-				init		: 	function () 
+				init		: 	function ()
 								{ 
 									Validation.results.length = 0;
 									for (index in Validation.controls) {
@@ -11,28 +15,48 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 									}
 									Validation.controls.length = 0;
 								}
-				,required	: 	function(control,fieldName) 
+				,required	: 	function(control,fieldName,showMessage) 
 								{
 									var error = "El campo " + fieldName + " es obligatorio";
 									value = $(control).val();
-									var angularRex = /\? \w+:\w+ \?/;
+									var angularRex = /\? \w+:\w* \?/;
 									var exp = (value !== '') && (value !== null) && (value !== undefined) && (value.toString().length > 0) && (!angularRex.test(value));
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName,showMessage);
 									return exp;
 								}
 				,requiredVar: 	function(value,fieldName,control) 
 								{
 									var error = "El campo " + fieldName + " es obligatorio";
 									var exp = (value !== '') && (value !== null) && (value !== undefined) && (value.toString().length > 0);
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName);
 									return exp;
 								}
+				,isTrueVar		: 	function(value, fieldName, control,pClass)
+									{
+										var error = "El campo " + fieldName + " es obligatorio";
+										var exp = (value === true);
+										Validation.evaluate(exp,error,control,pClass,fieldName);
+										return exp;
+									}
+				,validate		: 	function(value,pError,pFieldName)
+									{
+										if (!value) {
+											Messagebox.alerta(pError,pFieldName);
+										} 
+									}
+				,equalsVar		:	function(value1,value2, fieldName, pError,control) 
+									{
+										var error = pError;
+										var exp = (value1 === value2);
+										Validation.evaluate(exp,error,control,undefined,fieldName);
+										return exp;
+									}
 				,len 		:  	function(control,fieldName,pLen) 
 								{
 									var error = "El campo " + fieldName + " debe ser de " + pLen + " caracteres";
 									value = $(control).val();
 									var exp = (value.toString().length == pLen) || (S(value).isEmpty());
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName);
 									return exp;
 								}
 				,minLen		:  	function(control,value,min,fieldName,pclass)
@@ -40,7 +64,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 									var exp = false;
 									var error = "Ingrese al menos " + min + " " + fieldName;
 									exp = ( value.length >= min );
-									Validation.evaluate(exp,error,control,pclass);
+									Validation.evaluate(exp,error,control,pclass,fieldName);
 									return exp;
 								}									
 				,number		: 	function(control,fieldName, errorMessage) 
@@ -50,7 +74,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 									value = $(control).val();
 									if ((value === "") || (value === null) || (value === undefined))  exp = true;
 									else  exp = $.isNumeric(value);
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName);
 									return exp
 								}
 				,email 		: 	function(control,fieldName)
@@ -60,7 +84,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 									value = $(control).val();
 									var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
 			    					exp = (regex.test(value)) ? true : false;
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName);
 									return exp
 								}
 				,multiEmail : 	function(control, fieldName)
@@ -69,7 +93,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 									var error = "El campo " + fieldName + " debe ser Emails separados por coma";
 									value = $(control).val();
 									exp = Validation.validateMultipleEmailsCommaSeparated(value,',');
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName);
 									return exp	
 								}
 				,greaterthan: 	function(control,minvalue,fieldName)
@@ -95,7 +119,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 											exp = (value > minvalue)
 										};
 
-										Validation.evaluate(exp,error,control);
+										Validation.evaluate(exp,error,control,undefined,fieldName);
 										return exp;
 									}
 				,dategreaterthanvar: 	function(value,minvalue,control,fieldName)
@@ -109,7 +133,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 												exp = moment(minvalue,["DD/MM/YYYY","YYYY/MM/DD"]).isBefore(moment(value,["DD/MM/YYYY","YYYY/MM/DD"]));
 											};
 
-											Validation.evaluate(exp,error,control);
+											Validation.evaluate(exp,error,control,undefined,fieldName);
 											return exp;	
 										}
 
@@ -136,7 +160,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 										exp = (value < maxvalue);
 									}
 
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName);
 									return exp;
 								}
 				,datelessthanvar: 	function(value,maxvalue,control,fieldName)
@@ -150,7 +174,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 											exp = moment(value,["DD/MM/YYYY","YYYY/MM/DD"]).isBefore(moment(maxvalue,["DD/MM/YYYY","YYYY/MM/DD"]));
 										}
 
-										Validation.evaluate(exp,error,control);
+										Validation.evaluate(exp,error,control,undefined,fieldName);
 										return exp;
 									}
 				
@@ -165,7 +189,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 												exp = moment(value,["DD/MM/YYYY","YYYY/MM/DD"]).diff(moment(maxvalue,["DD/MM/YYYY","YYYY/MM/DD"])) <= 0;
 											}
 						
-											Validation.evaluate(exp,error,control);
+											Validation.evaluate(exp,error,control,undefined,fieldName);
 											return exp;
 										} 
 				,dateOnOrGreaterThanVar: 	function(value, minvalue, control, fieldName)
@@ -179,18 +203,20 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 													exp = moment(value,["DD/MM/YYYY","YYYY/MM/DD"]).diff(moment(minvalue,["DD/MM/YYYY","YYYY/MM/DD"])) >= 0;
 												};
 							
-												Validation.evaluate(exp,error,control);
+												Validation.evaluate(exp,error,control,undefined,fieldName);
 												return exp;
 					
 											}
-				,evaluate 	: 	function(exp,error,control,pclass) 
+				,evaluate 	: 	function(exp,error,control,pclass,pFieldName,pShowMessage) 
 								{
+									if (pShowMessage === null || pShowMessage === undefined) pShowMessage = true
+
 									pclass = pclass || "has-error";
 
 									if (!$(control).is(":visible")) exp = true;
 									
 									if (!exp) {
-										Messagebox.alerta(error);
+										if(pShowMessage) Messagebox.alerta(error,pFieldName);
 										$(control).parent().addClass(pclass);
 										Validation.controls.push(control);
 									}

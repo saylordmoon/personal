@@ -10,7 +10,7 @@ public class Experiencia {
 	private int ExperienciaId;
 	private int PersonaId;
 	private String Empresa;
-	private int CargoId;
+	private String Cargo;
 	private Date FechaInicio;
 	private Date FechaFin;
 	private String Descripcion;
@@ -36,11 +36,12 @@ public class Experiencia {
 	public void setEmpresa(String empresa) {
 		Empresa = empresa;
 	}
-	public int getCargoId() {
-		return CargoId;
+
+	public String getCargo() {
+		return Cargo;
 	}
-	public void setCargoId(int cargoId) {
-		CargoId = cargoId;
+	public void setCargo(String cargo) {
+		Cargo = cargo;
 	}
 	public Date getFechaInicio() {
 		return FechaInicio;
