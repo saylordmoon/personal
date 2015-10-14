@@ -184,7 +184,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#txt-el-empresa","Empresa");		
 		Utils.Validation.required("#txt-el-cargo","Cargo");		
 		Utils.Validation.required("#dat-el-fecha-inicio","Fecha de Inicio");		
-		Utils.Validation.required("#dat-el-fecha-fin","Fecha de Fin");
+		Utils.Validation.required("#dat-el-fecha-fin","Fecha de Cese");
 		
 		Utils.Validation.dateLessThan("#dat-el-fecha-inicio",this.experiencia.fechaFin,"Fecha de Inicio");
 		Utils.Validation.dateGreaterThan("#dat-el-fecha-fin",this.experiencia.fechaInicio,"Fecha de Cese");
