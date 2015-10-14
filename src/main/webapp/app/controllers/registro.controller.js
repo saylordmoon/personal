@@ -369,4 +369,5 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	}
 	
 	
+	
 });

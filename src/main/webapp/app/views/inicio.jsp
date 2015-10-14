@@ -28,7 +28,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" >País de nacimiento</label>
 						<div class="col-md-4">
-							<select id="sel-dp-pais-nacimiento" data-ng-model="regCtrl.persona.paisNacimientoId" class="form-control">
+							<select id="sel-dp-pais-nacimiento" data-ng-model="regCtrl.persona.paisNacimientoId" class="form-control pais">
 								<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 							</select>
 						</div>
@@ -528,7 +528,7 @@
 					</div>
 					<div class="form-group">
 						<label>País:</label>
-						<select id="sel-fa-pais" data-ng-model="regCtrl.formacion.paisId" class="form-control">
+						<select id="sel-fa-pais" data-ng-model="regCtrl.formacion.paisId" class="form-control pais">
 							<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>
 					</div>
@@ -581,7 +581,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">País:</label>
-						<select id="sel-c-pais" class="form-control" data-ng-model="regCtrl.capacitacion.paisId">
+						<select id="sel-c-pais" class="form-control pais" data-ng-model="regCtrl.capacitacion.paisId">
 							<option data-ng-repeat="pais in regCtrl.paises"  value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>
 					</div>
@@ -614,7 +614,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Idioma:</label>
-						<select id="sel-i-idioma" data-ng-model="regCtrl.idioma.idiomaId" class="form-control">
+						<select id="sel-i-idioma" data-ng-model="regCtrl.idioma.idiomaId" class="form-control select2">
 							<option data-ng-repeat="idioma in regCtrl.idiomas" value="{{idioma.idiomaId}}">{{idioma.nombre}}</option>
 						</select>
 					</div>
@@ -686,26 +686,26 @@
 					</div>
 					<div class="form-group">
 						<label>Área:</label>
-						<select id="sel-el-area" data-ng-model="regCtrl.experiencia.areaId" class="form-control">
+						<select id="sel-el-area" data-ng-model="regCtrl.experiencia.areaId" class="form-control select2">
 							<option data-ng-repeat="area in regCtrl.areas" value="{{area.areaId}}">{{area.nombre}}</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Rubro:</label>
-						<select id="sel-el-rubro" data-ng-model="regCtrl.experiencia.rubroId" class="form-control">
+						<select id="sel-el-rubro" data-ng-model="regCtrl.experiencia.rubroId" class="form-control select2">
 							<option data-ng-repeat="rubro in regCtrl.rubros" value="{{rubro.rubroId}}">{{rubro.descripcion}}</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Sector:</label>
-						<select id="sel-el-sector" data-ng-model="regCtrl.experiencia.sectorId" class="form-control">
+						<select id="sel-el-sector" data-ng-model="regCtrl.experiencia.sectorId" class="form-control select2">
 							<option data-ng-repeat="sector in regCtrl.sectores" value="{{sector.sectorId}}">{{sector.nombre}}</option>
 						</select>
 					</div>
 					
 					<div class="form-group">
 						<label>País:</label>
-						<select id="sel-el-pais" data-ng-model="regCtrl.experiencia.paisId" class="form-control">
+						<select id="sel-el-pais" data-ng-model="regCtrl.experiencia.paisId" class="form-control pais">
 							<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
 						</select>
 					</div>
