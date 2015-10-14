@@ -210,7 +210,7 @@
 							<td><a href="/appbase/api/v1/file/download{{formacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
 								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarFormacionAcademica(formacion)"><i class="glyphicon glyphicon-trash"></i></button>
-								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarFormacionAcademica(formacion)"><i class="glyphicon glyphicon-pencil"></i></button>
+								
 							</td>
 						</tr>
 					</tbody>
@@ -252,7 +252,7 @@
 							<td><a href="/appbase/api/v1/file/download{{capacitacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
 								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarCapacitacion(capacitacion)"><i class="glyphicon glyphicon-trash"></i></button>
-								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarCapacitacion(capacitacion)"><i class="glyphicon glyphicon-pencil"></i></button>
+								
 							</td>
 						</tr>
 					</tbody>
@@ -287,10 +287,9 @@
 							<td>{{idioma.escritura}}</td>
 							<td>{{idioma.hablado}}</td>
 							<td>{{idioma.lectura}}</td>
-							<td><a href="/appbase/api/v1/file/download{{idioma.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td><a data-ng-show="idioma.documento != ''" href="/appbase/api/v1/file/download{{idioma.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
 								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarIdiomas(idioma)"><i class="glyphicon glyphicon-trash"></i></button>
-								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarIdiomas(idioma)"><i class="glyphicon glyphicon-pencil"></i></button>
 							</td>
 						</tr>
 					</tbody>
@@ -338,7 +337,7 @@
 							<td><a href="/appbase/api/v1/file/download{{experiencia.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
 								<button class="btn btn-default pull-right" data-ng-click="regCtrl.borrarExperienciaLaboral(experiencia)"><i class="glyphicon glyphicon-trash"></i></button>
-								<button class="btn btn-default pull-right" data-ng-click="regCtrl.editarExperienciaLaboral(experiencia)"><i class="glyphicon glyphicon-pencil"></i></button>
+								
 							</td>
 						</tr>	
 					</tbody>

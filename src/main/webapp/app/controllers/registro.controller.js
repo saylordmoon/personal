@@ -45,11 +45,6 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	this.distritos = [];
 	Utils.Rest.getList(this,APP.URL_API + "departamento","departamentos");
 	
-	
-	
-	
-	
-	
 	this.tipoDocumento = function(){
 		if (this.persona.tipoDocumentoId == "1") 
 			$("#txt-dp-numero-documento").inputmask("99999999",{autoUnmask:true});
@@ -91,7 +86,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		console.log("Capacitacion");
 	}
 	this.borrarCapacitacion = function(pcapacitacion) {
-		Utils.List.delete(pcapacitacion,this.Capacitaciones);
+		Utils.List.delete(pcapacitacion,this.capacitaciones);
 	}	
 	this.editarCapacitacion = function(pcapacitacion){
 		this.nuevaCapacitacion = false;
@@ -106,7 +101,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		console.log("Idiomas");
 	}
 	this.borrarIdiomas = function(pidioma) {
-		Utils.List.delete(pidioma,this.idiomas);
+		Utils.List.delete(pidioma,this.personaIdiomas);
 	}	
 	this.editarIdiomas = function(pidioma){
 		this.nuevoIdioma = false;
@@ -123,6 +118,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	this.borrarExperienciaLaboral = function(pexperiencia) {
 		Utils.List.delete(pexperiencia,this.experienciaLaboral);
 	}	
+	
 	this.editarExperienciaLaboral = function(pexperiencia){
 		this.nuevaExperiencia = false;
 		this.experiencia = pexperiencia;
