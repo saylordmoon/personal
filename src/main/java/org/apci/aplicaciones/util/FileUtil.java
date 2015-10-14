@@ -8,7 +8,7 @@ import java.io.OutputStream;
 
 public class FileUtil {
 	
-	public static final String UPLOAD_FILE_SERVER = "c:/tmp/";
+	public static final String UPLOAD_FILE_SERVER = "c:/archivos/";
 	
 	public static String writeToFileServer(InputStream inputStream, String fileName) throws IOException {
 		 
@@ -26,7 +26,7 @@ public class FileUtil {
         }
         catch (IOException ioe) {
             ioe.printStackTrace();
-        }
+        }  
         finally{
             outputStream.close();
         }

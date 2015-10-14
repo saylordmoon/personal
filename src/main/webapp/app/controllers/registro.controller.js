@@ -218,10 +218,12 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		
 		
 		Utils.Validation.required("#txt-dp-numero-documento","Número de Documento");	
-		    if (this.persona.tipoDocumentoId == "1") 
-		    	Utils.Validation.len("#txt-dp-numero-documento","D.N.I.", 8);
-			else
-				Utils.Validation.len("#txt-dp-numero-documento","Pasaporte", 12); 
+
+	    if (this.persona.tipoDocumentoId == "1") 
+	    	Utils.Validation.len("#txt-dp-numero-documento","D.N.I.", 8);
+		else
+			Utils.Validation.len("#txt-dp-numero-documento","Pasaporte", 12); 
+
 
 		Utils.Validation.required("#txt-dp-documento","Documento");
 		
@@ -283,4 +285,26 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		});
 	}
 	
+
+	$('input[type="file"]').change(function(){
+		
+		
+		//<a id="documento-adicional-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
+		console.log("upload",this);
+		var control = this;
+		$("#" + control.id + "-ok" ).hide();
+		$(control).attr("data-ok","false");
+		var	loaded = Utils.File.upload(control, APP.URL_API + "file/upload");
+		if (loaded) 
+		{
+			loaded.success(function(data){
+				
+				$(control).attr("data-ok","true");
+				$(control).attr("data-filename",data);
+				$("#" + control.id + "-ok" ).show();
+			});
+		}
+	});
+	
+
 });

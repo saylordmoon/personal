@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label">Número Documento</label>
+						<label class="col-md-3 control-label">Número Documento:</label>
 						<div class="col-md-6">
 							<input id="txt-dp-numero-documento" data-ng-model="regCtrl.persona.numeroDocumento" type="text" class="form-control" placeholder="Número de Documento" />
 						</div>
@@ -61,6 +61,7 @@
 						<label class="col-md-3 control-label" ><i class="fa fa-paperclip"></i> Documento</label>
 						<div class="col-md-6">
 							<input id="txt-dp-documento" data-ng-model="regCtrl.persona.documento" class="form-control" type="file" />
+							<a id="txt-dp-documentol-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 						</div>
 					</div>
 					<div class="form-group">
@@ -135,7 +136,8 @@
 				<div class="col-md-3" align="right">
 					<div style="width: 150px">
 						<img src="img/foto.png" class="bmd-floating" />
-						<input id="txt-dp-foto" type="file" class="form-control" />
+						<input id="txt-dp-foto" type="file" class="form-control" data-ng-model="regCtrl.persona.foto" />
+						<a id="txt-dp-foto-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 					</div>
 				</div>
 			</div>

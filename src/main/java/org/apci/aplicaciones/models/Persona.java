@@ -29,8 +29,22 @@ public class Persona {
 	private boolean DirectivoONGD_ENIEX;
 	private String Banco;
 	private String Cuenta;
-	private String CCI; 
+	private String CCI;
+	private String Foto;
+	private String Documento;
 	
+	public String getFoto() {
+		return Foto;
+	}
+	public void setFoto(String foto) {
+		Foto = foto;
+	}
+	public String getDocumento() {
+		return Documento;
+	}
+	public void setDocumento(String documento) {
+		Documento = documento;
+	}
 	public String getBanco() {
 		return Banco;
 	}
