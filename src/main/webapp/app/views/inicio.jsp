@@ -1,4 +1,4 @@
-<div data-ng-controller="RegistroController as regCtrl">
+<div data-ng-controller="RegistroController as regCtrl" class="bmd-floating">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>Datos Personales</h4>
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label" ><i class="fa fa-paperclip"></i> Documento</label>
+						<label class="col-md-3 control-label" ><i class="fa fa-paperclip"></i> Adjuntar Documento de Identidad</label>
 						<div class="col-md-6">
 							<input id="txt-dp-documento" data-ng-model="regCtrl.persona.documento" class="form-control" type="file" />
 							<a id="txt-dp-documento-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
@@ -127,7 +127,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="col-md-3 control-label">Curriculum:</label>
+						<label class="col-md-3 control-label"><i class="fa fa-paperclip"></i> Adjuntar Curriculum:</label>
 						<div class="col-md-6">
 							<a id="txt-dp-curriculum-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 							<input id="txt-dp-curriculum" data-ng-model="regCtrl.persona.cv" class="form-control" type="file" />
@@ -192,7 +192,7 @@
 							<td>Formación Académica</td>
 							<td>Profesión o especialidad</td>
 							<td>Fecha de Expedición</td>
-							<td>Institución</td>
+							<td>Institución Académica</td>
 							<td>Pais</td>
 							<td><i class="fa fa-paperclip"></i></td>
 						</tr>
@@ -228,7 +228,7 @@
 							<td>Fecha de Inicio</td>
 							<td>Fecha de Fin</td>
 							<td>Horas lectivas</td>
-							<td>Institución</td>
+							<td>Institución Académica</td>
 							<td>Pais</td>
 							<td><i class="fa fa-paperclip"></i></td>
 						</tr>
@@ -294,7 +294,7 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<td>Empresa / Institucion</td>
+							<td>Empresa / Institución</td>
 							<td>Cargo</td>
 							<td>Fecha de Inicio</td>
 							<td>Fecha de Cese</td>
@@ -715,11 +715,11 @@
 						<h4 class="modal-title ">Finalizar Registro</h4>
 					</div>
 					<div class="modal-body">
-						 <h4> Por favor, verifique y valide la información que registra.</h4>
+						 <p> Por favor, verifique y valide la información que registra.</p>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-info btn-lg bmd-ripple bmd-floating" data-ng-click="regCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
-						<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating btn-lg" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar</button>
+						<button class="btn btn-info bmd-ripple bmd-floating" data-ng-click="regCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
+						<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar</button>
 					</div>
 				</div>
 			</div>

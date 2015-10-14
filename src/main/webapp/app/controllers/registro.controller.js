@@ -49,7 +49,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		if (this.persona.tipoDocumentoId == "1") 
 			$("#txt-dp-numero-documento").inputmask("99999999",{autoUnmask:true});
 		else
-			$("#txt-dp-numero-documento").inputmask("999999999999",{autoUnmask:true});
+			$("#txt-dp-numero-documento").inputmask("&&&&&&&&&&&&",{autoUnmask:true});
 	}
 	
 	this.departamentoSelected = function(){
@@ -115,6 +115,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			if (this.nuevaFormacion) this.formacionAcademica.push(this.formacion);
 			console.log("Formacion académica" , this.formacionAcademica);
 			this.formacion = {};
+			$('input[type="file"]').val("");
 			$(".modal-formacion-academica").modal("hide");
 		}
 	}
@@ -145,6 +146,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			if (this.nuevaCapacitacion) this.capacitaciones.push(this.capacitacion);
 			console.log("Capacitaciones" , this.capacitaciones);
 			this.capacitacion = {};
+			$('input[type="file"]').val("");
 			$(".modal-capacitacion").modal("hide");			
 		}
 	}
@@ -170,6 +172,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			console.log("Idiomas", this.personaIdiomas);			
 			if (this.nuevoIdioma) this.personaIdiomas.push(this.idioma);
 			this.idioma = {};
+			$('input[type="file"]').val("");
 			$(".modal-idiomas").modal("hide");
 		}
 	}
@@ -208,7 +211,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			console.log("Experiencia Laboral", this.experienciaLaboral);
 			
 			this.experiencia = {};
-			
+			$('input[type="file"]').val("");
 			$(".modal-experiencia-laboral").modal("hide");
 		}
 	}
@@ -293,6 +296,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			Utils.Rest.save(APP.URL_API + "persona/experiencia",self.experienciaLaboral);
 		
 			$(".modal-confirmacion").modal("hide");
+			
 			Utils.Notification.info("Se registro correctamente!","Registro Completo");
 		});
 	}
