@@ -761,7 +761,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title ">Finalizar Registro</h4>
+						<h4 class="modal-title ">Declaración Jurada</h4>
 					</div>
 					<div class="modal-body">
 						 <p> Declaro bajo juramento  que la información que he proporcionado es veraz y asumo las responsabilidades y consecuencias legales que ello produzca. </p>

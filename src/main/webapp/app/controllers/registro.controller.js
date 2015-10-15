@@ -148,7 +148,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			if (this.nuevaFormacion) this.formacionAcademica.push(this.formacion);
 			console.log("Formacion académica" , this.formacionAcademica);
 			this.formacion = {};
-			$('input[type="file"]').val("");
+			$('#txt-fa-documento-sustentatorio').val("");
 			$(".modal-formacion-academica").modal("hide");
 		}
 	}
@@ -177,9 +177,14 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			this.capacitacion.documento = Utils.UI.Control.getAttr("txt-c-documento-sustentatorio","data-filename");
 
 			if (this.nuevaCapacitacion) this.capacitaciones.push(this.capacitacion);
+			
+			
 			console.log("Capacitaciones" , this.capacitaciones);
+			
+			Utils.Rest.save(APP.URL_API + "persona/capacitacion",self.capacitaciones);
+			
 			this.capacitacion = {};
-			$('input[type="file"]').val("");
+			$('#txt-c-documento-sustentatorio').val("");
 			$(".modal-capacitacion").modal("hide");			
 		}
 	}
@@ -205,7 +210,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			console.log("Idiomas", this.personaIdiomas);			
 			if (this.nuevoIdioma) this.personaIdiomas.push(this.idioma);
 			this.idioma = {};
-			$('input[type="file"]').val("");
+			$('#txt-i-documento-sustentatorio').val("");
 			$(".modal-idiomas").modal("hide");
 		}
 	}
@@ -244,7 +249,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			console.log("Experiencia Laboral", this.experienciaLaboral);
 			
 			this.experiencia = {};
-			$('input[type="file"]').val("");
+			$('#txt-el-documento-sustentatorio').val("");
 			$(".modal-experiencia-laboral").modal("hide");
 		}
 	}
@@ -324,9 +329,11 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			Utils.List.set("personaId",self.experienciaLaboral,data.personaId);
 			
 			Utils.Rest.save(APP.URL_API + "persona/formacionacademica",self.formacionAcademica);
-			Utils.Rest.save(APP.URL_API + "persona/capacitacion",self.capacitaciones);
+			
 			Utils.Rest.save(APP.URL_API + "persona/idioma",self.personaIdiomas);
 			Utils.Rest.save(APP.URL_API + "persona/experiencia",self.experienciaLaboral);
+
+			Utils.Rest.save(APP.URL_API + "persona/capacitacion",self.capacitaciones);
 		
 			$(".modal-confirmacion").modal("hide");
 			
