@@ -178,10 +178,7 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 
 			if (this.nuevaCapacitacion) this.capacitaciones.push(this.capacitacion);
 			
-			
 			console.log("Capacitaciones" , this.capacitaciones);
-			
-			Utils.Rest.save(APP.URL_API + "persona/capacitacion",self.capacitaciones);
 			
 			this.capacitacion = {};
 			$('#txt-c-documento-sustentatorio').val("");
@@ -239,7 +236,10 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			//convertir fechas
 			this.experiencia.fechaInicio = moment(this.experiencia.fechaInicio,"DD/MM/YYYY").toDate();
 			this.experiencia.fechaFin = moment(this.experiencia.fechaFin,"DD/MM/YYYY").toDate();
-			this.experiencia.area = Utils.UI.Select.getSelectedText("sel-el-area");
+			
+			if (!this.experiencia.area)
+				this.experiencia.area = Utils.UI.Select.getSelectedText("sel-el-area");
+			
 			this.experiencia.rubro = Utils.UI.Select.getSelectedText("sel-el-rubro");
 			this.experiencia.sector = Utils.UI.Select.getSelectedText("sel-el-sector");
 			this.experiencia.pais = Utils.UI.Select.getSelectedText("sel-el-pais");
