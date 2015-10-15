@@ -338,6 +338,8 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			$(".modal-confirmacion").modal("hide");
 			
 			Utils.Notification.info("Se registro correctamente!","Registro Completo");
+			
+			setTimeout( function() {  window.location = "/supervisores/mensaje.html";  }  ,  4000 );
 		});
 	}
 
