@@ -4,6 +4,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 	$(".dni").inputmask("99999999",{autoUnmask:true});
 	$(".fecha").inputmask("99/99/9999");
 	$(".cci").inputmask("99999999999999999999");
+	$(".cuenta").inputmask("integer",{autoUnmask:true,rightAlign: false});
 	
 	var Validation = {
 		
