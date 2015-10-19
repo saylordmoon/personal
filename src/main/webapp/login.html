@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html data-ng-app="main">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Login Supervisores</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="css/prettify.css">
+		<link rel="stylesheet" type="text/css" href="css/main.min.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css">
+		
+		<link rel="shortcut icon" href="favicon.ico?v=1.1"> 
+		<link rel="shortcut icon" href="img/favicon.png">
+	</head>
+	<body>
+
+		<!-- <form class="login-container bmd-floating" action="/appbase/login" method="post">
+			<div class="row login" style="margin-right: 0px;">
+				<div class="col-md-5" style="padding-right:0px;">
+					<a href="http://www.apci.gob.pe/"><img src="img/logo.png" class="img-responsive" width="100%" style="min-height: 230px;" /></a>
+				</div>
+				<div class="col-md-7">
+					<hr />
+					<div class="form-group">
+						<label class="control-label">R.U.C.</label>
+						<input name="usuario" type="text" class="form-control ruc" placeholder="Ingrese su R.U.C."  />
+					</div>
+					<div class="form-group">
+						<label class="control-label">Contraseña:</label>
+						<input name="password" type="password" class="form-control" placeholder="Ingrese su contraseña" />
+					</div>
+					<div class="form-group">
+						<button class="btn btn-info form-control bmd-floating bmd-ripple">
+							Ingresar
+						</button>
+					</div>
+				</div>
+			</div>
+		</form> -->
+	<br><br><br><br><br><br>
+	<br><br><br><br><br><br>
+	<div class="row" style="margin-right: 0px;">
+		<div class="col-md-4">
+		</div>		
+		<div class="col-md-4">
+			<div class="panel panel-warning">
+				<div class="panel-heading bmd-bg-warning">
+					<div class="panel-title" style="display:inline-block;"></div>
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal" action="/appbase/login" method="post">
+						<fieldset>
+							<div class="form-group has-warning">
+								<label class="col-md-5 control-label bmd-control-label">
+									<a href="http://www.apci.gob.pe/">
+										<img src="img/logo.png" class="img-responsive" width="100%" style="min-height: 70px;" />
+									</a>
+								</label>
+								<div class="col-md-7">
+									<div class="bmd-field-group">
+										<input id="txt-login-usuario" type="text" class="bmd-input dni" required="">
+										<span class="bmd-bar"></span>
+										<label class="bmd-label">D.N.I.</label>
+										<span class="bmd-field-feedback"></span>
+									</div>
+									<div class="bmd-field-group">
+										<input id="txt-login-clave" type="password" class="bmd-input" required="">
+										<span class="bmd-bar"></span>
+										<label class="bmd-label">Contraseña</label>
+										<span class="bmd-field-feedback"></span>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="form-group has-warning">
+								<label for="inputPassword" class="col-md-5 control-label bmd-control-label">
+									<i class="flaticon-https bmd-text-warning"></i>
+								</label>
+								<div class="col-md-7">
+									<div class="bmd-field-group">
+										<input type="password" class="bmd-input" required="">
+										<span class="bmd-bar"></span>
+										<label class="bmd-label">Contraseña</label>
+										<span class="bmd-field-feedback"></span>
+									</div>
+								</div>
+							</div> -->
+						</fieldset>
+					</form>
+				</div>
+				<div class="panel-footer text-right">					
+					<a href="http://www.apci.gob.pe/"><button class="btn btn-default bmd-ripple bmd-morph-close">Salir</button></a>
+					<button class="btn btn-warning bmd-ripple"> Ingresar</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.easing.min.js"></script>
+  		<script src="js/prettify.js"></script>
+  		<script src="js/main.min.js"></script>
+  		<script src="js/bootstrap.min.js"></script>
+  		
+  		<!-- Bootstrap Core JavaScript -->
+		<script src="js/string.min.js"></script>
+		<!-- angular js -->
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular.locale.es.js"></script>
+		<script src="js/angular-route.min.js"></script>
+		<!--/ angular js -->
+		<!--  Otras librerias -->
+
+		<script type="text/javascript" src="js/moment.min.js"></script>
+
+		<script type="text/javascript" src="js/datepicker.min.js"></script>
+		<script type="text/javascript" src="js/select2.min.js"></script>
+
+		<script type="text/javascript" src="js/selectize.min.js"></script>
+
+		<script type="text/javascript" src="js/taffy-min.js"></script>
+		<script type="text/javascript" src="js/jquery.notify.min.js"></script>
+		<script type="text/javascript" src="js/jquery.inputmask.bundle.min.js"></script>
+		<!--/ Otras librerias -->
+		<!-- App -->
+		<script src="app/app.js"></script>
+		<script src="app/config/config.js"></script>
+		<!--/ App -->
+		<!-- Filters -->
+		<script type="text/javascript" src="app/filters/tipo.filter.js"></script>
+		<script type="text/javascript" src="app/filters/date.filter.js"></script>
+		<!--/ Filters -->
+		<!-- Controllers -->
+		<script type="text/javascript" src="app/controllers/menu.controller.js"></script>
+		<!--/ Controllers -->
+				
+		<!-- Util Services -->
+		<script type="text/javascript" src="app/services/utils/notification.service.js"></script>
+		<script type="text/javascript" src="app/services/utils/validation.service.js"></script>
+		<script type="text/javascript" src="app/services/utils/tab.service.js"></script>
+		<script type="text/javascript" src="app/services/utils/mask.service.js"></script>
+		<script type="text/javascript" src="app/services/utils/utils.service.js"></script>
+		<!--/ Util Services -->
+  		
+	</body>
+</html>

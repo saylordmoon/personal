@@ -87,13 +87,13 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">Correo Electrónico:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-correo" data-ng-model="regCtrl.persona.email" type="email" class="form-control" placeholder="Correo Electrónico" required/>
+							<input id="txt-dp-correo" data-ng-model="regCtrl.persona.email" type="email" class="form-control" placeholder="CORREO ELECTRÓNICO" required/>
 						</div>
 					</div>					
 					<div class="form-group">
 						<label class="col-md-3 control-label">Dirección domiciliaria:</label>
 						<div class="col-md-9">
-							<input id="txt-dp-direccion" data-ng-model="regCtrl.persona.direccion" type="text" class="form-control mayuscula" placeholder="Dirección de domicilio" />
+							<input id="txt-dp-direccion" data-ng-model="regCtrl.persona.direccion" type="text" class="form-control mayuscula" placeholder="Dirección domiciliaria" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -191,7 +191,7 @@
 			  <i class="bmd-icon material-icons">add</i>
 			</a>
 			<h4>Formación Académica</h4>
-			<p style="font-size: 11px;color: gray;">(Titulos, Posgrados, Maestrias, Diplomados ...)</p>
+			<p style="font-size: 11px;color: gray;">(Título, Post-grado, Maestria, Diplomado ...)</p>
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
@@ -713,7 +713,7 @@
 						<div class="col-md-6" data-ng-show="regCtrl.experiencia.areaId=='20'">
 							<div class="form-group">
 								<label>Especifique: </label>
-								<input type="text" class="form-control" data-ng-model="regCtrl.experiencia.area" />
+								<input type="text" class="form-control mayuscula" data-ng-model="regCtrl.experiencia.area" />
 							</div>
 						</div>
 					</div>

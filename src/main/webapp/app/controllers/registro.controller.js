@@ -339,7 +339,8 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 			
 			Utils.Notification.info("Se registro correctamente!","Registro Completo");
 			
-			setTimeout( function() {  window.location = "/supervisores/mensaje.html";  }  ,  4000 );
+			/*setTimeout( function() {  window.location = "/supervisores/mensaje.html";  }  ,  2000 );*/
+			setTimeout( function() {  window.location = "/appbase/mensaje.html";  }  ,  2000 );
 		});
 	}
 

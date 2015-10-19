@@ -6,6 +6,8 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 	$(".cci").inputmask("99999999999999999999");
 	$(".cuenta").inputmask("integer",{autoUnmask:true,rightAlign: false});
 	
+	$(".telefonofijo").inputmask("999-9999",{autoUnmask:true});
+
 	var Validation = {
 		
 				init		: 	function ()
