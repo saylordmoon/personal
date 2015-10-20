@@ -1,10 +1,14 @@
-angular.module("main").service("Utils", function($filter,TabService, NotificationService , ValidationService,MaskService, $http){
+angular.module("main").service("Utils", function($filter,TabService, NotificationService , ValidationService,MaskService, $http,APP){
+
+	var self = this;
 
 	this.Mask = MaskService;
 	
 	this.Validation = ValidationService;
 
 	this.Notification = NotificationService;
+
+
 
 	this.List =		{
 						'delete' : 			function(item,list)  { 
@@ -175,6 +179,18 @@ angular.module("main").service("Utils", function($filter,TabService, Notificatio
 						}
 						return result;
 					}
+	};
+
+
+	this.Auth = 	{ 	
+						check: 	function() 
+								{
+									self.Rest.getList(this, APP.URL_API + "usuario").error( 
+										function() {
+											window.location = APP.URL_LOGIN; 
+										}
+									);
+								}
 	};
 	
 });

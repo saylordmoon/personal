@@ -10,11 +10,17 @@ import org.apci.aplicaciones.services.IProvinciaService;
 public class ProvinciaDAO extends BaseDAO implements IProvinciaService{
 
 	public List<Provincia> get() {
+		
 		return super.select(Provincia.class);
 	}
 
 	public List<Distrito> distritos(int pProvinciaId) {
-		return query("select * from VwDistrito where provinciaId = ?",Distrito.class, pProvinciaId);
+		
+		return query("select * from VwDistrito where provinciaId = ?", Distrito.class, pProvinciaId);
 	}
 
+	public Provincia getById(int pProvinciaId) {
+
+		return query("select * from VwProvincia where provinciaId = ?", Provincia.class, pProvinciaId).get(0);
+	}
 }

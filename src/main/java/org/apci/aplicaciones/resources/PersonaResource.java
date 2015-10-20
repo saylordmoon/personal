@@ -2,9 +2,12 @@ package org.apci.aplicaciones.resources;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBElement;
@@ -19,11 +22,13 @@ import org.apci.aplicaciones.models.Experiencia;
 import org.apci.aplicaciones.models.FormacionAcademica;
 import org.apci.aplicaciones.models.Persona;
 import org.apci.aplicaciones.models.PersonaIdioma;
+import org.apci.aplicaciones.models.Usuario;
 import org.apci.aplicaciones.services.ICapacitacionService;
 import org.apci.aplicaciones.services.IExperienciaService;
 import org.apci.aplicaciones.services.IFormacionAcademicaService;
 import org.apci.aplicaciones.services.IPersonaIdiomaService;
 import org.apci.aplicaciones.services.IPersonaService;
+import org.apci.aplicaciones.util.auth.Authentication;
 
 @Path("persona")
 public class PersonaResource {
@@ -42,6 +47,15 @@ public class PersonaResource {
 		idioma = new PersonaIdiomaDAO();
 		capacitacion = new CapacitacionDAO();
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("profile")
+	public Persona get(@Context HttpServletRequest pRequest)
+	{
+		Usuario usuario = Authentication.getUser(pRequest);
+		return persona.get(usuario.getPersonaId());
+	} 
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)

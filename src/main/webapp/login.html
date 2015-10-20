@@ -16,90 +16,58 @@
 		<link rel="stylesheet" href="css/prettify.css">
 		<link rel="stylesheet" type="text/css" href="css/main.min.css">
 		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 		
 		<link rel="shortcut icon" href="favicon.ico?v=1.1"> 
 		<link rel="shortcut icon" href="img/favicon.png">
 	</head>
 	<body>
 
-		<!-- <form class="login-container bmd-floating" action="/appbase/login" method="post">
-			<div class="row login" style="margin-right: 0px;">
-				<div class="col-md-5" style="padding-right:0px;">
-					<a href="http://www.apci.gob.pe/"><img src="img/logo.png" class="img-responsive" width="100%" style="min-height: 230px;" /></a>
-				</div>
-				<div class="col-md-7">
-					<hr />
-					<div class="form-group">
-						<label class="control-label">R.U.C.</label>
-						<input name="usuario" type="text" class="form-control ruc" placeholder="Ingrese su R.U.C."  />
-					</div>
-					<div class="form-group">
-						<label class="control-label">Contraseña:</label>
-						<input name="password" type="password" class="form-control" placeholder="Ingrese su contraseña" />
-					</div>
-					<div class="form-group">
-						<button class="btn btn-info form-control bmd-floating bmd-ripple">
-							Ingresar
-						</button>
-					</div>
-				</div>
-			</div>
-		</form> -->
+
 	<br><br><br><br><br><br>
 	<br><br><br><br><br><br>
 	<div class="row" style="margin-right: 0px;">
 		<div class="col-md-4">
 		</div>		
 		<div class="col-md-4">
-			<div class="panel panel-warning">
-				<div class="panel-heading bmd-bg-warning">
-					<div class="panel-title" style="display:inline-block;"></div>
-				</div>
-				<div class="panel-body">
-					<form class="form-horizontal" action="/appbase/login" method="post">
-						<fieldset>
-							<div class="form-group has-warning">
-								<label class="col-md-5 control-label bmd-control-label">
-									<a href="http://www.apci.gob.pe/">
-										<img src="img/logo.png" class="img-responsive" width="100%" style="min-height: 70px;" />
-									</a>
-								</label>
-								<div class="col-md-7">
-									<div class="bmd-field-group">
-										<input id="txt-login-usuario" type="text" class="bmd-input dni" required="">
-										<span class="bmd-bar"></span>
-										<label class="bmd-label">D.N.I.</label>
-										<span class="bmd-field-feedback"></span>
-									</div>
-									<div class="bmd-field-group">
-										<input id="txt-login-clave" type="password" class="bmd-input" required="">
-										<span class="bmd-bar"></span>
-										<label class="bmd-label">Contraseña</label>
-										<span class="bmd-field-feedback"></span>
-									</div>
-								</div>
-							</div>
-							<!-- <div class="form-group has-warning">
-								<label for="inputPassword" class="col-md-5 control-label bmd-control-label">
-									<i class="flaticon-https bmd-text-warning"></i>
-								</label>
-								<div class="col-md-7">
-									<div class="bmd-field-group">
-										<input type="password" class="bmd-input" required="">
-										<span class="bmd-bar"></span>
-										<label class="bmd-label">Contraseña</label>
-										<span class="bmd-field-feedback"></span>
+			<form class="form-horizontal" action="/appbase/login" method="post">
+				<div class="panel panel-info bmd-floating">
+					<div class="panel-heading">
+						<a href="." class="btn btn-info bmd-floating bmd-ripple bmd-fab bmd-fab-sm bmd-text-blue-50"><i class="fa fa-undo"></i></a>
+						<div class="panel-title" style="display:inline-block;">
+							&nbsp;&nbsp;&nbsp;Sistemas de Gestion de Supervisores
+						</div>
+					</div>
+					<div class="panel-body">
+							<fieldset>
+								<div class="form-group">
+									<label class="col-md-5 control-label bmd-control-label">
+										<a href="http://www.apci.gob.pe/">
+											<img src="img/logo.png" class="img-responsive" width="100%" style="min-height: 70px;" />
+										</a>
+									</label>
+									<div class="col-md-7">
+										<div class="bmd-field-group">
+											<input id="usuario" name="usuario" type="text" class="bmd-input dni" required>
+											<span class="bmd-bar"></span>
+											<label class="bmd-label">D.N.I.</label>
+											<span class="bmd-field-feedback"></span>
+										</div>
+										<div class="bmd-field-group">
+											<input id="password" name="password" type="password" class="bmd-input" required>
+											<span class="bmd-bar"></span>
+											<label class="bmd-label">Contraseña</label>
+											<span class="bmd-field-feedback"></span>
+										</div>
 									</div>
 								</div>
-							</div> -->
-						</fieldset>
-					</form>
+							</fieldset>
+					</div>
+					<div class="panel-footer text-right">					
+						<button class="btn btn-info bmd-ripple bmd-floating"><i class="fa fa-sign-in"></i> Ingresar</button>
+					</div>
 				</div>
-				<div class="panel-footer text-right">					
-					<a href="http://www.apci.gob.pe/"><button class="btn btn-default bmd-ripple bmd-morph-close">Salir</button></a>
-					<button class="btn btn-warning bmd-ripple"> Ingresar</button>
-				</div>
-			</div>
+			</form>
 		</div>
 		<div class="col-md-4">
 		</div>

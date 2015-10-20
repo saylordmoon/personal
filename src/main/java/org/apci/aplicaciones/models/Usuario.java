@@ -2,27 +2,42 @@ package org.apci.aplicaciones.models;
 
 public class Usuario {
 	
-	private int UsuarioId;
-	private String ruc;
-	private String numeroDocumento;
+	private int PersonaId;
+	private String Nombres;
+	private String Apellidos;
+	private String Email;
+	private String RUC;
 	
-	public int getUsuarioId() {
-		return UsuarioId;
+	public int getPersonaId() {
+		return PersonaId;
 	}
-	public void setUsuarioId(int usuarioId) {
-		UsuarioId = usuarioId;
+	public void setPersonaId(int personaId) {
+		PersonaId = personaId;
 	}
-	public String getRuc() {
-		return ruc;
+	public String getNombres() {
+		return Nombres;
 	}
-	public void setRuc(String ruc) {
-		this.ruc = ruc;
+	public void setNombres(String nombres) {
+		Nombres = nombres;
 	}
-	public String getNumeroDocumento() {
-		return numeroDocumento;
+	public String getApellidos() {
+		return Apellidos;
 	}
-	public void setNumeroDocumento(String numeroDocumento) {
-		this.numeroDocumento = numeroDocumento;
+	public void setApellidos(String apellidos) {
+		Apellidos = apellidos;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	public String getRUC() {
+		return RUC;
+	}
+	public void setRUC(String rUC) {
+		RUC = rUC;
 	}
 	
+		
 }

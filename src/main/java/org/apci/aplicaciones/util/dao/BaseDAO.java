@@ -84,7 +84,7 @@ public class BaseDAO {
 		return query(sql,pClassType,pId);
 	}
 	
-	protected <T> List<T> selectWhere(Class<T> pClassType, String pColumn , Object pValue)
+	protected <T> List<T> selectWhere(Class<T> pClassType, String pColumn, Object pValue)
 	{
 		Select select = new Select(pClassType);
 		select.where(pColumn);

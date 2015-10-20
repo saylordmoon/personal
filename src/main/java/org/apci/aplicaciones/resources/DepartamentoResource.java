@@ -36,4 +36,12 @@ public class DepartamentoResource {
 	{
 		return departamento.provincias(pDepartamentoId);
 	}
+	
+	@GET
+	@Path("/{DepartamentoId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Departamento getById(@PathParam("DepartamentoId") int pDepartamentoId)
+	{
+		return departamento.getById(pDepartamentoId);
+	}
 }

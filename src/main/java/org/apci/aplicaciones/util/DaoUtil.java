@@ -66,7 +66,7 @@ public class DaoUtil {
 				pStatement.setObject(paramIndex , property.get(pDataObject));
 				paramIndex++;
 			}
-		}	
+		}
 		return pStatement;
 	}
 	

@@ -10,4 +10,6 @@ public interface IProvinciaService {
 	List<Provincia> get();
 	
 	List<Distrito> distritos(int pProvinciaId);
+	
+	Provincia getById(int pProvinciaId);
 }

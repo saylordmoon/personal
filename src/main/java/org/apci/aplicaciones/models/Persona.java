@@ -33,7 +33,14 @@ public class Persona {
 	private String Foto;
 	private String Documento;
 	private String CV;
+	private String Hash;
 	
+	public String getHash() {
+		return Hash;
+	}
+	public void setHash(String hash) {
+		Hash = hash;
+	}
 	public String getCV() {
 		return CV;
 	}

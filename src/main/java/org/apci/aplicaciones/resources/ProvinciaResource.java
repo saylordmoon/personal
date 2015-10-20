@@ -37,4 +37,13 @@ public class ProvinciaResource {
 		return provincia.distritos(pProvinciaId);
 	}
 	
+	
+
+	@GET
+	@Path("/{ProvinciaId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Provincia getById(@PathParam("ProvinciaId") int pProvinciaId)
+	{
+		return provincia.getById(pProvinciaId);
+	}
 }

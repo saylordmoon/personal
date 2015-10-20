@@ -16,4 +16,9 @@ public class DepartamentoDAO extends BaseDAO implements IDepartamentoService {
 	public List<Provincia> provincias(int pDepartamentoId) {
 		return super.query("select * from VwProvincia where departamentoId = ?", Provincia.class, pDepartamentoId);
 	}
+
+	public Departamento getById(int pDepartamentoId) {
+
+		return query("select * from VwDepartamento where DepartamentoId = ?",Departamento.class, pDepartamentoId).get(0);
+	}
 }
