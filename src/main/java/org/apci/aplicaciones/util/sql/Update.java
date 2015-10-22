@@ -47,7 +47,4 @@ public class Update extends Query{
 	{
 		return String.format(this.SQL, this.table, this.columns , this.where);
 	}
-	
-	
-
 }

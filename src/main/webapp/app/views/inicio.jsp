@@ -511,58 +511,7 @@
 		</button>
 	</div>
 
-	<!-- Modal Formacion Academica -->
-	<div class="modal fade modal-formacion-academica" role="dialog" >
-		<div class="modal-dialog modal-md">
-			<div class="modal-content">
-				<div class="modal-header bmd-bg-info bmd-text-blue-50">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Formación Académica</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label>Fomación Académica:</label>
-						<select id="sel-fa-grado-academico" data-ng-model="regCtrl.formacion.gradoId" class="form-control">
-							<option data-ng-repeat="grado in regCtrl.grados" value="{{grado.gradoId}}">{{grado.descripcion}}</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label >Profesión o Especialidad: </label>
-						<input id="txt-fa-profesion" data-ng-model="regCtrl.formacion.especialidad"  type="text" class="form-control mayuscula" placeholder="Nombre completo de la especialidad" />
-						<p style="font-size: 11px;color: gray;">Ingrese el nombre conforme aparece en el documento sustentatorio.</p>
-					</div>
-					<div class="form-group">
-						<label ><i class="fa fa-calendar"></i> Fecha de Expedición:</label>
-						<input id="txt-fa-fecha-expedicion" data-ng-model="regCtrl.formacion.fechaExpedicion" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
-					</div>
-					<div class="form-group">
-						<label >Institución Académica:</label>
-						<input id="txt-fa-institucion" type="text" data-ng-model="regCtrl.formacion.institucion" class="form-control mayuscula" placeholder="Nombre completo de la Institución académica." />
-						<p style="font-size: 11px;color: gray;">Ingrese el nombre conforme aparece en el documento sustentatorio.</p>
-					</div>
-					<div class="form-group">
-						<label>País:</label>
-						<select id="sel-fa-pais" data-ng-model="regCtrl.formacion.paisId" class="form-control pais">
-							<option data-ng-repeat="pais in regCtrl.paises" value="{{pais.paisId}}">{{pais.nombre}}</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label class="control-label"><i class="fa fa-paperclip"></i> Documento Sustentatorio:</label>
-						<input id="txt-fa-documento-sustentatorio" type="file" class="form-control" />
-						<a id="txt-fa-documento-sustentatorio-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="regCtrl.guardarFormacionAcademica()">
-						<i class="glyphicon glyphicon-save"></i>
-						Guardar
-					</button>
-				</div>
-			</div>
-		</div>
-	</div><!--/ Modal Formacion Academica -->
+	
 
 	<!-- Modal Capacitación -->
 	<div class="modal fade modal-capacitacion" role="dialog" >
@@ -754,23 +703,23 @@
 	</div><!--/ Modal Experiencia Laboral -->
 	
 	<!-- Modal  -->
-		<div class="modal fade modal-confirmacion" role="dialog" >
-			<div class="modal-dialog modal-md">
-				<div class="modal-content">
-					<div class="modal-header bmd-text-blue-50 bmd-bg-info">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title ">Declaración Jurada</h4>
-					</div>
-					<div class="modal-body">
-						 <p> Declaro bajo juramento  que la información que he proporcionado es veraz y asumo las responsabilidades y consecuencias legales que ello produzca. </p>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-info bmd-ripple bmd-floating" data-ng-click="regCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
-						<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar</button>
-					</div>
+	<div class="modal fade modal-confirmacion" role="dialog" >
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header bmd-text-blue-50 bmd-bg-info">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title ">Declaración Jurada</h4>
+				</div>
+				<div class="modal-body">
+					 <p> Declaro bajo juramento  que la información que he proporcionado es veraz y asumo las responsabilidades y consecuencias legales que ello produzca. </p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-info bmd-ripple bmd-floating" data-ng-click="regCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
+					<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar</button>
 				</div>
 			</div>
-		</div><!--/ Modal  -->
+		</div>
+	</div><!--/ Modal  -->
 </div>

@@ -1,7 +1,5 @@
 package org.apci.aplicaciones.models;
 
-import java.sql.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -11,7 +9,7 @@ public class FormacionAcademica {
 	private int PersonaId;
 	private int GradoAcademicoId;
 	private String Especialidad;
-	private Date FechaExpedicion;
+	private String FechaExpedicion;
 	private String Institucion;
 	private int PaisId;
 	private String Documento;
@@ -46,10 +44,11 @@ public class FormacionAcademica {
 	public void setEspecialidad(String especialidad) {
 		Especialidad = especialidad;
 	}
-	public Date getFechaExpedicion() {
+	
+	public String getFechaExpedicion() {
 		return FechaExpedicion;
 	}
-	public void setFechaExpedicion(Date fechaExpedicion) {
+	public void setFechaExpedicion(String fechaExpedicion) {
 		FechaExpedicion = fechaExpedicion;
 	}
 	public String getInstitucion() {

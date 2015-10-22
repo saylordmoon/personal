@@ -9,6 +9,7 @@ import java.util.List;
 import org.apci.aplicaciones.util.Conexion;
 import org.apci.aplicaciones.util.DaoUtil;
 import org.apci.aplicaciones.util.sql.Call;
+import org.apci.aplicaciones.util.sql.Delete;
 import org.apci.aplicaciones.util.sql.Insert;
 import org.apci.aplicaciones.util.sql.Select;
 import org.apci.aplicaciones.util.sql.Update;
@@ -84,7 +85,7 @@ public class BaseDAO {
 		return query(sql,pClassType,pId);
 	}
 	
-	protected <T> List<T> selectWhere(Class<T> pClassType, String pColumn, Object pValue)
+	protected <T> List<T> selectWhere(Class<T> pClassType, String pColumn , Object pValue)
 	{
 		Select select = new Select(pClassType);
 		select.where(pColumn);
@@ -104,6 +105,15 @@ public class BaseDAO {
 	{
 		Select select = new Select(pClassType);
 		select.whereLike(pColumn);
+		select.and(pColumnAnd);
+		String sql = select.getSql();
+		return query(sql,pClassType,pValue,pValueAnd);
+	}
+	
+	protected <T> List<T> selectWhereAnd(Class<T> pClassType,String pColumn, Object pValue,String pColumnAnd,Object pValueAnd)
+	{
+		Select select = new Select(pClassType);
+		select.where(pColumn);
 		select.and(pColumnAnd);
 		String sql = select.getSql();
 		return query(sql,pClassType,pValue,pValueAnd);
@@ -160,7 +170,40 @@ public class BaseDAO {
 			
 			statement = DaoUtil.setStatementParameters(statement, pDataObject);
 						
-			statement = DaoUtil.setStatementPrimaryKeyParameter(statement, pDataObject, 4);
+			statement = DaoUtil.setStatementPrimaryKeyParameter(statement, pDataObject);
+			
+			statement.executeUpdate();
+			
+			statement.close();
+			
+			result = true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			conexion.close();
+		}
+		
+		return result;
+	}
+	
+	// Delete
+	public boolean delete(Object pDataObject)
+	{
+		boolean result = false;
+		Class<?> classType = pDataObject.getClass();
+		try 
+		{
+			Delete delete = new Delete(classType);
+			
+			String sql = delete.getSql();
+			
+			PreparedStatement statement = conexion.get().prepareStatement(sql);
+						
+			statement = DaoUtil.setStatementPrimaryKeyParameter(statement, pDataObject,1);
 			
 			statement.executeUpdate();
 			
@@ -181,17 +224,18 @@ public class BaseDAO {
 	}
 
 	// Stored Procedures sin resultados
-	public boolean call(String pStoredProcedureName,Object pDataObject)
+	public boolean executeNonQuery(String pStoredProcedureName,Object...pParameters)
 	{
 		boolean result = false;
-		Class<?> spClassType = pDataObject.getClass();
+		
 		CallableStatement statement = null;
 		try
 		{
-			Call call = new Call(pStoredProcedureName,spClassType);
+			Call call = new Call(pStoredProcedureName,pParameters);
 			String sql = call.getSql();
 			statement = conexion.get().prepareCall(sql);
-			// Set parameters
+			 
+			statement = DaoUtil.setStatementParameters(statement, pParameters);
 			
 			statement.execute();
 		
@@ -211,22 +255,22 @@ public class BaseDAO {
 		return result;
 	}
 	//Stored procedures con  resultados (pClassType)
-	public <T> List<T> call(String pStoredProcedureName,Object pDataObject, Class<T> pClassType)
+	public <T> List<T> execute(String pStoredProcedureName,Class<T> pOutputClassType,Object...pParameters)
 	{
-		Class<?> spClassType = pDataObject.getClass();
 		CallableStatement statement = null;
 		try
 		{
-			Call call = new Call(pStoredProcedureName,spClassType);
+			Call call = new Call(pStoredProcedureName,pParameters);
 			String sql = call.getSql();
 			statement = conexion.get().prepareCall(sql);
-			//Set parameters 
+			
+			statement = DaoUtil.setStatementParameters(statement, pParameters);
 			
 			boolean hasResult = statement.execute();
 			
 			if (hasResult) {
 				ResultSet rs = statement.getResultSet();
-				return DaoUtil.mapper(rs,pClassType);
+				return DaoUtil.mapper(rs,pOutputClassType);
 			}
 			statement.close();
 		}

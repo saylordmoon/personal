@@ -8,4 +8,6 @@ public interface IPersonaService {
 	
 	Persona get(int pPersonaId);
 	
+	boolean update(Persona pPersona);
+	
 }

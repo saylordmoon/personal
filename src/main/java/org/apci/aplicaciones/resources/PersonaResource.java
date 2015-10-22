@@ -5,8 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -63,6 +65,17 @@ public class PersonaResource {
 		
 		return persona.add(pPersona.getValue());
 	}
+	
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	public Persona update(JAXBElement<Persona> pPersona)
+	{
+		if (!persona.update(pPersona.getValue()))
+			throw new WebApplicationException(Response.Status.NOT_MODIFIED);
+		
+		return pPersona.getValue();
+	}
+	
 	
 	@POST
 	@Path("experiencia")

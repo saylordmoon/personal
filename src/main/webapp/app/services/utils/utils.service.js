@@ -116,7 +116,15 @@ angular.module("main").service("Utils", function($filter,TabService, Notificatio
 										return $http.put(resource, JSON.stringify(dataPut)).success(function(data){
 											console.log("updated ", data);
 										});
+									},
+
+						remove:    function(resource,dataDelete){
+										
+										return $http.delete(APP.URL_API + resource, JSON.stringify(dataDelete)).success(function(data){
+											console.log("deleted ", data);
+										});
 									}
+
 
 	};
 

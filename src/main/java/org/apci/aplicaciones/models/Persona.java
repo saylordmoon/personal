@@ -1,7 +1,5 @@
 package org.apci.aplicaciones.models;
 
-import java.sql.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -11,7 +9,7 @@ public class Persona {
 	private String Nombres;
 	private String Apellidos;
 	private String Sexo;
-	private Date FechaNacimiento;
+	private String FechaNacimiento;
 	private String Email;
 	private String Telefono;
 	private String Celular;
@@ -113,10 +111,10 @@ public class Persona {
 	public void setSexo(String sexo) {
 		Sexo = sexo;
 	}
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return FechaNacimiento;
 	}
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		FechaNacimiento = fechaNacimiento;
 	}
 	public String getEmail() {

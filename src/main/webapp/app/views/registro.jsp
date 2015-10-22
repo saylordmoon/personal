@@ -303,9 +303,15 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<div class="col-md-3"></div>
+						<div class="col-md-4">
+							<p style="font-size: 11px;color: gray;">Su usuario para ingresar al sistema será el número de documento de identidad.</p>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-md-3 control-label" >Contraseña:</label>
 						<div class="col-md-4">
-							<input id="password" name="password" data-ng-model="regCtrl.persona.hash" type="password" class="form-control" placeholder="Contraseña" />
+							<input id="password" name="password" data-ng-model="regCtrl.persona.hash" type="password" class="form-control" placeholder="Ingrese una Contraseña" />
 						</div>
 					</div>
 				</div>

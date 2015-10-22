@@ -1,12 +1,12 @@
 angular.module('main').service("ValidationService",[ "NotificationService", function(Messagebox){
-	$(".numero").inputmask("integer",{autoUnmask:true});
-	$(".ruc").inputmask("99999999999",{autoUnmask:true});
-	$(".dni").inputmask("99999999",{autoUnmask:true});
-	$(".fecha").inputmask("99/99/9999");
-	$(".cci").inputmask("99999999999999999999");
-	$(".cuenta").inputmask("integer",{autoUnmask:true,rightAlign: false});
+	//$(".numero").inputmask("integer",{autoUnmask:true});
+	//$(".ruc").inputmask("99999999999",{autoUnmask:true});
+	//$(".dni").inputmask("99999999",{autoUnmask:true});
+	//$(".fecha").inputmask("99/99/9999");
+	//$(".cci").inputmask("99999999999999999999");
+	//$(".cuenta").inputmask("integer",{autoUnmask:true,rightAlign: false});
 	
-	$(".telefonofijo").inputmask("999-9999",{autoUnmask:true});
+	//$(".telefonofijo").inputmask("999-9999",{autoUnmask:true});
 
 	var Validation = {
 		

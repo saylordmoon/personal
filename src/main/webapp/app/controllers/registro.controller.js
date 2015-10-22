@@ -1,5 +1,4 @@
 angular.module("main").controller("RegistroController",function(Utils,APP,$location){
-	Utils.Auth.check();
 	
 	var self = this;
 	

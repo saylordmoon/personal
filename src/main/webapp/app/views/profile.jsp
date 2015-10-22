@@ -66,11 +66,11 @@
 							<a id="txt-dp-documento-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 						</div>
 						<div class="col-md-1">
-							<a id="txt-dp-documento-dwn" target="_new" class="btn btn-info pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-download"></i> Ver Archivo Ingresado</a>
+							<a id="txt-dp-documento-dwn" class="btn btn-info pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-download"></i> Ver Archivo Ingresado</a>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label" >R.U.C.</label>
+						<label class="col-md-3 control-label">R.U.C.</label>
 						<div class="col-md-4">
 							<input id="txt-dp-ruc" data-ng-model="profileCtrl.persona.RUC" type="text" class="form-control ruc" placeholder="R.U.C." />
 						</div>
@@ -78,13 +78,13 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">Teléfono Fijo:</label>
 						<div class="col-md-4">
-							<input id="txt-dp-telefono" data-ng-model="profileCtrl.persona.telefono" type="text" class="form-control numero" placeholder="Teléfono Fijo" required/>
+							<input id="txt-dp-telefono" data-ng-model="profileCtrl.persona.telefono" type="text" class="form-control" placeholder="Teléfono Fijo" required/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Teléfono Celular:</label>
 						<div class="col-md-4">
-							<input id="txt-dp-celular" data-ng-model="profileCtrl.persona.celular" type="text" class="form-control numero" placeholder="Teléfono Celular" required />
+							<input id="txt-dp-celular" data-ng-model="profileCtrl.persona.celular" type="text" class="form-control" placeholder="Teléfono Celular" required />
 						</div>
 					</div>
 					<div class="form-group">
@@ -153,7 +153,39 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Información Financiera</h4>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-9 form-horizontal">
+					<div class="form-group">
+						<label class="col-md-3 control-label" >Banco:</label>
+						<div class="col-md-9">
+							<input id="txt-if-banco" data-ng-model="profileCtrl.persona.banco" type="text" class="form-control mayuscula" placeholder="Nombre del banco" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" >Número de Cuenta:</label>
+						<div class="col-md-9">
+							<input id="txt-if-cuenta" data-ng-model="profileCtrl.persona.cuenta" type="text" class="form-control cuenta" placeholder="Número de Cuenta" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" >CCI:</label>
+						<div class="col-md-9">
+							<input id="txt-if-cci" data-ng-model="profileCtrl.persona.CCI" type="text" class="form-control cci" placeholder="Código de Cuenta Interbancario" />
+							<p style="font-size: 11px;color: gray;">Ingresa los 20 dígitos de la cuenta de destino (CCI) sin considerar espacios en blanco o alguno de los símbolos: (-) (,) (/) (*).
+							<br /> Por ejemplo: Si el CCI que vas a ingresar es de la forma 002-100-012022434968-49 ingrésalo de esta manera: 00210001202243496849</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer">
+		</div>
+	</div>
 	<div  class="panel panel-default">
 		<div id="panel-computacion" class="panel-heading">
 			<h4>Conocimientos en Computación</h4>

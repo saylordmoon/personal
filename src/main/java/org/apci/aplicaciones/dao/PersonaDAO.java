@@ -30,4 +30,11 @@ public class PersonaDAO extends BaseDAO implements IPersonaService {
 
 		return personas.get(0);
 	}
+
+	@Override
+	public boolean update(Persona pPersona) {
+		
+		return super.update(pPersona); 
+	}
+
 }

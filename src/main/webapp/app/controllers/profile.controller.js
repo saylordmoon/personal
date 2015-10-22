@@ -1,6 +1,9 @@
 angular.module("main").controller("ProfileController",function(APP,Utils){
-	
+
+	Utils.Auth.check();
+
 	var self = this;
+	
 	this.persona={};
 	this.tipodocumento = [];
 	this.niveles = [];
@@ -18,10 +21,11 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 	Utils.Rest.getList(this,APP.URL_API + "persona/profile", "persona").success(function(data){
 
 		console.log("persona", data , typeof(data.fechaNacimiento));
-		self.persona.fechaNacimiento = moment(self.persona.fechaNacimiento,"YYYY-MM-DD").format("DD/MM/YYYY");
 		self.persona.computacion = self.persona.computacion.toString();
 		self.persona.paisNacimientoId = self.persona.paisNacimientoId.toString();
 		self.persona.tipoDocumentoId = self.persona.tipoDocumentoId.toString();
+		self.tipoDocumento();
+		
 		self.persona.distritoId = self.persona.distritoId.toString();
 		self.persona.trabajoEnAPCI = self.persona.trabajoEnAPCI.toString();
 		self.persona.nivelComputacionId = self.persona.nivelComputacionId.toString();
@@ -90,19 +94,53 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 
 	this.actualizar = function(){
 
-		console.log("Registro" , this.persona);
-
-		this.persona.fechaNacimiento = Utils.Date.toDate(this.persona.fechaNacimiento);
-		this.persona.foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
-		this.persona.documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
-		this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
+		Utils.Validation.init();
+		Utils.Validation.required("#txt-dp-nombres","Nombres");		
+		Utils.Validation.required("#txt-dp-apellidos","Apellidos");
 		
-		Utils.Rest.update(APP.URL_API + "persona" , this.persona).success(function(data){
+		Utils.Validation.required("#txt-dp-fecha-nacimiento","Fecha de Nacimiento");		
+		Utils.Validation.required("#sel-dp-sexo","Sexo");	
+		Utils.Validation.required("#sel-dp-tipo-documento","Tipo de Documento");		
+		
+		
+		Utils.Validation.required("#txt-dp-numero-documento","Número de Documento");	
 
-					
-			Utils.Notification.info("Se registro correctamente!","Registro Completo");
+	    if (this.persona.tipoDocumentoId == "1") 
+	    	Utils.Validation.len("#txt-dp-numero-documento","D.N.I.", 8);
+		else
+			Utils.Validation.len("#txt-dp-numero-documento","Pasaporte", 12); 
+
+		Utils.Validation.required("#txt-dp-ruc","R.U.C."); 
+		Utils.Validation.len("#txt-dp-ruc","R.U.C.", 11);
+		
+		Utils.Validation.required("#txt-dp-correo","Correo Electrónico");
+		Utils.Validation.email("#txt-dp-correo","Correo Electrónico");
+		
+		Utils.Validation.required("#sel-dp-pais-nacimiento","País de Nacimiento");
+		Utils.Validation.required("#txt-dp-direccion","Dirección de Residencia");
+		
+		Utils.Validation.required("#sel-dp-departamento","Departamento");
+		Utils.Validation.required("#sel-dp-provincia","Provincia");
+		Utils.Validation.required("#sel-dp-distrito","Distrito");
+
+		Utils.Validation.required("#sel-nivel-computacion","Nivel Computacion");
+
+		Utils.Validation.len("#txt-if-cci","CCI", 20);
+
+		if (Utils.Validation.run()){
 			
-			setTimeout( function() { window.location = APP.URL + "#/mensaje"  }  ,  2000 );
-		});
+			console.log("Actualizar" , this.persona);
+
+			if (this.persona.foto) 		this.persona.foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
+			if (this.persona.documento) this.persona.documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
+			if (this.persona.CV) 		this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
+			
+			Utils.Rest.update(APP.URL_API + "persona" , this.persona).success(function(data){
+
+				Utils.Notification.info("Se actualizaron correctamente!","Datos Personales");
+			});
+		}
 	}
+
+	Utils.Mask.init();
 });

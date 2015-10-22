@@ -1,6 +1,5 @@
 package org.apci.aplicaciones.models;
 
-import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -10,8 +9,8 @@ public class Capacitacion {
 	private int CapacitacionId;
 	private int PersonaId;
 	private String Capacitacion;
-	private Date FechaInicio;
-	private Date FechaFin;
+	private String FechaInicio;
+	private String FechaFin;
 	private int HorasLectivas;
 	private String Institucion;
 	private int PaisId;
@@ -41,16 +40,16 @@ public class Capacitacion {
 	public void setCapacitacion(String capacitacion) {
 		Capacitacion = capacitacion;
 	}
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return FechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		FechaInicio = fechaInicio;
 	}
-	public Date getFechaFin() {
+	public String getFechaFin() {
 		return FechaFin;
 	}
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		FechaFin = fechaFin;
 	}
 	public int getHorasLectivas() {
