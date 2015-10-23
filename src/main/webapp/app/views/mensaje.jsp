@@ -4,7 +4,7 @@
 	</div>
 	<div class="panel-body">
 		Se registro correctamente!.
-		<a href="app" class="btn btn-info bmd-ripple"> Iniciar Sesion</a> 
+		<a href="app" class="btn btn-info bmd-ripple"> Iniciar Sesión</a> 
 	</div>
 	<div class="panel-footer">
 	</div>

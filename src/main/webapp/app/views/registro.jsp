@@ -75,13 +75,13 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">Teléfono Fijo:</label>
 						<div class="col-md-4">
-							<input id="txt-dp-telefono" data-ng-model="regCtrl.persona.telefono" type="text" class="form-control numero" placeholder="Teléfono Fijo" required/>
+							<input id="txt-dp-telefono" data-ng-model="regCtrl.persona.telefono" type="text" class="form-control" placeholder="Teléfono Fijo" required/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Teléfono Celular:</label>
 						<div class="col-md-4">
-							<input id="txt-dp-celular" data-ng-model="regCtrl.persona.celular" type="text" class="form-control numero" placeholder="Teléfono Celular" required/>
+							<input id="txt-dp-celular" data-ng-model="regCtrl.persona.celular" type="text" class="form-control" placeholder="Teléfono Celular" required/>
 						</div>
 					</div>
 					<div class="form-group">

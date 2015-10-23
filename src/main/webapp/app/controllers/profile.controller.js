@@ -9,7 +9,7 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 	this.niveles = [];
 	this.paises = [];
 	
-	Utils.Rest.getList(this,APP.URL_API + "pais","paises");
+	var paisLoaded = Utils.Rest.getList(this,APP.URL_API + "pais","paises");
 	Utils.Rest.getList(this,APP.URL_API + "tipo/documento","tipodocumento");
 	Utils.Rest.getList(this,APP.URL_API + "tipo/nivel","niveles");
 
@@ -18,48 +18,52 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 	this.distritos = [];
 	Utils.Rest.getList(this,APP.URL_API + "departamento","departamentos");
 	
-	Utils.Rest.getList(this,APP.URL_API + "persona/profile", "persona").success(function(data){
+	paisLoaded.success(function(){
+		Utils.Rest.getList(self,APP.URL_API + "persona/profile", "persona").success(function(data){
 
-		console.log("persona", data , typeof(data.fechaNacimiento));
-		self.persona.computacion = self.persona.computacion.toString();
-		self.persona.paisNacimientoId = self.persona.paisNacimientoId.toString();
-		self.persona.tipoDocumentoId = self.persona.tipoDocumentoId.toString();
-		self.tipoDocumento();
-		
-		self.persona.distritoId = self.persona.distritoId.toString();
-		self.persona.trabajoEnAPCI = self.persona.trabajoEnAPCI.toString();
-		self.persona.nivelComputacionId = self.persona.nivelComputacionId.toString();
-		self.persona.familiaresEnAPCI = self.persona.familiaresEnAPCI.toString();
-		self.persona.directivoONGD_ENIEX = self.persona.directivoONGD_ENIEX.toString();
-		self.persona.fueDirectivoONGD_ENIEX = self.persona.fueDirectivoONGD_ENIEX.toString();
-		
+			console.log("persona", data , typeof(data.fechaNacimiento));
+			self.persona.computacion = self.persona.computacion.toString();
+			self.persona.paisNacimientoId = self.persona.paisNacimientoId.toString();
+			
+			self.persona.tipoDocumentoId = self.persona.tipoDocumentoId.toString();
+			self.tipoDocumento();
+			
+			self.persona.distritoId = self.persona.distritoId.toString();
+			self.persona.trabajoEnAPCI = self.persona.trabajoEnAPCI.toString();
+			self.persona.nivelComputacionId = self.persona.nivelComputacionId.toString();
+			self.persona.familiaresEnAPCI = self.persona.familiaresEnAPCI.toString();
+			self.persona.directivoONGD_ENIEX = self.persona.directivoONGD_ENIEX.toString();
+			self.persona.fueDirectivoONGD_ENIEX = self.persona.fueDirectivoONGD_ENIEX.toString();
+			
 
-		if (self.persona.foto) {
-			loadImage(APP.URL_API + "file/download" + self.persona.foto);
-			$("#txt-dp-foto").attr("data-filename", self.persona.foto);
-		}
-		if (self.persona.documento) { 
-			$("#txt-dp-documento").attr("data-filename", self.persona.documento);
-			$("#txt-dp-documento-dwn").show();
-			$("#txt-dp-documento-dwn").attr("href", APP.URL_API + "file/download" + self.persona.documento );
-		}
+			if (self.persona.foto) {
+				loadImage(APP.URL_API + "file/download" + self.persona.foto);
+				$("#txt-dp-foto").attr("data-filename", self.persona.foto);
+			}
+			if (self.persona.documento) { 
+				$("#txt-dp-documento").attr("data-filename", self.persona.documento);
+				$("#txt-dp-documento-dwn").show();
+				$("#txt-dp-documento-dwn").attr("href", APP.URL_API + "file/download" + self.persona.documento );
+			}
 
-		if (self.persona.CV) {
-			$("#txt-dp-curriculum").attr("data-filename" , self.persona.CV );
-			$("#txt-dp-curriculum-dwn").show();
-			$("#txt-dp-curriculum-dwn").attr("href", APP.URL_API + "file/download" + self.persona.CV );
-		}
+			if (self.persona.CV) {
+				$("#txt-dp-curriculum").attr("data-filename" , self.persona.CV );
+				$("#txt-dp-curriculum-dwn").show();
+				$("#txt-dp-curriculum-dwn").attr("href", APP.URL_API + "file/download" + self.persona.CV );
+			}
 
-		Utils.Rest.getList(self, APP.URL_API + "distrito/" + self.persona.distritoId).success(function(pDistrito){
-			Utils.Rest.getList(self, APP.URL_API + "provincia/" + pDistrito.distritoId).success(function(pProvincia){
-				self.persona.departamentoId = pProvincia.departamentoId.toString();
-				self.departamentoSelected();
-				self.persona.provinciaId    = pProvincia.provinciaId.toString();
-				self.provinciaSelected();
+			Utils.Rest.getList(self, APP.URL_API + "distrito/" + self.persona.distritoId).success(function(pDistrito){
+				Utils.Rest.getList(self, APP.URL_API + "provincia/" + pDistrito.provinciaId).success(function(pProvincia){
+					self.persona.departamentoId = pProvincia.departamentoId.toString();
+					self.departamentoSelected();
+					self.persona.provinciaId    = pProvincia.provinciaId.toString();
+					self.provinciaSelected();
+				});
 			});
 		});
 	});
 	
+		
 	this.tipoDocumento = function(){
 		if (this.persona.tipoDocumentoId == "1") 
 			$("#txt-dp-numero-documento").inputmask("99999999",{autoUnmask:true});

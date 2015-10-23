@@ -55,15 +55,11 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		else
 			Utils.Validation.len("#txt-dp-numero-documento","Pasaporte", 12); 
 
-		//Utils.Validation.required("#txt-dp-documento","Documento");
-		
 		Utils.Validation.required("#txt-dp-ruc","R.U.C."); 
 		Utils.Validation.len("#txt-dp-ruc","R.U.C.", 11);
 		
-		
 		Utils.Validation.required("#txt-dp-correo","Correo Electrónico");
 		Utils.Validation.email("#txt-dp-correo","Correo Electrónico");
-		
 		
 		Utils.Validation.required("#sel-dp-pais-nacimiento","País de Nacimiento");
 		Utils.Validation.required("#txt-dp-direccion","Dirección de Residencia");
@@ -72,9 +68,6 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		Utils.Validation.required("#sel-dp-provincia","Provincia");
 		Utils.Validation.required("#sel-dp-distrito","Distrito");
 
-		//Utils.Validation.required("#txt-dp-curriculum","Curriculum");
-		//Utils.Validation.required("#txt-dp-foto","Foto");
-		
 		Utils.Validation.required("#sel-nivel-computacion","Nivel Computacion");
 		
 		Utils.Validation.required("#password","Contraseña");
@@ -89,8 +82,6 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		
 		console.log("Registro" , this.persona);
 
-		this.persona.fechaNacimiento = Utils.Date.toDate(this.persona.fechaNacimiento);
-		
 		this.persona.foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
 		this.persona.documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
 		this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
@@ -136,4 +127,6 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 	        ctx.drawImage(img, 0,0 , 300 , 150);
 	    }
 	}
+	
+	Utils.Mask.init();
 });
