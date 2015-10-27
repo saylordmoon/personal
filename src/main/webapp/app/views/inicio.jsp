@@ -22,7 +22,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" >Fecha de Nacimiento:</label>
 						<div class="col-md-4">
-							<input id="txt-dp-fecha-nacimiento" data-ng-model="regCtrl.persona.fechaNacimiento" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+							<input id="txt-dp-fecha-nacimiento" data-ng-model="regCtrl.persona.fechaNacimiento" type="text" class="form-control fecha" readonly placeholder="dd/mm/aaaa" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -530,11 +530,11 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Inicio:</label>
-						<input id="dat-c-fecha-inicio" data-ng-model="regCtrl.capacitacion.fechaInicio" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+						<input id="dat-c-fecha-inicio" data-ng-model="regCtrl.capacitacion.fechaInicio" type="text" class="form-control fecha" readonly placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
 						<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Fin:</label>
-						<input id="dat-c-fecha-fin" data-ng-model="regCtrl.capacitacion.fechaFin" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+						<input id="dat-c-fecha-fin" data-ng-model="regCtrl.capacitacion.fechaFin" type="text" class="form-control fecha" readonly placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
 						<label class="control-label">Horas Lectivas:</label>
@@ -640,11 +640,11 @@
 					</div>
 					<div class="form-group">
 						<label>Fecha de Inicio:</label>
-						<input id="dat-el-fecha-inicio" data-ng-model="regCtrl.experiencia.fechaInicio" class="form-control fecha" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+						<input id="dat-el-fecha-inicio" data-ng-model="regCtrl.experiencia.fechaInicio" class="form-control fecha" type="text" readonly placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
 						<label>Fecha de Cese:</label>
-						<input id="dat-el-fecha-fin" data-ng-model="regCtrl.experiencia.fechaFin" class="form-control fecha" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+						<input id="dat-el-fecha-fin" data-ng-model="regCtrl.experiencia.fechaFin" class="form-control fecha" type="text" readonly placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
 						<label>Descripción de Funciones:</label>

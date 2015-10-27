@@ -59,14 +59,20 @@
 						<label class="control-label">Curso de Capacitación:</label>
 						<input id="txt-c-curso-capacitacion" data-ng-model="capCtrl.capacitacion.capacitacion" type="text" class="form-control mayuscula" placeholder="Nombre del curso de capacitación" />
 					</div>
-					<div class="form-group">
-						<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Inicio:</label>
-						<input id="dat-c-fecha-inicio" data-ng-model="capCtrl.capacitacion.fechaInicio" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" data-date-orientation="bottom" />
-					</div>
-					<div class="form-group">
-						<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Fin:</label>
-						<input id="dat-c-fecha-fin" data-ng-model="capCtrl.capacitacion.fechaFin" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" data-date-orientation="bottom" />
-					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Inicio:</label>
+								<input id="dat-c-fecha-inicio" data-ng-model="capCtrl.capacitacion.fechaInicio" type="text" class="form-control fecha" readonly placeholder="dd/mm/aaaa" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label"><i class="fa fa-calendar"></i> Fecha de Fin:</label>
+								<input id="dat-c-fecha-fin" data-ng-model="capCtrl.capacitacion.fechaFin" type="text" class="form-control fecha" readonly placeholder="dd/mm/aaaa" />
+							</div>
+						</div>
+					</div>	
 					<div class="form-group">
 						<label class="control-label">Horas Lectivas:</label>
 						<input id="txt-c-horas-lectivas" data-ng-model="capCtrl.capacitacion.horasLectivas" type="number" class="form-control" />

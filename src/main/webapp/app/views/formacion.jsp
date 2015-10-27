@@ -67,7 +67,7 @@
 					</div>
 					<div class="form-group">
 						<label ><i class="fa fa-calendar"></i> Fecha de Expedición:</label>
-						<input id="txt-fa-fecha-expedicion" data-ng-model="formCtrl.formacion.fechaExpedicion" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+						<input id="txt-fa-fecha-expedicion" data-ng-model="formCtrl.formacion.fechaExpedicion" type="text" class="form-control fecha" readonly placeholder="dd/mm/aaaa" />
 					</div>
 					<div class="form-group">
 						<label >Institución Académica:</label>

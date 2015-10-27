@@ -22,7 +22,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" >Fecha de Nacimiento:</label>
 						<div class="col-md-4">
-							<input id="txt-dp-fecha-nacimiento" data-ng-model="profileCtrl.persona.fechaNacimiento" type="text" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" data-date-orientation="bottom" placeholder="dd/mm/aaaa" />
+							<input id="txt-dp-fecha-nacimiento" data-ng-model="profileCtrl.persona.fechaNacimiento" type="text" class="form-control fecha" readonly placeholder="dd/mm/aaaa" />
 						</div>
 					</div>
 					<div class="form-group">

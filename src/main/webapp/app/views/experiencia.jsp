@@ -76,13 +76,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Fecha de Inicio:</label>
-								<input id="dat-el-fecha-inicio" data-ng-model="expCtrl.experiencia.fechaInicio" class="form-control fecha" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+								<input id="dat-el-fecha-inicio" data-ng-model="expCtrl.experiencia.fechaInicio" class="form-control fecha" type="text" readonly placeholder="dd/mm/aaaa" />
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Fecha de Cese:</label>
-								<input id="dat-el-fecha-fin" data-ng-model="expCtrl.experiencia.fechaFin" class="form-control fecha" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="es" placeholder="dd/mm/aaaa" />
+								<input id="dat-el-fecha-fin" data-ng-model="expCtrl.experiencia.fechaFin" class="form-control fecha" type="text" readonly placeholder="dd/mm/aaaa" />
 							</div>
 						</div>
 					</div>

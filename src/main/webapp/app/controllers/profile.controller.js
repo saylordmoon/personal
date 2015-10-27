@@ -135,15 +135,51 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 			
 			console.log("Actualizar" , this.persona);
 
-			if (this.persona.foto) 		this.persona.foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
-			if (this.persona.documento) this.persona.documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
-			if (this.persona.CV) 		this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
+			var foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
+			if (foto) 		this.persona.foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
+
+			var documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
+			if (documento) this.persona.documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
+			
+			var CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
+			if (CV) this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
 			
 			Utils.Rest.update(APP.URL_API + "persona" , this.persona).success(function(data){
 
 				Utils.Notification.info("Se actualizaron correctamente!","Datos Personales");
 			});
 		}
+	}
+
+	$('input[type="file"]').change(function()
+	{
+		console.log("upload",this);
+		var control = this;
+		$("#" + control.id + "-ok" ).hide();
+		$(control).attr("data-ok","false");
+		var	loaded = Utils.File.upload(control, APP.URL_API + "file/upload");
+		if (loaded) 
+		{
+			loaded.success(function(data){
+				
+				$(control).attr("data-ok","true");
+				$(control).attr("data-filename",data);
+				$("#" + control.id + "-ok" ).show();
+			});
+		}
+	});
+	
+	
+	var input = document.getElementById('txt-dp-foto');
+	input.addEventListener('change', handleFiles);
+
+	function handleFiles(e) {
+	    var ctx = document.getElementById('canvas').getContext('2d');
+	    var img = new Image;
+	    img.src = URL.createObjectURL(e.target.files[0]);
+	    img.onload = function() {
+	        ctx.drawImage(img, 0,0 , 300 , 150);
+	    }
 	}
 
 	Utils.Mask.init();
