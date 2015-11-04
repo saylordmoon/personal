@@ -49,6 +49,7 @@ angular.module("main").controller("FormacionController", function(Utils,APP){
 			this.formacion.grado = Utils.UI.Select.getSelectedText("sel-fa-grado-academico");
 			this.formacion.pais = Utils.UI.Select.getSelectedText("sel-fa-pais");
 			this.formacion.documento = Utils.UI.Control.getAttr("txt-fa-documento-sustentatorio","data-filename");
+			this.formacion.fechaExpedicion = $("#txt-fa-fecha-expedicion").val();
 			
 			Utils.Rest.save(APP.URL_API + "formacionacademica",self.formacion).success( function(){
 				refresh();
@@ -59,6 +60,7 @@ angular.module("main").controller("FormacionController", function(Utils,APP){
 			$('#txt-fa-documento-sustentatorio-ok').hide();
 			$('#txt-fa-documento-sustentatorio').attr("data-filename","");
 			$(".modal-formacion-academica").modal("hide");
+			$("#txt-fa-fecha-expedicion").val("")
 		}
 	}
 

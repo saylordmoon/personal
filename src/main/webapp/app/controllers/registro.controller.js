@@ -85,7 +85,8 @@ angular.module("main").controller("RegistroController",function(Utils,APP,$locat
 		this.persona.foto = Utils.UI.Control.getAttr("txt-dp-foto","data-filename");
 		this.persona.documento = Utils.UI.Control.getAttr("txt-dp-documento","data-filename");
 		this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
-		
+		this.persona.fechaNacimiento = $("#txt-dp-fecha-nacimiento").val();
+
 		Utils.Rest.save(APP.URL_API + "persona" , this.persona).success(function(data){
 
 			$(".modal-confirmacion").modal("hide");

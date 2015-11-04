@@ -60,8 +60,7 @@
 				</div><!--/ Logo -->
 				
 				 <!-- Side Menu Items -->
-				<ul data-ng-controller="MenuController as menuCtrl" style="padding-top: 200px;" class="sidebar-nav">
-					<li class="sidebar-brand"></li>
+				<ul data-ng-controller="MenuController as menuCtrl" style="padding-top: 150px;" class="sidebar-nav">
 					<li data-ng-repeat = "item in menuCtrl.items">
 						<a href="{{ ::item.url }}"><i class="{{ ::item.icono }}"></i> {{ ::item.nombre }}</a>
 					</li>
@@ -153,6 +152,7 @@
 		
 		<!-- Controllers -->
 		<script type="text/javascript" src="controllers/admin/menu.controller.js"></script>
+		<script type="text/javascript" src="controllers/admin/supervision.controller.js"></script>
 		
 		<!--/ Controllers -->
 

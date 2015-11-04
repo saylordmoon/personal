@@ -39,16 +39,19 @@ angular.module("main").controller("CapacitacionController", function(Utils,APP){
 		Utils.Validation.required("#dat-c-fecha-inicio","Fecha de Inicio");
 		Utils.Validation.required("#dat-c-fecha-fin","Fecha de Fin");
 		
-		Utils.Validation.dateLessThan("#dat-c-fecha-inicio",this.capacitacion.fechaFin,"Fecha de Inicio");
-		Utils.Validation.dateGreaterThan("#dat-c-fecha-fin",this.capacitacion.fechaInicio,"Fecha de Fin");
+		Utils.Validation.dateLessThan("#dat-c-fecha-inicio",$("#dat-c-fecha-fin").val(),"Fecha de Inicio");
+		Utils.Validation.dateGreaterThan("#dat-c-fecha-fin",$("#dat-c-fecha-inicio").val(),"Fecha de Fin");
 				
 		Utils.Validation.required("#txt-c-institucion","Institución");
 		Utils.Validation.required("#sel-c-pais","País");
 		Utils.Validation.required("#txt-c-documento-sustentatorio","Documento Sustentatorio");
+
 		
 		if (Utils.Validation.run()){
 
 			this.capacitacion.documento = Utils.UI.Control.getAttr("txt-c-documento-sustentatorio","data-filename");
+			this.capacitacion.fechaInicio = $("#dat-c-fecha-inicio").val();
+			this.capacitacion.fechaFin = $("#dat-c-fecha-fin").val();
 
 			Utils.Rest.save(APP.URL_API + "capacitacion",this.capacitacion).success(function(){
 				refresh();
@@ -58,7 +61,9 @@ angular.module("main").controller("CapacitacionController", function(Utils,APP){
 			$("#txt-c-documento-sustentatorio-ok" ).hide();
 			$("#txt-c-documento-sustentatorio" ).attr("data-filename","");
 			$("#txt-c-documento-sustentatorio" ).val("");
-			$(".modal-capacitacion").modal("hide");			
+			$(".modal-capacitacion").modal("hide");
+			$("#dat-c-fecha-inicio").val("");
+			$("#dat-c-fecha-fin").val("");	
 		}
 	}
 

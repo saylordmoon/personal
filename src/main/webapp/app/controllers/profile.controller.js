@@ -21,7 +21,6 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 	paisLoaded.success(function(){
 		Utils.Rest.getList(self,APP.URL_API + "persona/profile", "persona").success(function(data){
 
-			console.log("persona", data , typeof(data.fechaNacimiento));
 			self.persona.computacion = self.persona.computacion.toString();
 			self.persona.paisNacimientoId = self.persona.paisNacimientoId.toString();
 			
@@ -34,7 +33,7 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 			self.persona.familiaresEnAPCI = self.persona.familiaresEnAPCI.toString();
 			self.persona.directivoONGD_ENIEX = self.persona.directivoONGD_ENIEX.toString();
 			self.persona.fueDirectivoONGD_ENIEX = self.persona.fueDirectivoONGD_ENIEX.toString();
-			
+			$("#txt-dp-fecha-nacimiento").val(data.fechaNacimiento);
 
 			if (self.persona.foto) {
 				loadImage(APP.URL_API + "file/download" + self.persona.foto);
@@ -143,6 +142,8 @@ angular.module("main").controller("ProfileController",function(APP,Utils){
 			
 			var CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
 			if (CV) this.persona.CV = Utils.UI.Control.getAttr("txt-dp-curriculum","data-filename");
+
+			self.persona.fechaNacimiento = $("#txt-dp-fecha-nacimiento").val();
 			
 			Utils.Rest.update(APP.URL_API + "persona" , this.persona).success(function(data){
 

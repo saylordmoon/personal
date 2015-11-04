@@ -48,8 +48,8 @@ angular.module("main").controller("ExperienciaController", function(Utils,APP){
 		Utils.Validation.required("#dat-el-fecha-inicio","Fecha de Inicio");		
 		Utils.Validation.required("#dat-el-fecha-fin","Fecha de Cese");
 		
-		Utils.Validation.dateLessThan("#dat-el-fecha-inicio",this.experiencia.fechaFin,"Fecha de Inicio");
-		Utils.Validation.dateGreaterThan("#dat-el-fecha-fin",this.experiencia.fechaInicio,"Fecha de Cese");
+		Utils.Validation.dateLessThan("#dat-el-fecha-inicio",$("#dat-el-fecha-fin").val(),"Fecha de Inicio");
+		Utils.Validation.dateGreaterThan("#dat-el-fecha-fin",$("#dat-el-fecha-inicio").val(),"Fecha de Cese");
 		
 		Utils.Validation.required("#txt-el-descripcion","Descripción");		
 		Utils.Validation.required("#txt-el-descripcion","Descripción");
@@ -68,7 +68,9 @@ angular.module("main").controller("ExperienciaController", function(Utils,APP){
 			this.experiencia.sector = Utils.UI.Select.getSelectedText("sel-el-sector");
 			this.experiencia.pais = Utils.UI.Select.getSelectedText("sel-el-pais");
 			this.experiencia.documento = Utils.UI.Control.getAttr("txt-el-documento-sustentatorio","data-filename");
-			
+			this.experiencia.fechaInicio = $("#dat-el-fecha-inicio").val();
+			this.experiencia.fechaFin = $("#dat-el-fecha-fin").val();
+
 			Utils.Rest.save(APP.URL_API + "experiencia",self.experiencia).success( function(){
 				refresh();
 			});	
@@ -78,6 +80,8 @@ angular.module("main").controller("ExperienciaController", function(Utils,APP){
 			$('#txt-el-documento-sustentatorio').val("");
 			$('#txt-el-documento-sustentatorio-ok').hide();
 			$(".modal-experiencia-laboral").modal("hide");
+			$("#dat-el-fecha-inicio").val("");
+			$("#dat-el-fecha-fin").val("");
 		}
 	}
 
