@@ -37,7 +37,7 @@
 							<td>{{experiencia.rubroId | tipo : expCtrl.rubros : "rubroId" : "descripcion" }}</td>
 							<td>{{experiencia.sectorId | tipo : expCtrl.sectores : "sectorId" : "nombre"}}</td>
 							<td>{{experiencia.paisId | tipo : expCtrl.paises : "paisId": "nombre"}}</td>
-							<td align="center"><a class="btn btn-default" href="/appbase/api/v1/file/download{{experiencia.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td align="center"><a class="btn btn-default" href="../api/v1/file/download{{experiencia.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
 								<button class="btn btn-default pull-right" data-ng-click="expCtrl.borrarExperienciaLaboral(experiencia)"><i class="glyphicon glyphicon-trash"></i></button>
 							</td>

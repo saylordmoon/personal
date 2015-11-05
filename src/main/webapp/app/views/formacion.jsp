@@ -31,7 +31,7 @@
 							<td>{{formacion.institucion}}</td>
 							<td>{{formacion.paisId | tipo : formCtrl.paises : "paisId" : "nombre" }}</td>
 							<td align="center">
-								<a class="btn btn-default" href="/appbase/api/v1/file/download{{formacion.documento}}"><i class="fa fa-paperclip"></i></a>
+								<a class="btn btn-default" href="../api/v1/file/download{{formacion.documento}}"><i class="fa fa-paperclip"></i></a>
 							</td>
 							<td align="center">
 								<button class="btn btn-default pull-right" data-ng-click="formCtrl.borrarFormacionAcademica(formacion)"><i class="glyphicon glyphicon-trash"></i></button>

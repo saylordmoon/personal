@@ -33,7 +33,7 @@
 							<td>{{capacitacion.horasLectivas}}</td>
 							<td>{{capacitacion.institucion.toUpperCase()}}</td>
 							<td>{{capacitacion.paisId | tipo : capCtrl.paises : "paisId" : "nombre"}}</td>
-							<td align="center"><a class="btn btn-default" href="/appbase/api/v1/file/download{{capacitacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td align="center"><a class="btn btn-default" href="../api/v1/file/download{{capacitacion.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
 								<button class="btn btn-default pull-right" data-ng-click="capCtrl.borrarCapacitacion(capacitacion)"><i class="glyphicon glyphicon-trash"></i></button>
 							</td>

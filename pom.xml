@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.apci.aplicaciones</groupId>
-    <artifactId>appbase</artifactId>
+    <artifactId>supervisores</artifactId>
     <packaging>war</packaging>
     <version>1.0.0 -SNAPSHOT</version>
-    <name>appbase</name>
+    <name>supervisores</name>
 
     <build>
-        <finalName>appbase</finalName>
+        <finalName>supervisores</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -27,7 +27,7 @@
 							<td>{{idioma.nivelEscrituraId | tipo : idmCtrl.niveles : "nivelId" : "descripcion" }}</td>
 							<td>{{idioma.nivelHabladoId | tipo : idmCtrl.niveles : "nivelId" : "descripcion"}}</td>
 							<td>{{idioma.nivelLecturaId | tipo : idmCtrl.niveles : "nivelId" : "descripcion"}}</td>
-							<td align="center"><a class="btn btn-default" data-ng-show="idioma.documento != ''" href="/appbase/api/v1/file/download{{idioma.documento}}"><i class="fa fa-paperclip"></i></a></td>
+							<td align="center"><a class="btn btn-default" data-ng-show="idioma.documento != ''" href="../api/v1/file/download{{idioma.documento}}"><i class="fa fa-paperclip"></i></a></td>
 							<td>
 								<button class="btn btn-default pull-right" data-ng-click="idmCtrl.borrarIdiomas(idioma)"><i class="glyphicon glyphicon-trash"></i></button>
 							</td>
